@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Kaynak kodu al
+        uses: actions/checkout@v4
+
+      - name: Node.js kur
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.14.0
+          cache: npm
+
+      - name: Bağımlılıkları kilit dosyasından kur
+        run: npm ci
+
+      - name: Tip, kullanılmayan kod, çeviri, seed ve regresyon kontrolleri
+        run: npm run check
+
+      # next build, sunucu bileşenlerinin gerçek Supabase verisini okuduğu
+      # deploy ortamında çalıştırılır. CI'a production/staging sırları verilmez.

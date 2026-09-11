@@ -1,0 +1,330 @@
+@import "tailwindcss";
+
+/* =====================================================================
+   ROYAL RESTAURANT — sicak, modern ve mobil odakli tema
+
+   Petrol yesili marka omurgasi, sicak krem zemin ve altin vurgu restoranin
+   kimligini tasir. Kartlar yumusak derinlik ve genis dokunma alanlariyla
+   2026 mobil arayuz hissi verir; hareket yalniz transform/opacity kullanir.
+   ===================================================================== */
+
+@theme {
+  /* ---- ZEMIN VE METIN ---- */
+  --color-bg: #fbf8f1;
+  --color-card: #ffffff;
+  --color-surface: #eef5f2;
+  --color-line: #dce7e2;
+  --color-rule: #173d39;
+  --color-ink: #102b28;
+  --color-muted: #526764;
+
+  /* ---- TURKUAZ: tek vurgu rengi ----
+     Beyaz zeminde okunabilir olmasi icin koyulastirildi.
+     #14B8A6 beyaz uzerinde 2.4:1 kaliyordu, metin icin kullanilamazdi. */
+  --color-brand: #08776e;
+  --color-brand-dark: #055b54;
+  --color-brand-light: #08776e;
+
+  /* ---- BAKIR VURGU (bolum etiketleri, rozetler) ---- */
+  --color-accent: #9a6b08;
+
+  --color-danger: #b4231a;    /* beyaz uzerinde 6.4:1 */
+
+  --radius-xs: 0.375rem;
+  --radius-sm: 0.625rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.125rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 1.75rem;
+  --radius-3xl: 2.25rem;
+  --radius-4xl: 3rem;
+
+  /* ---- FONTLAR ---- */
+  --font-sans: var(--font-jakarta), system-ui, sans-serif;
+  --font-display: var(--font-playfair), Georgia, serif;
+  --font-arabic: var(--font-cairo), system-ui, sans-serif;
+}
+
+html {
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  overflow-x: clip;
+  -webkit-tap-highlight-color: transparent;
+  /* Yerel denetimler (select, tarih secici, kaydirma cubugu) acik temaya uysun */
+  color-scheme: light;
+  scroll-padding-block-start: 8rem;
+  /* Admin alt nav + sabit eylem cubugu + cihaz guvenli alani. */
+  scroll-padding-block-end: calc(9rem + env(safe-area-inset-bottom));
+}
+
+body {
+  min-height: 100dvh;
+  font-family: var(--font-sans);
+  background:
+    radial-gradient(circle at 10% -10%, rgb(8 119 110 / 0.08), transparent 32rem),
+    var(--color-bg);
+  /* Yatay kaydirma cubugu hicbir kosulda cikmasin */
+  overflow-x: clip;
+}
+
+/* Cift dokunusla yakinlastirma gecikmesini kaldirir (~300 ms) */
+a,
+button,
+[role="button"],
+input,
+select,
+textarea,
+label {
+  touch-action: manipulation;
+}
+
+/* Basliklarda dul satir olusmasin */
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* Arapca sayfada ayri font ve daha genis satir araligi */
+html[dir="rtl"] body {
+  font-family: var(--font-arabic);
+  line-height: 1.85;
+}
+
+/* Baslıklarda serif — editoryal karakteri buradan geliyor.
+   Arapcada Playfair'in glifi yok, Cairo'da kalir. */
+html[dir="ltr"] h1,
+html[dir="ltr"] h2 {
+  font-family: var(--font-display);
+  letter-spacing: -0.015em;
+}
+
+/* Bolum etiketleri: kucuk, harf araligi acik, versal */
+.etiket {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Fiyatlar her dilde Latin rakamla ve sabit genislikte gorunur */
+.fiyat {
+  font-variant-numeric: tabular-nums;
+  direction: ltr;
+  display: inline-block;
+  unicode-bidi: isolate;
+}
+
+/* Yatay kaydirmali seritlerde kaydirma cubugunu gizle */
+.kaydir-gizle {
+  scrollbar-width: none;
+}
+.kaydir-gizle::-webkit-scrollbar {
+  display: none;
+}
+
+/* Klavye kullanicisi icin gorunur odak halkasi (WCAG) */
+:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+/* Klavye ile ilk Tab'da gorunur; fare/dokunus akisini etkilemez. */
+.icerige-atla {
+  position: fixed;
+  inset-block-start: 0.5rem;
+  inset-inline-start: 0.5rem;
+  z-index: 200;
+  transform: translateY(-150%);
+  background: var(--color-ink);
+  color: var(--color-bg);
+  padding: 0.75rem 1rem;
+  font-weight: 700;
+  transition: transform 160ms ease-out;
+}
+
+.icerige-atla:focus-visible {
+  transform: translateY(0);
+}
+
+/* ---------------------------------------------------------------
+   SAYFA GECISI
+   Sadece opacity: transform kullanilirsa position:fixed alt ogeler
+   (sepet cubugu, alt butonlar) yanlis yere konumlanir.
+   --------------------------------------------------------------- */
+@keyframes sayfaGir {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.sayfa-gecis {
+  animation: sayfaGir 180ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Hero ilk acilista tek sefer oynar; surekli hareket ederek dikkati dagitmaz. */
+@keyframes heroYuksel {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes logoAc {
+  from {
+    opacity: 0;
+    transform: scale(0.78) rotate(-5deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+.hero-logo-gir {
+  animation: logoAc 720ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-metin-gir {
+  animation: heroYuksel 640ms 120ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-eylem-gir {
+  animation: heroYuksel 640ms 240ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.cam-yuzey {
+  background: rgb(255 255 255 / 0.12);
+  border: 1px solid rgb(255 255 255 / 0.22);
+  box-shadow: 0 16px 50px rgb(0 0 0 / 0.16);
+  backdrop-filter: blur(16px);
+}
+
+.kart-derinlik {
+  box-shadow:
+    0 1px 2px rgb(16 43 40 / 0.05),
+    0 16px 40px rgb(16 43 40 / 0.08);
+}
+
+.kart-yuksel {
+  transition:
+    transform 240ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 240ms ease,
+    border-color 200ms ease;
+}
+
+.kart-yuksel:hover {
+  transform: translate3d(0, -3px, 0);
+  box-shadow:
+    0 2px 4px rgb(16 43 40 / 0.06),
+    0 20px 48px rgb(16 43 40 / 0.13);
+}
+
+/* Ust ilerleme cubugu — sadece transform, compositor dostu */
+@keyframes ilerle {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(400%);
+  }
+}
+
+.ilerleme {
+  animation: ilerle 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Ekran okuyucuya ozel, gorsel olarak gizli */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Iskelet ekranlardaki nefes alma efekti — sadece opacity animasyonu */
+@keyframes parilti {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+.parilti {
+  animation: parilti 1.4s ease-in-out infinite;
+}
+
+/* Panel ve sayfa icindeki kaydirma, arka sayfayi surüklemesin */
+.kaydirma-kapali {
+  overscroll-behavior: contain;
+}
+
+/* Uzun listelerde ekran disi satirlarin duzeni hesaplanmasin.
+   /menu 59 urun ciziyor; bu, ilk boyama suresini belirgin kisaltiyor. */
+.uzun-liste > * {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 96px;
+}
+
+/* ---------------------------------------------------------------
+   BELIRME ANIMASYONU
+   Yalnizca transform + opacity kullanir (compositor dostu).
+   Gorunur alana giren ogeye .icerde eklenir; JS yoksa veya hareket
+   azaltilmissa icerik tam gorunur kalir.
+   --------------------------------------------------------------- */
+/* Varsayilan: GORUNUR. Gizleme yalnizca JS ".gizle" ekleyince olur —
+   boylece JS calismazsa icerik kaybolmaz. */
+.belir {
+  transition:
+    opacity 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--belir-gecikme, 0ms);
+}
+
+.belir.gizle {
+  opacity: 0;
+  transform: translate3d(0, 12px, 0);
+}
+
+.belir.icerde {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Hareketi azalt tercihi: gecisleri kapat (WCAG reduced-motion) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .belir,
+  .belir.gizle {
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "name": "royal-restaurant",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "typecheck:no-unused": "tsc --noEmit --noUnusedLocals --noUnusedParameters",
+    "test": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types --test tests/*.test.mjs",
+    "check:json": "node scripts/json-anahtar-kontrol.mjs",
+    "check": "npm run typecheck && npm run typecheck:no-unused && npm test && npm run check:json && npm run seed:kuru",
+    "seed": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/seed.ts",
+    "seed:kuru": "npm run seed -- --kuru",
+    "seed:sifirla": "npm run seed -- --sifirla",
+    "gramaj:ar": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/gramaj-ar-guncelle.ts",
+    "temizlik": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/temizlik.ts"
+  },
+  "dependencies": {
+    "@supabase/ssr": "^0.12.4",
+    "@supabase/supabase-js": "^2.112.3",
+    "next": "^15.1.6",
+    "next-intl": "^4.0.0",
+    "qrcode": "^1.5.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-easy-crop": "^6.2.3",
+    "zustand": "^5.0.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.0",
+    "@types/node": "^22.10.7",
+    "@types/qrcode": "^1.5.6",
+    "@types/react": "^19.0.7",
+    "@types/react-dom": "^19.0.3",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.7.3"
+  }
+}

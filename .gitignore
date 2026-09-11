@@ -1,0 +1,19 @@
+node_modules
+.next
+out
+.env
+.env.local
+.DS_Store
+*.tsbuildinfo
+next-env.d.ts
+
+# Yerel yedekler ve test/ara dosyalar
+backups/
+.playwright/
+
+# Yerel yapay zeka çalışma dosyaları ve arşivlenmiş kopya
+.agents/
+.claude/
+Claude outputs/
+DESIGN-IS-*/
+royal-restaurant/

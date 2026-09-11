@@ -1,0 +1,1624 @@
+{
+  "_aciklama": "Royal Restaurant menü verisi. Fotoğraflardan çıkarıldı (12.08.2026). fiyat_masa ve fiyat_paket şu an aynı — restoran sahibiyle konuşup masa fiyatlarını güncelleyin. gramaj değerleri TAHMİNİDİR, mutfakla teyit edilmeli.",
+  "restoran": {
+    "ad_tr": "Royal Restaurant",
+    "ad_ar": "مطعم رويال",
+    "domain": "royalrestaurant.com.tr",
+    "whatsapp": "+905434888828",
+    "telefon": "+905434888828",
+    "harita": "https://maps.app.goo.gl/9CuXKfBbRWqNaqGD8",
+    "instagram": "https://www.instagram.com/royalrestaurant.tr",
+    "tiktok": "https://www.tiktok.com/@royalrestaurants1"
+  },
+  "ayarlar": {
+    "para_birimi": "TRY",
+    "para_simgesi": "₺",
+    "servis_ucreti": 60,
+    "minimum_siparis": 200,
+    "siparis_alimi_acik": true,
+    "calisma_saatleri": {
+      "_not": "Varsayılan değerler — admin panelden değiştirilebilir",
+      "pazartesi": {
+        "acilis": "11:00",
+        "kapanis": "23:00",
+        "kapali": false
+      },
+      "sali": {
+        "acilis": "11:00",
+        "kapanis": "23:00",
+        "kapali": false
+      },
+      "carsamba": {
+        "acilis": "11:00",
+        "kapanis": "23:00",
+        "kapali": false
+      },
+      "persembe": {
+        "acilis": "11:00",
+        "kapanis": "23:00",
+        "kapali": false
+      },
+      "cuma": {
+        "acilis": "11:00",
+        "kapanis": "23:00",
+        "kapali": false
+      },
+      "cumartesi": {
+        "acilis": "11:00",
+        "kapanis": "23:00",
+        "kapali": false
+      },
+      "pazar": {
+        "acilis": "11:00",
+        "kapanis": "23:00",
+        "kapali": false
+      }
+    }
+  },
+  "tema": {
+    "ana_renk": "#14B8A6",
+    "ana_renk_koyu": "#0F766E",
+    "vurgu_renk": "#C9962F",
+    "zemin_koyu": "#0B1416",
+    "zemin_kart": "#132326",
+    "metin": "#F2F5F5",
+    "_not": "Turkuaz ana renk + mevcut menüdeki bakır/altın vurgu korundu. Koyu zemin markayla uyumlu."
+  },
+  "cikarilabilir_sablonlari": {
+    "_aciklama": "Ürüne atanan ücretsiz çıkarma seçenekleri. Müşteri işaretlerse WhatsApp mesajında 'Çıkan:' satırında görünür.",
+    "durum_sandvic": [
+      {
+        "ad_tr": "Soğan",
+        "ad_ar": "بصل"
+      },
+      {
+        "ad_tr": "Domates",
+        "ad_ar": "بندورة"
+      },
+      {
+        "ad_tr": "Marul",
+        "ad_ar": "خس"
+      },
+      {
+        "ad_tr": "Turşu",
+        "ad_ar": "مخلل"
+      },
+      {
+        "ad_tr": "Patates",
+        "ad_ar": "بطاطا"
+      },
+      {
+        "ad_tr": "Mayonez",
+        "ad_ar": "مايونيز"
+      },
+      {
+        "ad_tr": "Ketçap",
+        "ad_ar": "كاتشب"
+      },
+      {
+        "ad_tr": "Acı sos",
+        "ad_ar": "صلصة حارة"
+      },
+      {
+        "ad_tr": "Sarımsak sosu",
+        "ad_ar": "ثومية"
+      },
+      {
+        "ad_tr": "Maydanoz",
+        "ad_ar": "بقدونس"
+      },
+      {
+        "ad_tr": "Sumak",
+        "ad_ar": "سماق"
+      }
+    ],
+    "burger": [
+      {
+        "ad_tr": "Marul",
+        "ad_ar": "خس"
+      },
+      {
+        "ad_tr": "Domates",
+        "ad_ar": "بندورة"
+      },
+      {
+        "ad_tr": "Soğan",
+        "ad_ar": "بصل"
+      },
+      {
+        "ad_tr": "Turşu",
+        "ad_ar": "مخلل"
+      },
+      {
+        "ad_tr": "Peynir",
+        "ad_ar": "جبنة"
+      },
+      {
+        "ad_tr": "Mayonez",
+        "ad_ar": "مايونيز"
+      },
+      {
+        "ad_tr": "Ketçap",
+        "ad_ar": "كاتشب"
+      },
+      {
+        "ad_tr": "Barbekü sos",
+        "ad_ar": "صلصة باربكيو"
+      }
+    ],
+    "tavuk_izgara": [
+      {
+        "ad_tr": "Baharat",
+        "ad_ar": "بهارات"
+      },
+      {
+        "ad_tr": "Acı",
+        "ad_ar": "حار"
+      },
+      {
+        "ad_tr": "Sarımsak sosu",
+        "ad_ar": "ثومية"
+      },
+      {
+        "ad_tr": "Limon",
+        "ad_ar": "ليمون"
+      }
+    ],
+    "salata": [
+      {
+        "ad_tr": "Soğan",
+        "ad_ar": "بصل"
+      },
+      {
+        "ad_tr": "Zeytin",
+        "ad_ar": "زيتون"
+      },
+      {
+        "ad_tr": "Limon",
+        "ad_ar": "ليمون"
+      },
+      {
+        "ad_tr": "Nar ekşisi",
+        "ad_ar": "دبس رمان"
+      },
+      {
+        "ad_tr": "Maydanoz",
+        "ad_ar": "بقدونس"
+      }
+    ],
+    "menu_combo": [
+      {
+        "ad_tr": "Soğan",
+        "ad_ar": "بصل"
+      },
+      {
+        "ad_tr": "Domates",
+        "ad_ar": "بندورة"
+      },
+      {
+        "ad_tr": "Marul",
+        "ad_ar": "خس"
+      },
+      {
+        "ad_tr": "Turşu",
+        "ad_ar": "مخلل"
+      },
+      {
+        "ad_tr": "Mayonez",
+        "ad_ar": "مايونيز"
+      },
+      {
+        "ad_tr": "Ketçap",
+        "ad_ar": "كاتشب"
+      },
+      {
+        "ad_tr": "Acı sos",
+        "ad_ar": "صلصة حارة"
+      }
+    ]
+  },
+  "ekstra_sablonlari": {
+    "_aciklama": "Ücretli ekstralar. Fiyatlar menüdeki fiyatlara göre TAHMİNİ olarak belirlendi — restoranla teyit edin.",
+    "durum_sandvic": [
+      {
+        "ad_tr": "Ekstra et",
+        "ad_ar": "لحمة اكسترا",
+        "fiyat": 100
+      },
+      {
+        "ad_tr": "Ekstra tavuk",
+        "ad_ar": "دجاج اكسترا",
+        "fiyat": 80
+      },
+      {
+        "ad_tr": "Kaşar peyniri",
+        "ad_ar": "جبنة",
+        "fiyat": 40
+      },
+      {
+        "ad_tr": "Ekstra patates",
+        "ad_ar": "بطاطا اكسترا",
+        "fiyat": 60
+      },
+      {
+        "ad_tr": "Ekstra sos",
+        "ad_ar": "صلصة اكسترا",
+        "fiyat": 25
+      },
+      {
+        "ad_tr": "Küçük ayran",
+        "ad_ar": "عيران صغير",
+        "fiyat": 25
+      },
+      {
+        "ad_tr": "Pepsi 330 ml",
+        "ad_ar": "بيبسي ٣٣٠ مل",
+        "fiyat": 60
+      }
+    ],
+    "burger": [
+      {
+        "ad_tr": "Ekstra köfte",
+        "ad_ar": "قطعة لحم اكسترا",
+        "fiyat": 100
+      },
+      {
+        "ad_tr": "Kaşar peyniri",
+        "ad_ar": "جبنة",
+        "fiyat": 40
+      },
+      {
+        "ad_tr": "Çedar sos",
+        "ad_ar": "صلصة شيدر",
+        "fiyat": 30
+      },
+      {
+        "ad_tr": "Ekstra patates",
+        "ad_ar": "بطاطا اكسترا",
+        "fiyat": 60
+      },
+      {
+        "ad_tr": "Küçük ayran",
+        "ad_ar": "عيران صغير",
+        "fiyat": 25
+      },
+      {
+        "ad_tr": "Pepsi 330 ml",
+        "ad_ar": "بيبسي ٣٣٠ مل",
+        "fiyat": 60
+      }
+    ],
+    "menu_combo": [
+      {
+        "ad_tr": "Ekstra et",
+        "ad_ar": "لحمة اكسترا",
+        "fiyat": 100
+      },
+      {
+        "ad_tr": "Kaşar peyniri",
+        "ad_ar": "جبنة",
+        "fiyat": 40
+      },
+      {
+        "ad_tr": "Patatesi büyük yap",
+        "ad_ar": "بطاطا كبيرة",
+        "fiyat": 50
+      },
+      {
+        "ad_tr": "İçeceği 1L yap",
+        "ad_ar": "مشروب ١ لتر",
+        "fiyat": 40
+      },
+      {
+        "ad_tr": "Humus",
+        "ad_ar": "حمص",
+        "fiyat": 100
+      },
+      {
+        "ad_tr": "Ekstra sos",
+        "ad_ar": "صلصة اكسترا",
+        "fiyat": 25
+      }
+    ],
+    "tavuk_izgara": [
+      {
+        "ad_tr": "Pilav porsiyonu",
+        "ad_ar": "صحن رز",
+        "fiyat": 150
+      },
+      {
+        "ad_tr": "Patates porsiyonu",
+        "ad_ar": "صحن بطاطا",
+        "fiyat": 140
+      },
+      {
+        "ad_tr": "Sarımsak sosu",
+        "ad_ar": "ثومية",
+        "fiyat": 80
+      },
+      {
+        "ad_tr": "Türk salatası",
+        "ad_ar": "سلطة تركية",
+        "fiyat": 120
+      },
+      {
+        "ad_tr": "Humus",
+        "ad_ar": "حمص",
+        "fiyat": 100
+      }
+    ],
+    "yok": []
+  },
+  "kategoriler": [
+    {
+      "slug": "sandvicler",
+      "sira": 1,
+      "ad_tr": "Sandviçler",
+      "ad_ar": "سندويش",
+      "aciklama_tr": "Dürüm ve burger çeşitleri",
+      "aciklama_ar": "لفائف وبرغر",
+      "gorsel_url": "https://images.pexels.com/photos/25067333/pexels-photo-25067333.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop"
+    },
+    {
+      "slug": "menuler",
+      "sira": 2,
+      "ad_tr": "Menüler",
+      "ad_ar": "وجبات",
+      "aciklama_tr": null,
+      "aciklama_ar": null,
+      "gorsel_url": "https://images.pexels.com/photos/35255190/pexels-photo-35255190.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop"
+    },
+    {
+      "slug": "ana-yemekler",
+      "sira": 3,
+      "ad_tr": "Ana Yemekler",
+      "ad_ar": "مأكولات",
+      "aciklama_tr": "Tavuk, döner ve kilo ürünleri",
+      "aciklama_ar": "دجاج وشاورما",
+      "gorsel_url": "https://images.pexels.com/photos/28635476/pexels-photo-28635476.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop"
+    },
+    {
+      "slug": "mezeler",
+      "sira": 4,
+      "ad_tr": "Mezeler & Yan Ürünler",
+      "ad_ar": "مقبلات",
+      "aciklama_tr": "Salata, humus ve soslar",
+      "aciklama_ar": "سلطات وحمص وصلصات",
+      "gorsel_url": "https://images.pexels.com/photos/6327663/pexels-photo-6327663.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop"
+    },
+    {
+      "slug": "icecekler",
+      "sira": 5,
+      "ad_tr": "İçecekler",
+      "ad_ar": "مشروبات",
+      "aciklama_tr": "",
+      "aciklama_ar": "",
+      "gorsel_url": null
+    }
+  ],
+  "urunler": [
+    {
+      "slug": "doner",
+      "kategori": "sandvicler",
+      "sira": 1,
+      "ad_tr": "Döner",
+      "ad_ar": "شاورما",
+      "aciklama_tr": "Lavaş içinde döner, patates, turşu ve özel sos",
+      "aciklama_ar": "شاورما مع بطاطا ومخلل وصلصة خاصة",
+      "fiyat_masa": 150,
+      "fiyat_paket": 150,
+      "gramaj": "180 g",
+      "stokta": false,
+      "cikarilabilir": "durum_sandvic",
+      "ekstra": "durum_sandvic",
+      "alerjenler": [
+        "gluten"
+      ],
+      "rozet": "yok",
+      "_not": "Menüde fiyatı çizilmiş — stok dışı olarak işaretlendi. Fiyat teyit edilecek.",
+      "gorsel_url": "https://images.pexels.com/photos/24738641/pexels-photo-24738641.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "180 غ"
+    },
+    {
+      "slug": "duble-doner",
+      "kategori": "sandvicler",
+      "sira": 2,
+      "ad_tr": "Duble Döner",
+      "ad_ar": "شاورما دبل",
+      "aciklama_tr": "Çift porsiyon döner, patates, turşu ve özel sos",
+      "aciklama_ar": "شاورما مضاعفة مع بطاطا ومخلل وصلصة",
+      "fiyat_masa": 180,
+      "fiyat_paket": 180,
+      "gramaj": "280 g",
+      "stokta": true,
+      "cikarilabilir": "durum_sandvic",
+      "ekstra": "durum_sandvic",
+      "alerjenler": [
+        "gluten"
+      ],
+      "rozet": "cok_satan",
+      "gorsel_url": "https://images.pexels.com/photos/36829402/pexels-photo-36829402.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "280 غ"
+    },
+    {
+      "slug": "royal-doner",
+      "kategori": "sandvicler",
+      "sira": 3,
+      "ad_tr": "Royal Döner",
+      "ad_ar": "شاورما رويال",
+      "aciklama_tr": "Bol etli özel Royal döner, kaşar ve özel sos",
+      "aciklama_ar": "شاورما رويال بلحمة وفيرة وجبنة وصلصة خاصة",
+      "fiyat_masa": 200,
+      "fiyat_paket": 200,
+      "gramaj": "320 g",
+      "stokta": true,
+      "cikarilabilir": "durum_sandvic",
+      "ekstra": "durum_sandvic",
+      "alerjenler": [
+        "gluten",
+        "sut"
+      ],
+      "rozet": "sefin_onerisi",
+      "gorsel_url": "https://images.pexels.com/photos/25067333/pexels-photo-25067333.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "320 غ"
+    },
+    {
+      "slug": "baharatli-durum",
+      "kategori": "sandvicler",
+      "sira": 4,
+      "ad_tr": "Baharatlı Dürüm",
+      "ad_ar": "سبايسي",
+      "aciklama_tr": "Baharatlı çıtır tavuk, marul ve acı sos",
+      "aciklama_ar": "دجاج سبايسي مقرمش مع خس وصلصة حارة",
+      "fiyat_masa": 220,
+      "fiyat_paket": 220,
+      "gramaj": "300 g",
+      "stokta": true,
+      "cikarilabilir": "durum_sandvic",
+      "ekstra": "durum_sandvic",
+      "alerjenler": [
+        "gluten"
+      ],
+      "rozet": "acili",
+      "gorsel_url": "https://images.pexels.com/photos/27668663/pexels-photo-27668663.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "300 غ"
+    },
+    {
+      "slug": "baharatli-burger",
+      "kategori": "sandvicler",
+      "sira": 5,
+      "ad_tr": "Baharatlı Burger",
+      "ad_ar": "سبايسي برغر",
+      "aciklama_tr": "Baharatlı çıtır tavuk burger, marul ve acı sos",
+      "aciklama_ar": "برغر دجاج سبايسي مع خس وصلصة حارة",
+      "fiyat_masa": 250,
+      "fiyat_paket": 250,
+      "gramaj": "310 g",
+      "stokta": true,
+      "cikarilabilir": "burger",
+      "ekstra": "burger",
+      "alerjenler": [
+        "gluten",
+        "yumurta"
+      ],
+      "rozet": "acili",
+      "gorsel_url": "https://images.pexels.com/photos/11220676/pexels-photo-11220676.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "310 غ"
+    },
+    {
+      "slug": "zincer-durum",
+      "kategori": "sandvicler",
+      "sira": 6,
+      "ad_tr": "Zinger Dürüm",
+      "ad_ar": "زنجر",
+      "aciklama_tr": "Çıtır zinger tavuk, marul ve mayonez",
+      "aciklama_ar": "زنجر دجاج مقرمش مع خس ومايونيز",
+      "fiyat_masa": 220,
+      "fiyat_paket": 220,
+      "gramaj": "300 g",
+      "stokta": true,
+      "cikarilabilir": "durum_sandvic",
+      "ekstra": "durum_sandvic",
+      "alerjenler": [
+        "gluten",
+        "yumurta"
+      ],
+      "rozet": "yok",
+      "gorsel_url": "https://images.pexels.com/photos/37329600/pexels-photo-37329600.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "300 غ"
+    },
+    {
+      "slug": "peynirli-zincer",
+      "kategori": "sandvicler",
+      "sira": 7,
+      "ad_tr": "Peynirli Zinger Burger",
+      "ad_ar": "زنجر برغر مع جبنة",
+      "aciklama_tr": "Zinger tavuk burger, çift kaşar peyniri",
+      "aciklama_ar": "برغر زنجر مع جبنة مضاعفة",
+      "fiyat_masa": 250,
+      "fiyat_paket": 250,
+      "gramaj": "330 g",
+      "stokta": true,
+      "cikarilabilir": "burger",
+      "ekstra": "burger",
+      "alerjenler": [
+        "gluten",
+        "sut",
+        "yumurta"
+      ],
+      "rozet": "yok",
+      "gorsel_url": "https://images.pexels.com/photos/4109233/pexels-photo-4109233.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "330 غ"
+    },
+    {
+      "slug": "zincer-burger",
+      "kategori": "sandvicler",
+      "sira": 8,
+      "ad_tr": "Zinger Burger",
+      "ad_ar": "زنجر برغر",
+      "aciklama_tr": "Çıtır zinger tavuk burger, marul ve mayonez",
+      "aciklama_ar": "برغر زنجر مقرمش مع خس ومايونيز",
+      "fiyat_masa": 250,
+      "fiyat_paket": 250,
+      "gramaj": "310 g",
+      "stokta": true,
+      "cikarilabilir": "burger",
+      "ekstra": "burger",
+      "alerjenler": [
+        "gluten",
+        "yumurta"
+      ],
+      "rozet": "cok_satan",
+      "gorsel_url": "https://images.pexels.com/photos/14709736/pexels-photo-14709736.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "310 غ"
+    },
+    {
+      "slug": "crispy-durum",
+      "kategori": "sandvicler",
+      "sira": 9,
+      "ad_tr": "Crispy Dürüm",
+      "ad_ar": "كريسبي",
+      "aciklama_tr": "Crispy tavuk, marul, domates ve özel sos",
+      "aciklama_ar": "دجاج كريسبي مع خس وبندورة وصلصة خاصة",
+      "fiyat_masa": 220,
+      "fiyat_paket": 220,
+      "gramaj": "300 g",
+      "stokta": true,
+      "cikarilabilir": "durum_sandvic",
+      "ekstra": "durum_sandvic",
+      "alerjenler": [
+        "gluten",
+        "yumurta"
+      ],
+      "rozet": "yok",
+      "gorsel_url": "https://images.pexels.com/photos/13160092/pexels-photo-13160092.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "300 غ"
+    },
+    {
+      "slug": "crispy-burger",
+      "kategori": "sandvicler",
+      "sira": 10,
+      "ad_tr": "Crispy Burger",
+      "ad_ar": "كريسبي برغر",
+      "aciklama_tr": "Crispy tavuk burger, marul ve özel sos",
+      "aciklama_ar": "برغر دجاج كريسبي مع خس وصلصة خاصة",
+      "fiyat_masa": 250,
+      "fiyat_paket": 250,
+      "gramaj": "310 g",
+      "stokta": true,
+      "cikarilabilir": "burger",
+      "ekstra": "burger",
+      "alerjenler": [
+        "gluten",
+        "yumurta"
+      ],
+      "rozet": "yok",
+      "gorsel_url": "https://images.pexels.com/photos/36750270/pexels-photo-36750270.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "310 غ"
+    },
+    {
+      "slug": "kebap-sandvic",
+      "kategori": "sandvicler",
+      "sira": 11,
+      "ad_tr": "Kebap",
+      "ad_ar": "كباب",
+      "aciklama_tr": "Izgara kebap, lavaş, soğan ve sumak",
+      "aciklama_ar": "كباب مشوي مع خبز وبصل وسماق",
+      "fiyat_masa": 200,
+      "fiyat_paket": 200,
+      "gramaj": "250 g",
+      "stokta": true,
+      "cikarilabilir": "durum_sandvic",
+      "ekstra": "durum_sandvic",
+      "alerjenler": [
+        "gluten"
+      ],
+      "rozet": "yok",
+      "gorsel_url": "https://images.pexels.com/photos/17303312/pexels-photo-17303312.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "250 غ"
+    },
+    {
+      "slug": "sis-tavuk-sandvic",
+      "kategori": "sandvicler",
+      "sira": 12,
+      "ad_tr": "Şiş Tavuk",
+      "ad_ar": "شيش طاووق",
+      "aciklama_tr": "Izgara şiş tavuk, sarımsak sosu ve turşu",
+      "aciklama_ar": "شيش طاووق مشوي مع ثومية ومخلل",
+      "fiyat_masa": 200,
+      "fiyat_paket": 200,
+      "gramaj": "250 g",
+      "stokta": true,
+      "cikarilabilir": "durum_sandvic",
+      "ekstra": "durum_sandvic",
+      "alerjenler": [
+        "gluten"
+      ],
+      "rozet": "yok",
+      "gorsel_url": "https://images.pexels.com/photos/33737098/pexels-photo-33737098.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "250 غ"
+    },
+    {
+      "slug": "hamburger",
+      "kategori": "sandvicler",
+      "sira": 13,
+      "ad_tr": "Hamburger",
+      "ad_ar": "همبرغر",
+      "aciklama_tr": "Izgara dana köfte, marul, domates ve turşu",
+      "aciklama_ar": "برغر لحم مشوي مع خس وبندورة ومخلل",
+      "fiyat_masa": 240,
+      "fiyat_paket": 240,
+      "gramaj": "280 g",
+      "stokta": true,
+      "cikarilabilir": "burger",
+      "ekstra": "burger",
+      "alerjenler": [
+        "gluten"
+      ],
+      "rozet": "yok",
+      "gorsel_url": "https://images.pexels.com/photos/11690674/pexels-photo-11690674.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "280 غ"
+    },
+    {
+      "slug": "cheese-burger",
+      "kategori": "sandvicler",
+      "sira": 14,
+      "ad_tr": "Cheese Burger",
+      "ad_ar": "تشيز برغر",
+      "aciklama_tr": "Izgara dana köfte, kaşar peyniri ve özel sos",
+      "aciklama_ar": "برغر لحم مع جبنة وصلصة خاصة",
+      "fiyat_masa": 250,
+      "fiyat_paket": 250,
+      "gramaj": "300 g",
+      "stokta": true,
+      "cikarilabilir": "burger",
+      "ekstra": "burger",
+      "alerjenler": [
+        "gluten",
+        "sut"
+      ],
+      "rozet": "cok_satan",
+      "gorsel_url": "https://images.pexels.com/photos/8305726/pexels-photo-8305726.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "300 غ"
+    },
+    {
+      "slug": "patso",
+      "kategori": "sandvicler",
+      "sira": 15,
+      "ad_tr": "Patso",
+      "ad_ar": "بطاطا",
+      "aciklama_tr": "Patates kızartması dolu ekmek, turşu ve sos",
+      "aciklama_ar": "ساندويش بطاطا مقلية مع مخلل وصلصة",
+      "fiyat_masa": 140,
+      "fiyat_paket": 140,
+      "gramaj": "220 g",
+      "stokta": true,
+      "cikarilabilir": "durum_sandvic",
+      "ekstra": "durum_sandvic",
+      "alerjenler": [
+        "gluten"
+      ],
+      "rozet": "yok",
+      "gorsel_url": "https://images.pexels.com/photos/8202807/pexels-photo-8202807.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "220 غ"
+    },
+    {
+      "slug": "doner-menu",
+      "kategori": "menuler",
+      "sira": 1,
+      "ad_tr": "Döner Menü",
+      "ad_ar": "شاورما عربي",
+      "aciklama_tr": "Döner dürüm + patates + içecek",
+      "aciklama_ar": "شاورما عربي مع بطاطا ومشروب",
+      "fiyat_masa": 300,
+      "fiyat_paket": 300,
+      "gramaj": "180 g döner + 150 g patates + 330 ml içecek",
+      "stokta": true,
+      "cikarilabilir": "menu_combo",
+      "ekstra": "menu_combo",
+      "alerjenler": [
+        "gluten"
+      ],
+      "rozet": "cok_satan",
+      "gorsel_url": "https://images.pexels.com/photos/35255190/pexels-photo-35255190.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "شاورما 180 غ + بطاطا 150 غ + مشروب 330 مل"
+    },
+    {
+      "slug": "duble-doner-menu",
+      "kategori": "menuler",
+      "sira": 2,
+      "ad_tr": "Duble Döner Menü",
+      "ad_ar": "شاورما عربي دبل",
+      "aciklama_tr": "Çift porsiyon döner + patates + içecek",
+      "aciklama_ar": "شاورما عربي دبل مع بطاطا ومشروب",
+      "fiyat_masa": 400,
+      "fiyat_paket": 400,
+      "gramaj": "280 g döner + 150 g patates + 330 ml içecek",
+      "stokta": true,
+      "cikarilabilir": "menu_combo",
+      "ekstra": "menu_combo",
+      "alerjenler": [
+        "gluten"
+      ],
+      "rozet": "yok",
+      "gorsel_url": "https://images.pexels.com/photos/11586286/pexels-photo-11586286.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "شاورما 280 غ + بطاطا 150 غ + مشروب 330 مل"
+    },
+    {
+      "slug": "doner-extra-menu",
+      "kategori": "menuler",
+      "sira": 3,
+      "ad_tr": "Döner Extra Menü",
+      "ad_ar": "شاورما عربي اكسترا",
+      "aciklama_tr": "Ekstra bol döner + patates + içecek",
+      "aciklama_ar": "شاورما عربي اكسترا مع بطاطا ومشروب",
+      "fiyat_masa": 450,
+      "fiyat_paket": 450,
+      "gramaj": "360 g döner + 150 g patates + 330 ml içecek",
+      "stokta": true,
+      "cikarilabilir": "menu_combo",
+      "ekstra": "menu_combo",
+      "alerjenler": [
+        "gluten"
+      ],
+      "rozet": "yok",
+      "gorsel_url": "https://images.pexels.com/photos/29306495/pexels-photo-29306495.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "شاورما 360 غ + بطاطا 150 غ + مشروب 330 مل"
+    },
+    {
+      "slug": "hamburger-menu",
+      "kategori": "menuler",
+      "sira": 4,
+      "ad_tr": "Hamburger Menü",
+      "ad_ar": "وجبة همبرغر",
+      "aciklama_tr": "Hamburger + patates + içecek",
+      "aciklama_ar": "همبرغر مع بطاطا ومشروب",
+      "fiyat_masa": 375,
+      "fiyat_paket": 375,
+      "gramaj": "280 g burger + 150 g patates + 330 ml içecek",
+      "stokta": true,
+      "cikarilabilir": "menu_combo",
+      "ekstra": "menu_combo",
+      "alerjenler": [
+        "gluten"
+      ],
+      "rozet": "yok",
+      "gorsel_url": "https://images.pexels.com/photos/15476368/pexels-photo-15476368.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "برغر 280 غ + بطاطا 150 غ + مشروب 330 مل"
+    },
+    {
+      "slug": "cheese-burger-menu",
+      "kategori": "menuler",
+      "sira": 5,
+      "ad_tr": "Cheese Burger Menü",
+      "ad_ar": "وجبة تشيز برغر",
+      "aciklama_tr": "Cheese burger + patates + içecek",
+      "aciklama_ar": "تشيز برغر مع بطاطا ومشروب",
+      "fiyat_masa": 425,
+      "fiyat_paket": 425,
+      "gramaj": "300 g burger + 150 g patates + 330 ml içecek",
+      "stokta": true,
+      "cikarilabilir": "menu_combo",
+      "ekstra": "menu_combo",
+      "alerjenler": [
+        "gluten",
+        "sut"
+      ],
+      "rozet": "yok",
+      "gorsel_url": "https://images.pexels.com/photos/8880741/pexels-photo-8880741.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "برغر 300 غ + بطاطا 150 غ + مشروب 330 مل"
+    },
+    {
+      "slug": "sis-tavuk-menu",
+      "kategori": "menuler",
+      "sira": 6,
+      "ad_tr": "Şiş Tavuk Menü",
+      "ad_ar": "وجبة شيش طاووق",
+      "aciklama_tr": "Şiş tavuk + patates + içecek",
+      "aciklama_ar": "شيش طاووق مع بطاطا ومشروب",
+      "fiyat_masa": 300,
+      "fiyat_paket": 300,
+      "gramaj": "250 g tavuk + 150 g patates + 330 ml içecek",
+      "stokta": true,
+      "cikarilabilir": "menu_combo",
+      "ekstra": "menu_combo",
+      "alerjenler": [
+        "gluten"
+      ],
+      "rozet": "yok",
+      "gorsel_url": "https://images.pexels.com/photos/33058287/pexels-photo-33058287.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "دجاج 250 غ + بطاطا 150 غ + مشروب 330 مل"
+    },
+    {
+      "slug": "baharatli-menu",
+      "kategori": "menuler",
+      "sira": 7,
+      "ad_tr": "Baharatlı Menü",
+      "ad_ar": "وجبة سبايسي",
+      "aciklama_tr": "Baharatlı tavuk + patates + içecek",
+      "aciklama_ar": "سبايسي مع بطاطا ومشروب",
+      "fiyat_masa": 400,
+      "fiyat_paket": 400,
+      "gramaj": "300 g + 150 g patates + 330 ml içecek",
+      "stokta": true,
+      "cikarilabilir": "menu_combo",
+      "ekstra": "menu_combo",
+      "alerjenler": [
+        "gluten"
+      ],
+      "rozet": "acili",
+      "gorsel_url": "https://images.pexels.com/photos/19247563/pexels-photo-19247563.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "300 غ + بطاطا 150 غ + مشروب 330 مل"
+    },
+    {
+      "slug": "citir-tavuk-menu",
+      "kategori": "menuler",
+      "sira": 8,
+      "ad_tr": "Çıtır Tavuk (Broasted) Menü",
+      "ad_ar": "وجبة بروستد",
+      "aciklama_tr": "Çıtır broasted tavuk + patates + içecek",
+      "aciklama_ar": "بروستد مقرمش مع بطاطا ومشروب",
+      "fiyat_masa": 425,
+      "fiyat_paket": 425,
+      "gramaj": "4 parça + 150 g patates + 330 ml içecek",
+      "stokta": true,
+      "cikarilabilir": "menu_combo",
+      "ekstra": "menu_combo",
+      "alerjenler": [
+        "gluten"
+      ],
+      "rozet": "cok_satan",
+      "gorsel_url": "https://images.pexels.com/photos/37387410/pexels-photo-37387410.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "4 قطع + بطاطا 150 غ + مشروب 330 مل"
+    },
+    {
+      "slug": "crispy-menu",
+      "kategori": "menuler",
+      "sira": 9,
+      "ad_tr": "Crispy Menü",
+      "ad_ar": "وجبة كريسبي",
+      "aciklama_tr": "Crispy tavuk + patates + içecek",
+      "aciklama_ar": "كريسبي مع بطاطا ومشروب",
+      "fiyat_masa": 400,
+      "fiyat_paket": 400,
+      "gramaj": "300 g + 150 g patates + 330 ml içecek",
+      "stokta": true,
+      "cikarilabilir": "menu_combo",
+      "ekstra": "menu_combo",
+      "alerjenler": [
+        "gluten",
+        "yumurta"
+      ],
+      "rozet": "yok",
+      "gorsel_url": "https://images.pexels.com/photos/38026242/pexels-photo-38026242.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "300 غ + بطاطا 150 غ + مشروب 330 مل"
+    },
+    {
+      "slug": "zincer-menu",
+      "kategori": "menuler",
+      "sira": 10,
+      "ad_tr": "Zinger Menü",
+      "ad_ar": "وجبة زنجر",
+      "aciklama_tr": "Zinger tavuk + patates + içecek",
+      "aciklama_ar": "زنجر مع بطاطا ومشروب",
+      "fiyat_masa": 400,
+      "fiyat_paket": 400,
+      "gramaj": "300 g + 150 g patates + 330 ml içecek",
+      "stokta": true,
+      "cikarilabilir": "menu_combo",
+      "ekstra": "menu_combo",
+      "alerjenler": [
+        "gluten",
+        "yumurta"
+      ],
+      "rozet": "yok",
+      "gorsel_url": "https://images.pexels.com/photos/9268664/pexels-photo-9268664.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "300 غ + بطاطا 150 غ + مشروب 330 مل"
+    },
+    {
+      "slug": "kebap-menu",
+      "kategori": "menuler",
+      "sira": 11,
+      "ad_tr": "Kebap Menü",
+      "ad_ar": "وجبة كباب",
+      "aciklama_tr": "Izgara kebap + patates + içecek",
+      "aciklama_ar": "كباب مشوي مع بطاطا ومشروب",
+      "fiyat_masa": 300,
+      "fiyat_paket": 300,
+      "gramaj": "250 g + 150 g patates + 330 ml içecek",
+      "stokta": true,
+      "cikarilabilir": "menu_combo",
+      "ekstra": "menu_combo",
+      "alerjenler": [
+        "gluten"
+      ],
+      "rozet": "yok",
+      "gorsel_url": "https://images.pexels.com/photos/37080236/pexels-photo-37080236.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "250 غ + بطاطا 150 غ + مشروب 330 مل"
+    },
+    {
+      "slug": "kanat-menu",
+      "kategori": "menuler",
+      "sira": 12,
+      "ad_tr": "Kanat Menü",
+      "ad_ar": "وجبة جناحات",
+      "aciklama_tr": "Izgara tavuk kanat + patates + içecek",
+      "aciklama_ar": "جناحات دجاج مشوية مع بطاطا ومشروب",
+      "fiyat_masa": 300,
+      "fiyat_paket": 300,
+      "gramaj": "6 adet + 150 g patates + 330 ml içecek",
+      "stokta": true,
+      "cikarilabilir": "menu_combo",
+      "ekstra": "menu_combo",
+      "alerjenler": [],
+      "rozet": "yok",
+      "gorsel_url": "https://images.pexels.com/photos/28635451/pexels-photo-28635451.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "6 حبة + بطاطا 150 غ + مشروب 330 مل"
+    },
+    {
+      "slug": "karisik-menu",
+      "kategori": "menuler",
+      "sira": 13,
+      "ad_tr": "Karışık Menü",
+      "ad_ar": "وجبة مشكل",
+      "aciklama_tr": "Kebap, şiş tavuk ve kanat karışık + patates + içecek",
+      "aciklama_ar": "مشكل كباب وشيش وجناحات مع بطاطا ومشروب",
+      "fiyat_masa": 400,
+      "fiyat_paket": 400,
+      "gramaj": "350 g karışık + 150 g patates + 330 ml içecek",
+      "stokta": true,
+      "cikarilabilir": "menu_combo",
+      "ekstra": "menu_combo",
+      "alerjenler": [
+        "gluten"
+      ],
+      "rozet": "sefin_onerisi",
+      "gorsel_url": "https://images.pexels.com/photos/25463408/pexels-photo-25463408.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "مشكل 350 غ + بطاطا 150 غ + مشروب 330 مل"
+    },
+    {
+      "slug": "doner-pilav",
+      "kategori": "menuler",
+      "sira": 14,
+      "ad_tr": "Döner Pilav",
+      "ad_ar": "شاورما ورز",
+      "aciklama_tr": "Döner, pilav ve yanında sos",
+      "aciklama_ar": "شاورما مع رز وصلصة",
+      "fiyat_masa": 400,
+      "fiyat_paket": 400,
+      "gramaj": "200 g döner + 250 g pilav",
+      "stokta": true,
+      "cikarilabilir": "menu_combo",
+      "ekstra": "tavuk_izgara",
+      "alerjenler": [],
+      "rozet": "yok",
+      "_not": "Fiyat fotoğrafta net okunamadı — teyit edilecek.",
+      "gorsel_url": "https://images.pexels.com/photos/27668672/pexels-photo-27668672.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "شاورما 200 غ + رز 250 غ"
+    },
+    {
+      "slug": "kebap-pilav",
+      "kategori": "menuler",
+      "sira": 15,
+      "ad_tr": "Kebap Pilav",
+      "ad_ar": "كباب ورز",
+      "aciklama_tr": "Izgara kebap, pilav ve yanında sos",
+      "aciklama_ar": "كباب مشوي مع رز وصلصة",
+      "fiyat_masa": 400,
+      "fiyat_paket": 400,
+      "gramaj": "250 g kebap + 250 g pilav",
+      "stokta": true,
+      "cikarilabilir": "menu_combo",
+      "ekstra": "tavuk_izgara",
+      "alerjenler": [],
+      "rozet": "yok",
+      "gorsel_url": "https://images.pexels.com/photos/37058646/pexels-photo-37058646.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "كباب 250 غ + رز 250 غ"
+    },
+    {
+      "slug": "sis-tavuk-pilav",
+      "kategori": "menuler",
+      "sira": 16,
+      "ad_tr": "Şiş Tavuk Pilav",
+      "ad_ar": "شيش ورز",
+      "aciklama_tr": "Şiş tavuk, pilav ve sarımsak sosu",
+      "aciklama_ar": "شيش طاووق مع رز وثومية",
+      "fiyat_masa": 400,
+      "fiyat_paket": 400,
+      "gramaj": "250 g tavuk + 250 g pilav",
+      "stokta": true,
+      "cikarilabilir": "menu_combo",
+      "ekstra": "tavuk_izgara",
+      "alerjenler": [],
+      "rozet": "yok",
+      "gorsel_url": "https://images.pexels.com/photos/38138067/pexels-photo-38138067.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "دجاج 250 غ + رز 250 غ"
+    },
+    {
+      "slug": "icli-kofte-menu",
+      "kategori": "menuler",
+      "sira": 17,
+      "ad_tr": "İçli Köfte (Izgara) Menü",
+      "ad_ar": "وجبة كبة مشوية",
+      "aciklama_tr": "Izgara içli köfte + patates + içecek",
+      "aciklama_ar": "كبة مشوية مع بطاطا ومشروب",
+      "fiyat_masa": 350,
+      "fiyat_paket": 350,
+      "gramaj": "300 g + 150 g patates + 330 ml içecek",
+      "stokta": true,
+      "cikarilabilir": "menu_combo",
+      "ekstra": "menu_combo",
+      "alerjenler": [
+        "gluten"
+      ],
+      "rozet": "yok",
+      "gorsel_url": "https://images.pexels.com/photos/28902897/pexels-photo-28902897.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "300 غ + بطاطا 150 غ + مشروب 330 مل"
+    },
+    {
+      "slug": "kizarmis-tavuk",
+      "kategori": "ana-yemekler",
+      "sira": 1,
+      "ad_tr": "Kızarmış Tavuk (Bütün)",
+      "ad_ar": "فروج مشوي",
+      "aciklama_tr": "Bütün kızarmış tavuk",
+      "aciklama_ar": "فروج كامل مشوي",
+      "fiyat_masa": 650,
+      "fiyat_paket": 650,
+      "gramaj": "yaklaşık 1200 g",
+      "stokta": true,
+      "cikarilabilir": "tavuk_izgara",
+      "ekstra": "tavuk_izgara",
+      "alerjenler": [],
+      "rozet": "yok",
+      "gorsel_url": "https://images.pexels.com/photos/28635476/pexels-photo-28635476.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "حوالي 1200 غ"
+    },
+    {
+      "slug": "yarim-tavuk",
+      "kategori": "ana-yemekler",
+      "sira": 2,
+      "ad_tr": "Yarım Kızarmış Tavuk",
+      "ad_ar": "نصف فروج مشوي",
+      "aciklama_tr": "Yarım kızarmış tavuk",
+      "aciklama_ar": "نصف فروج مشوي",
+      "fiyat_masa": 350,
+      "fiyat_paket": 350,
+      "gramaj": "yaklaşık 600 g",
+      "stokta": true,
+      "cikarilabilir": "tavuk_izgara",
+      "ekstra": "tavuk_izgara",
+      "alerjenler": [],
+      "rozet": "yok",
+      "gorsel_url": "https://images.pexels.com/photos/33800905/pexels-photo-33800905.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "حوالي 600 غ"
+    },
+    {
+      "slug": "yarim-mangal-tavuk",
+      "kategori": "ana-yemekler",
+      "sira": 3,
+      "ad_tr": "Yarım Mangal Tavuk",
+      "ad_ar": "نصف فروج عالفحم",
+      "aciklama_tr": "Kömür ateşinde yarım tavuk",
+      "aciklama_ar": "نصف فروج على الفحم",
+      "fiyat_masa": 350,
+      "fiyat_paket": 350,
+      "gramaj": "yaklaşık 600 g",
+      "stokta": true,
+      "cikarilabilir": "tavuk_izgara",
+      "ekstra": "tavuk_izgara",
+      "alerjenler": [],
+      "rozet": "sefin_onerisi",
+      "gorsel_url": "https://images.pexels.com/photos/5704254/pexels-photo-5704254.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "حوالي 600 غ"
+    },
+    {
+      "slug": "mangal-tavuk-pilav",
+      "kategori": "ana-yemekler",
+      "sira": 4,
+      "ad_tr": "Mangal Tavuk + Pilav",
+      "ad_ar": "فروج عالفحم مع رز",
+      "aciklama_tr": "Kömür ateşinde bütün tavuk, yanında pilav",
+      "aciklama_ar": "فروج كامل على الفحم مع رز",
+      "fiyat_masa": 850,
+      "fiyat_paket": 850,
+      "gramaj": "1200 g tavuk + 500 g pilav",
+      "stokta": true,
+      "cikarilabilir": "tavuk_izgara",
+      "ekstra": "tavuk_izgara",
+      "alerjenler": [],
+      "rozet": "yok",
+      "gorsel_url": "https://images.pexels.com/photos/36850691/pexels-photo-36850691.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "دجاج 1200 غ + رز 500 غ"
+    },
+    {
+      "slug": "kizarmis-tavuk-pilav",
+      "kategori": "ana-yemekler",
+      "sira": 5,
+      "ad_tr": "Kızarmış Tavuk + Pilav",
+      "ad_ar": "فروج مشوي مع رز",
+      "aciklama_tr": "Bütün kızarmış tavuk, yanında pilav",
+      "aciklama_ar": "فروج كامل مشوي مع رز",
+      "fiyat_masa": 800,
+      "fiyat_paket": 800,
+      "gramaj": "1200 g tavuk + 500 g pilav",
+      "stokta": true,
+      "cikarilabilir": "tavuk_izgara",
+      "ekstra": "tavuk_izgara",
+      "alerjenler": [],
+      "rozet": "yok",
+      "gorsel_url": "https://images.pexels.com/photos/17396038/pexels-photo-17396038.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "دجاج 1200 غ + رز 500 غ"
+    },
+    {
+      "slug": "doner-250g",
+      "kategori": "ana-yemekler",
+      "sira": 6,
+      "ad_tr": "250 g Döner (Porsiyon)",
+      "ad_ar": "شاورما فرط",
+      "aciklama_tr": "Ekmeksiz porsiyon döner",
+      "aciklama_ar": "شاورما فرط بدون خبز",
+      "fiyat_masa": 350,
+      "fiyat_paket": 350,
+      "gramaj": "250 g",
+      "stokta": true,
+      "cikarilabilir": "yok",
+      "ekstra": "tavuk_izgara",
+      "alerjenler": [],
+      "rozet": "yok",
+      "gorsel_url": "https://images.pexels.com/photos/36021995/pexels-photo-36021995.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "250 غ"
+    },
+    {
+      "slug": "yarim-kg-doner",
+      "kategori": "ana-yemekler",
+      "sira": 7,
+      "ad_tr": "Yarım Kg Döner",
+      "ad_ar": "نصف كيلو شاورما",
+      "aciklama_tr": "500 g porsiyon döner",
+      "aciklama_ar": "نصف كيلو شاورما",
+      "fiyat_masa": 700,
+      "fiyat_paket": 700,
+      "gramaj": "500 g",
+      "stokta": true,
+      "cikarilabilir": "yok",
+      "ekstra": "tavuk_izgara",
+      "alerjenler": [],
+      "rozet": "yok",
+      "gorsel_url": "https://images.pexels.com/photos/29306499/pexels-photo-29306499.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "500 غ"
+    },
+    {
+      "slug": "sis-icli-kofte",
+      "kategori": "ana-yemekler",
+      "sira": 8,
+      "ad_tr": "Şiş İçli Köfte (Yarım Kg)",
+      "ad_ar": "كبة عالسيخ نص كيلو",
+      "aciklama_tr": "Şişte ızgara içli köfte, yarım kilo",
+      "aciklama_ar": "كبة على السيخ نصف كيلو",
+      "fiyat_masa": 450,
+      "fiyat_paket": 450,
+      "gramaj": "500 g",
+      "stokta": true,
+      "cikarilabilir": "yok",
+      "ekstra": "tavuk_izgara",
+      "alerjenler": [
+        "gluten"
+      ],
+      "rozet": "yok",
+      "_not": "Fiyat menüde boş — TAHMİNİ. Mutlaka teyit edilecek.",
+      "gorsel_url": "https://images.pexels.com/photos/31587901/pexels-photo-31587901.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "500 غ"
+    },
+    {
+      "slug": "duble-kanat-menu",
+      "kategori": "ana-yemekler",
+      "sira": 9,
+      "ad_tr": "Duble Kanat Menü",
+      "ad_ar": "وجبة جناح دبل",
+      "aciklama_tr": "Çift porsiyon tavuk kanat + patates + içecek",
+      "aciklama_ar": "جناحات دبل مع بطاطا ومشروب",
+      "fiyat_masa": 400,
+      "fiyat_paket": 400,
+      "gramaj": "12 adet + 150 g patates + 330 ml içecek",
+      "stokta": true,
+      "cikarilabilir": "menu_combo",
+      "ekstra": "menu_combo",
+      "alerjenler": [],
+      "rozet": "yok",
+      "gorsel_url": "https://images.pexels.com/photos/17429043/pexels-photo-17429043.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "12 حبة + بطاطا 150 غ + مشروب 330 مل"
+    },
+    {
+      "slug": "duble-sis-menu",
+      "kategori": "ana-yemekler",
+      "sira": 10,
+      "ad_tr": "Duble Şiş Menü",
+      "ad_ar": "وجبة شيش دبل",
+      "aciklama_tr": "Çift porsiyon şiş tavuk + patates + içecek",
+      "aciklama_ar": "شيش دبل مع بطاطا ومشروب",
+      "fiyat_masa": 400,
+      "fiyat_paket": 400,
+      "gramaj": "500 g + 150 g patates + 330 ml içecek",
+      "stokta": true,
+      "cikarilabilir": "menu_combo",
+      "ekstra": "menu_combo",
+      "alerjenler": [],
+      "rozet": "yok",
+      "gorsel_url": "https://images.pexels.com/photos/25570427/pexels-photo-25570427.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "500 غ + بطاطا 150 غ + مشروب 330 مل"
+    },
+    {
+      "slug": "duble-kebap-menu",
+      "kategori": "ana-yemekler",
+      "sira": 11,
+      "ad_tr": "Duble Kebap Menü",
+      "ad_ar": "وجبة كباب دبل",
+      "aciklama_tr": "Çift porsiyon kebap + patates + içecek",
+      "aciklama_ar": "كباب دبل مع بطاطا ومشروب",
+      "fiyat_masa": 400,
+      "fiyat_paket": 400,
+      "gramaj": "500 g + 150 g patates + 330 ml içecek",
+      "stokta": true,
+      "cikarilabilir": "menu_combo",
+      "ekstra": "menu_combo",
+      "alerjenler": [],
+      "rozet": "yok",
+      "gorsel_url": "https://images.pexels.com/photos/31249644/pexels-photo-31249644.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "500 غ + بطاطا 150 غ + مشروب 330 مل"
+    },
+    {
+      "slug": "patates-tabagi",
+      "kategori": "mezeler",
+      "sira": 1,
+      "ad_tr": "Patates Tabağı",
+      "ad_ar": "صحن بطاطا",
+      "aciklama_tr": "Porsiyon patates kızartması",
+      "aciklama_ar": "صحن بطاطا مقلية",
+      "fiyat_masa": 140,
+      "fiyat_paket": 140,
+      "gramaj": "250 g",
+      "stokta": true,
+      "cikarilabilir": "yok",
+      "ekstra": "yok",
+      "alerjenler": [],
+      "rozet": "yok",
+      "_not": "Fiyat menüde boş — TAHMİNİ. Teyit edilecek.",
+      "gorsel_url": "https://images.pexels.com/photos/221057/pexels-photo-221057.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "250 غ"
+    },
+    {
+      "slug": "pilav-tabagi",
+      "kategori": "mezeler",
+      "sira": 2,
+      "ad_tr": "Pilav Tabağı",
+      "ad_ar": "صحن رز",
+      "aciklama_tr": "Porsiyon pirinç pilavı",
+      "aciklama_ar": "صحن رز",
+      "fiyat_masa": 150,
+      "fiyat_paket": 150,
+      "gramaj": "300 g",
+      "stokta": true,
+      "cikarilabilir": "yok",
+      "ekstra": "yok",
+      "alerjenler": [],
+      "rozet": "yok",
+      "gorsel_url": "https://images.pexels.com/photos/19552439/pexels-photo-19552439.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "300 غ"
+    },
+    {
+      "slug": "turk-salatasi",
+      "kategori": "mezeler",
+      "sira": 3,
+      "ad_tr": "Türk Salatası",
+      "ad_ar": "سلطة تركية",
+      "aciklama_tr": "Domates, salatalık, biber ve maydanoz",
+      "aciklama_ar": "بندورة وخيار وفليفلة وبقدونس",
+      "fiyat_masa": 120,
+      "fiyat_paket": 120,
+      "gramaj": "250 g",
+      "stokta": true,
+      "cikarilabilir": "salata",
+      "ekstra": "yok",
+      "alerjenler": [],
+      "rozet": "yok",
+      "gorsel_url": "https://images.pexels.com/photos/1618898/pexels-photo-1618898.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "250 غ"
+    },
+    {
+      "slug": "royal-salata",
+      "kategori": "mezeler",
+      "sira": 4,
+      "ad_tr": "Royal Salata",
+      "ad_ar": "سلطة رويال",
+      "aciklama_tr": "Karışık yeşillik, özel sos ve mevsim sebzeleri",
+      "aciklama_ar": "سلطة مشكلة مع صلصة خاصة",
+      "fiyat_masa": 150,
+      "fiyat_paket": 150,
+      "gramaj": "300 g",
+      "stokta": true,
+      "cikarilabilir": "salata",
+      "ekstra": "yok",
+      "alerjenler": [],
+      "rozet": "sefin_onerisi",
+      "gorsel_url": "https://images.pexels.com/photos/15481509/pexels-photo-15481509.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "300 غ"
+    },
+    {
+      "slug": "coleslaw",
+      "kategori": "mezeler",
+      "sira": 5,
+      "ad_tr": "Coleslaw (Rus Salatası)",
+      "ad_ar": "سلطة روسية",
+      "aciklama_tr": "Beyaz lahana ve havuç, mayonezli",
+      "aciklama_ar": "ملفوف وجزر مع مايونيز",
+      "fiyat_masa": 100,
+      "fiyat_paket": 100,
+      "gramaj": "200 g",
+      "stokta": true,
+      "cikarilabilir": "yok",
+      "ekstra": "yok",
+      "alerjenler": [
+        "yumurta"
+      ],
+      "rozet": "yok",
+      "gorsel_url": "https://images.pexels.com/photos/15481451/pexels-photo-15481451.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "200 غ"
+    },
+    {
+      "slug": "humus",
+      "kategori": "mezeler",
+      "sira": 6,
+      "ad_tr": "Humus",
+      "ad_ar": "حمص",
+      "aciklama_tr": "Nohut ezmesi, tahin ve zeytinyağı",
+      "aciklama_ar": "حمص بالطحينة وزيت الزيتون",
+      "fiyat_masa": 100,
+      "fiyat_paket": 100,
+      "gramaj": "200 g",
+      "stokta": true,
+      "cikarilabilir": "yok",
+      "ekstra": "yok",
+      "alerjenler": [
+        "susam"
+      ],
+      "rozet": "yok",
+      "gorsel_url": "https://images.pexels.com/photos/6327663/pexels-photo-6327663.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "200 غ"
+    },
+    {
+      "slug": "patlican-mutebbel",
+      "kategori": "mezeler",
+      "sira": 7,
+      "ad_tr": "Patlıcan (Mütebbel)",
+      "ad_ar": "متبل",
+      "aciklama_tr": "Közlenmiş patlıcan, tahin ve yoğurt",
+      "aciklama_ar": "متبل باذنجان مع طحينة ولبن",
+      "fiyat_masa": 100,
+      "fiyat_paket": 100,
+      "gramaj": "200 g",
+      "stokta": true,
+      "cikarilabilir": "yok",
+      "ekstra": "yok",
+      "alerjenler": [
+        "susam",
+        "sut"
+      ],
+      "rozet": "yok",
+      "gorsel_url": "https://images.pexels.com/photos/18674114/pexels-photo-18674114.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "200 غ"
+    },
+    {
+      "slug": "mayonez-sarimsak",
+      "kategori": "mezeler",
+      "sira": 8,
+      "ad_tr": "Sarımsak Kreması",
+      "ad_ar": "كريم ثوم",
+      "aciklama_tr": "Özel sarımsak sosu",
+      "aciklama_ar": "ثومية خاصة",
+      "fiyat_masa": 80,
+      "fiyat_paket": 80,
+      "gramaj": "150 g",
+      "stokta": true,
+      "cikarilabilir": "yok",
+      "ekstra": "yok",
+      "alerjenler": [
+        "yumurta"
+      ],
+      "rozet": "yok",
+      "gorsel_url": "https://images.pexels.com/photos/24407353/pexels-photo-24407353.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "150 غ"
+    },
+    {
+      "slug": "acili-mayonez",
+      "kategori": "mezeler",
+      "sira": 9,
+      "ad_tr": "Acılı Sarımsak Kreması",
+      "ad_ar": "كريم ثوم حار",
+      "aciklama_tr": "Acılı özel sarımsak sosu",
+      "aciklama_ar": "ثومية حارة",
+      "fiyat_masa": 80,
+      "fiyat_paket": 80,
+      "gramaj": "150 g",
+      "stokta": true,
+      "cikarilabilir": "yok",
+      "ekstra": "yok",
+      "alerjenler": [
+        "yumurta"
+      ],
+      "rozet": "acili",
+      "gorsel_url": "https://images.pexels.com/photos/6275176/pexels-photo-6275176.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "gramaj_ar": "150 غ"
+    },
+    {
+      "slug": "pepsi-330",
+      "kategori": "icecekler",
+      "sira": 1,
+      "ad_tr": "Pepsi 330 ml",
+      "ad_ar": "بيبسي ٣٣٠ مل",
+      "aciklama_tr": "",
+      "aciklama_ar": "",
+      "fiyat_masa": 60,
+      "fiyat_paket": 60,
+      "gramaj": "330 ml",
+      "stokta": true,
+      "cikarilabilir": "yok",
+      "ekstra": "yok",
+      "alerjenler": [],
+      "rozet": "yok",
+      "gorsel_url": null,
+      "gramaj_ar": "330 مل"
+    },
+    {
+      "slug": "pepsi-1l",
+      "kategori": "icecekler",
+      "sira": 2,
+      "ad_tr": "Pepsi 1 L",
+      "ad_ar": "بيبسي ١ لتر",
+      "aciklama_tr": "",
+      "aciklama_ar": "",
+      "fiyat_masa": 85,
+      "fiyat_paket": 85,
+      "gramaj": "1 L",
+      "stokta": true,
+      "cikarilabilir": "yok",
+      "ekstra": "yok",
+      "alerjenler": [],
+      "rozet": "yok",
+      "gorsel_url": null,
+      "gramaj_ar": "1 لتر"
+    },
+    {
+      "slug": "pepsi-25l",
+      "kategori": "icecekler",
+      "sira": 3,
+      "ad_tr": "Pepsi 2,5 L",
+      "ad_ar": "بيبسي ٢٫٥ لتر",
+      "aciklama_tr": "",
+      "aciklama_ar": "",
+      "fiyat_masa": 150,
+      "fiyat_paket": 150,
+      "gramaj": "2,5 L",
+      "stokta": true,
+      "cikarilabilir": "yok",
+      "ekstra": "yok",
+      "alerjenler": [],
+      "rozet": "yok",
+      "gorsel_url": null,
+      "gramaj_ar": "2,5 لتر"
+    },
+    {
+      "slug": "buyuk-ayran",
+      "kategori": "icecekler",
+      "sira": 4,
+      "ad_tr": "Büyük Ayran",
+      "ad_ar": "عيران كبير",
+      "aciklama_tr": "",
+      "aciklama_ar": "",
+      "fiyat_masa": 50,
+      "fiyat_paket": 50,
+      "gramaj": "300 ml",
+      "stokta": true,
+      "cikarilabilir": "yok",
+      "ekstra": "yok",
+      "alerjenler": [
+        "sut"
+      ],
+      "rozet": "yok",
+      "gorsel_url": null,
+      "gramaj_ar": "300 مل"
+    },
+    {
+      "slug": "kucuk-ayran",
+      "kategori": "icecekler",
+      "sira": 5,
+      "ad_tr": "Küçük Ayran",
+      "ad_ar": "عيران صغير",
+      "aciklama_tr": "",
+      "aciklama_ar": "",
+      "fiyat_masa": 25,
+      "fiyat_paket": 25,
+      "gramaj": "200 ml",
+      "stokta": true,
+      "cikarilabilir": "yok",
+      "ekstra": "yok",
+      "alerjenler": [
+        "sut"
+      ],
+      "rozet": "yok",
+      "gorsel_url": null,
+      "gramaj_ar": "200 مل"
+    },
+    {
+      "slug": "soda",
+      "kategori": "icecekler",
+      "sira": 6,
+      "ad_tr": "Soda",
+      "ad_ar": "صودا",
+      "aciklama_tr": "",
+      "aciklama_ar": "",
+      "fiyat_masa": 25,
+      "fiyat_paket": 25,
+      "gramaj": "200 ml",
+      "stokta": true,
+      "cikarilabilir": "yok",
+      "ekstra": "yok",
+      "alerjenler": [],
+      "rozet": "yok",
+      "gorsel_url": null,
+      "gramaj_ar": "200 مل"
+    },
+    {
+      "slug": "su",
+      "kategori": "icecekler",
+      "sira": 7,
+      "ad_tr": "Su",
+      "ad_ar": "ماء",
+      "aciklama_tr": "",
+      "aciklama_ar": "",
+      "fiyat_masa": 15,
+      "fiyat_paket": 15,
+      "gramaj": "500 ml",
+      "stokta": true,
+      "cikarilabilir": "yok",
+      "ekstra": "yok",
+      "alerjenler": [],
+      "rozet": "yok",
+      "_not": "Fiyat menüde boş — TAHMİNİ. Teyit edilecek.",
+      "gorsel_url": null,
+      "gramaj_ar": "500 مل"
+    }
+  ],
+  "teyit_edilecekler": [
+    "Döner (tek) fiyatı — menüde çizilmiş, ürün satışta mı?",
+    "Patates Tabağı fiyatı — menüde boş (140 ₺ tahmin edildi)",
+    "Su fiyatı — menüde boş (15 ₺ tahmin edildi)",
+    "Şiş İçli Köfte yarım kg fiyatı — menüde boş (450 ₺ tahmin edildi)",
+    "Döner Pilav fiyatı — fotoğrafta net okunamadı (400 ₺ varsayıldı)",
+    "TÜM gramaj değerleri tahminidir — mutfakla teyit edilmeli",
+    "Ekstra fiyatları tahminidir — restoranla teyit edilmeli",
+    "Masa fiyatları şu an paket fiyatlarıyla aynı — masa fiyat listesi alınmalı",
+    "Arapça açıklama metinleri anadili Arapça biri tarafından kontrol edilmeli"
+  ],
+  "_gorsel_notu": "Gorseller Pexels'ten alinmistir. Pexels lisansi ticari kullanima aciktir, atif zorunlu degildir. Bunlar GECICI yer tutuculardir - restoranin kendi yemek fotograflari cekilince admin panelden degistirilmelidir. URL'ler 1200x900 (4:3) olarak kirpilmis halde gelir."
+}
