@@ -3,7 +3,7 @@
 Bu adım iki parçadan oluşuyor:
 
 - **A.** Tabloları oluştur (`sema.sql` dosyasını Supabase'de çalıştır)
-- **B.** Menüyü yükle (`npm run seed` ile 59 ürünü bas)
+- **B.** Menüyü yükle (`npm run seed` ile 74 ürünü bas)
 
 Toplam 10 dakika. Sırayla git, atlama.
 
@@ -157,7 +157,16 @@ boş kalır.
    `supabase/migrations/202608280001_contact_logo_urls.sql` dosyasını çalıştır.
    `202608270001_contact_icons.sql` eski emoji alanlarını ekleyen geriye dönük
    migration'dır; yeni logo yükleme ekranı için gereken dosya `202608280001`dir.
-7. RPC ve Storage sınırlarını doğrula:
+7. Kategori ekranından ürünleri topluca seçebilmek için
+   `supabase/migrations/202609110001_category_product_assignment.sql` dosyasını
+   çalıştır. Bu migration kategori–ürün atamasını atomik yapar ve ürün bulunan
+   bir kategorinin yanlışlıkla silinmesini engeller.
+8. Sonra `supabase/migrations/202609110002_approved_menu_additions.sql`
+   dosyasını çalıştır. Bu migration onaylanan 15 ürünü ve eksikse `İzgaralar`
+   ile `Tavuk` kategorilerini Türkçe/Arapça içerikleriyle ekler. Kategori veya
+   ürün zaten varsa üzerine yazmaz; slug ile Türkçe/Arapça ad kontrolleri
+   sayesinde tekrar çalıştırıldığında kopya oluşturmaz.
+9. RPC ve Storage sınırlarını doğrula:
 
    ```sql
    select proname
@@ -167,6 +176,8 @@ boş kalır.
        'admin_urun_kaydet',
        'admin_toplu_fiyat_guncelle',
        'admin_kategori_sirala',
+       'admin_kategori_urunlerini_kaydet',
+       'admin_kategori_sil',
        'bakim_menu_yukle',
        'bakim_gramaj_ar_guncelle',
        'bakim_temizlik'
@@ -178,11 +189,11 @@ boş kalır.
    where id = 'menu-gorseller';
    ```
 
-   Altı RPC satırı ile `8388608` bayt ve yalnız `image/jpeg`, `image/png`,
+   Sekiz RPC satırı ile `8388608` bayt ve yalnız `image/jpeg`, `image/png`,
    `image/webp` görülmelidir. `admin_*` RPC'leri yalnız allowlist adminlerinin
    oturum rolüne; `bakim_*` RPC'leri yalnız gizli `service_role` anahtarına
    açıktır.
-8. Yeni uygulama kodunu deploy et. Admin hesabıyla bir ürün kaydı, bir toplu
+10. Yeni uygulama kodunu deploy et. Admin hesabıyla bir ürün kaydı, bir toplu
    fiyat güncellemesi ve kategori sıra değişimini; ardından bir masa ve bir
    paket siparişini prova et.
 
@@ -195,13 +206,16 @@ Migration uygulanmadan yeni kod siparişleri güvenli biçimde durdurur; eski ko
 yeni politikalarla çalıştırmak ise anon insert kapandığı için sipariş alamaz.
 İkinci migration uygulanmadan yeni admin kodundaki RPC çağrıları da bulunamaz.
 Bu nedenle sıra kesin olarak **180001 → admin allowlist kontrolü → 180002 →
-uygulama deploy'u** olmalıdır; bu aralıkta checkout bilerek bakımda sayılır.
+280001 → 202609110001 → 202609110002 → uygulama deploy'u** olmalıdır; bu
+aralıkta checkout bilerek bakımda sayılır. Eski emoji kolonlarına ihtiyaç duyan
+bir kurulumda geriye dönük `202608270001` dosyasını `202608280001`den önce
+çalıştır.
 
 `202608180002_admin_integrity.sql` içindeki biçim kısıtları `NOT VALID` olarak
 eklenir. Böylece migration geçmiş satırları tarayıp kurulumu durdurmaz, fakat
 yeni ve güncellenen satırlara URL, metin uzunluğu, fiyat/sıra, ayar ve sipariş
 biçimi sınırlarını hemen uygular. Daha sonra bu kısıtları `VALIDATE CONSTRAINT`
-ile doğrulamadan önce eski veriyi ayrıca denetle. Sınırlar mevcut 59 ürünlük seed
+ile doğrulamadan önce eski veriyi ayrıca denetle. Sınırlar mevcut 74 ürünlük seed
 verisinin değerlerinden daha geniş ve geriye dönük uyumlu seçilmiştir.
 Migration'lar kısıtı adına göre yalnız eksikse ekler; daha önce doğrulanmış bir
 kısıtı düşürüp yeniden `NOT VALID` durumuna getirmez.
@@ -272,7 +286,7 @@ npm run seed:kuru
 
 Bu komut **veritabanına hiçbir şey yazmaz**. Sadece JSON dosyasını denetler:
 eksik kategori, tekrarlanan ürün adı, geçersiz fiyat gibi sorunları önceden
-yakalar. Sonunda `5 kategori, 59 urun — yapisal sorun yok` yazmalı.
+yakalar. Sonunda `7 kategori, 74 urun — yapisal sorun yok` yazmalı.
 
 Fotoğrafı olmayan 7 içecek için uyarı verecek — bu normal, sorun değil.
 
@@ -286,8 +300,8 @@ Beklenen çıktı:
 
 ```
  Guvenli eksik veri tamamlama
-  ✓ 5 eksik kategori eklendi
-  ✓ 59 eksik urun eklendi
+  ✓ 7 eksik kategori eklendi
+  ✓ 74 eksik urun eklendi
   ✓ ... cikarilabilir satiri bos urunlere eklendi
   ✓ ... ekstra satiri bos urunlere eklendi
     Mevcut UUID, fiyat/icerik, aktif/stokta ve secenek satirlari korundu.
@@ -297,7 +311,7 @@ Beklenen çıktı:
 
 ### B5. Kontrol et
 
-Supabase → **Table Editor** → `urunler` tablosu. 59 satır görmelisin.
+Supabase → **Table Editor** → `urunler` tablosu. 74 satır görmelisin.
 
 ---
 

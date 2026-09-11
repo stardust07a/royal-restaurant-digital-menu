@@ -1,14 +1,23 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const KOK = dirname(dirname(fileURLToPath(import.meta.url)));
 const oku = (yol) => readFileSync(join(KOK, yol), "utf8");
+const migrationDizini = join(KOK, "supabase", "migrations");
+const migrationDosyalari = readdirSync(migrationDizini)
+  .filter((ad) => ad.endsWith(".sql"))
+  .sort();
+const migrationlar = migrationDosyalari.map((ad) => ({
+  ad,
+  sql: readFileSync(join(migrationDizini, ad), "utf8"),
+}));
 const migration1 = oku("supabase/migrations/202608180001_order_security.sql");
 const migration2 = oku("supabase/migrations/202608180002_admin_integrity.sql");
 const migration3 = oku("supabase/migrations/202609110001_category_product_assignment.sql");
+const migration4 = oku("supabase/migrations/202609110002_approved_menu_additions.sql");
 const sema = oku("supabase/sema.sql");
 
 function fonksiyon(sql, ad) {
@@ -24,10 +33,67 @@ function bosluksuz(metin) {
 }
 
 test("migration dosyaları transaction sınırı içinde çalışır", () => {
-  for (const sql of [migration1, migration2, migration3]) {
-    assert.match(sql, /^begin;\s/i);
-    assert.match(sql, /commit;\s*$/i);
+  assert.ok(migrationDosyalari.includes("202609110001_category_product_assignment.sql"));
+  assert.ok(migrationDosyalari.includes("202609110002_approved_menu_additions.sql"));
+  for (const { ad, sql } of migrationlar) {
+    assert.match(
+      sql,
+      /^(?:(?:\s+)|(?:--[^\r\n]*(?:\r?\n|$)))*begin;\s/i,
+      `${ad} transaction ile başlamıyor`,
+    );
+    assert.match(sql, /commit;\s*$/i, `${ad} transaction ile bitmiyor`);
   }
+});
+
+test("onaylı menü migration'ı kategorileri önce ve tekrar güvenli biçimde ekler", () => {
+  const kategoriEkle = migration4.indexOf("insert into public.kategoriler");
+  const kategoriDenetle = migration4.indexOf("do $$");
+  const urunEkle = migration4.indexOf("insert into public.urunler");
+
+  assert.ok(kategoriEkle >= 0);
+  assert.ok(kategoriEkle < kategoriDenetle);
+  assert.ok(kategoriDenetle < urunEkle);
+  assert.match(
+    migration4,
+    /insert into public\.kategoriler[\s\S]*?'izgaralar', 6[\s\S]*?'tavuk', 7[\s\S]*?on conflict \(slug\) do nothing;/i,
+  );
+  assert.match(
+    migration4,
+    /insert into public\.urunler[\s\S]*?where not exists \([\s\S]*?u\.slug = o\.slug[\s\S]*?lower\(btrim\(u\.ad_tr\)\) = lower\(btrim\(o\.ad_tr\)\)[\s\S]*?btrim\(u\.ad_ar\) = btrim\(o\.ad_ar\)[\s\S]*?on conflict \(slug\) do nothing;/i,
+  );
+  assert.match(
+    migration4,
+    /insert into public\.cikarilabilirler[\s\S]*?not exists \([\s\S]*?mevcut\.urun_id = hedef\.id/i,
+  );
+  assert.match(
+    migration4,
+    /insert into public\.ekstralar[\s\S]*?not exists \([\s\S]*?mevcut\.urun_id = hedef\.id/i,
+  );
+});
+
+test("onaylı menü migration'ı yalnız kararlaştırılan ürünleri içerir", () => {
+  for (const slug of [
+    "aile-boyu-mansaf",
+    "uzun-ekmek-crispy-sandvic",
+    "yarim-mangal-tavuk-mendi-pilav",
+    "yarim-kilo-tavuk-kebap",
+    "yarim-kilo-sis-tavuk",
+    "bir-kilo-sis-tavuk",
+    "bir-kilo-izgara-kanat",
+    "butun-mangal-tavuk",
+    "izgara-kanat-porsiyon",
+    "butun-broasted",
+    "duble-zinger-sandvic",
+    "duble-spicy-sandvic",
+    "bir-kilo-tavuk-kebap",
+    "bir-kilo-karisik-izgara",
+    "parmak-doner",
+  ]) {
+    assert.ok(migration4.includes(`'${slug}'`), `${slug} migration'da bulunamadı`);
+  }
+  assert.doesNotMatch(migration4, /زنجر صمن فاهيتا/);
+  assert.doesNotMatch(migration4, /شاورما فرط 300/);
+  assert.doesNotMatch(migration4, /سندويش كباب دجاج/);
 });
 
 test("kategori içinden ürün atama RPC'si yetkili ve atomiktir", () => {
