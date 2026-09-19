@@ -53,14 +53,14 @@ export default async function KategoriDuzenleSayfasi({
       db
         .from("kategoriler")
         .select(
-          "id, slug, sira, ad_tr, ad_ar, aciklama_tr, aciklama_ar, gorsel_url, aktif, urunler(id)",
+          "id, slug, sira, ad_tr, ad_ar, aciklama_tr, aciklama_ar, gorsel_url, aktif, urun_kategorileri(urun_id, sira)",
         )
         .eq("id", id)
         .maybeSingle(),
       db.from("kategoriler").select("id, ad_tr, ad_ar").order("sira"),
       db
         .from("urunler")
-        .select("id, kategori_id, ad_tr, ad_ar, aktif, sira", { count: "exact" })
+        .select("id, kategori_id, ad_tr, ad_ar, aktif, sira, urun_kategorileri(kategori_id, sira)", { count: "exact" })
         .order("ad_tr")
         .limit(2000),
     ]);
@@ -79,10 +79,25 @@ export default async function KategoriDuzenleSayfasi({
     aciklama_ar: data.aciklama_ar ?? "",
     gorsel_url: data.gorsel_url,
     aktif: data.aktif,
-    urunSayisi: (data.urunler ?? []).length,
+    urunSayisi: (data.urun_kategorileri ?? []).length,
   };
   const kategoriler = (kategoriListesiSonucu.data ?? []) as FormKategoriSecenegi[];
-  const urunler = (urunListesiSonucu.data ?? []) as FormKategoriUrunu[];
+  const urunler: FormKategoriUrunu[] = (urunListesiSonucu.data ?? []).map((urun) => {
+    const baglar = (urun.urun_kategorileri ?? []) as {
+      kategori_id: string;
+      sira: number;
+    }[];
+    return {
+      id: urun.id,
+      kategori_id: urun.kategori_id ?? "",
+      kategori_ids: baglar.map((bag) => bag.kategori_id),
+      kategori_sira: baglar.find((bag) => bag.kategori_id === id)?.sira ?? null,
+      ad_tr: urun.ad_tr,
+      ad_ar: urun.ad_ar,
+      aktif: urun.aktif,
+      sira: urun.sira ?? 0,
+    };
+  });
   const urunListesiSiniraUlasti = (urunListesiSonucu.count ?? 0) > 2000;
   const orijinalParmakIzi: FormKategoriParmakIzi = {
     slug: data.slug,

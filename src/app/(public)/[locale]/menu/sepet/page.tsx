@@ -4,8 +4,9 @@ import MasaUstBar from "@/components/menu/MasaUstBar";
 import SepetGovdesi from "@/components/siparis/SepetGovdesi";
 import { ayarlariGetir, acikMi, kapaliMesaji, restoranAdi } from "@/lib/ayarlar";
 import { kamuMenuSonucuGetir } from "@/lib/kamu-menu";
+import { masaOturumuGetir } from "@/lib/masa-erisim";
 
-export const revalidate = 60;
+export const dynamic = "force-dynamic";
 export const metadata: Metadata = { robots: { index: false, follow: false } };
 
 /** Masa siparisi sepeti: teslimat ucreti yok, ad/telefon yerine masa numarasi. */
@@ -18,9 +19,10 @@ export default async function MasaSepetSayfasi({
   setRequestLocale(locale);
   const t = await getTranslations();
 
-  const [ayarlar, menuSonucu] = await Promise.all([
+  const [ayarlar, menuSonucu, masaNo] = await Promise.all([
     ayarlariGetir(),
     kamuMenuSonucuGetir(),
+    masaOturumuGetir(),
   ]);
   const acik = acikMi(ayarlar);
   const adi = restoranAdi(ayarlar, locale);
@@ -48,6 +50,7 @@ export default async function MasaSepetSayfasi({
         minimumSiparis={0}
         acik={acik}
         tur="masa"
+        masaNo={masaNo ?? ""}
         temelYol="/menu"
         saltOkunur={menuSonucu.kaynak === "yerel"}
         whatsappNumarasi={ayarlar.whatsapp_numarasi}

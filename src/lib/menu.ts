@@ -28,50 +28,63 @@ function sayi(deger: unknown): number {
  * urun detayinda gerekiyor ve menu listesini gereksiz sisirirlerdi.
  */
 export async function menuyuGetir(): Promise<KategoriliMenu[]> {
-  const { data, error } = await supabase()
+  const db = supabase();
+  const { data: kategoriVerisi, error: kategoriHatasi } = await db
     .from("kategoriler")
-    // urunler icin "*": kolon listesi sabitlense, semaya sonradan eklenen bir
-    // alan (ornegin gramaj_ar) migration calistirilmadan once tum menuyu
-    // kirardi. Yildiz secim, sema ile kod arasindaki gecikmeye dayanikli.
-    .select(
-      `
-      id, slug, sira, ad_tr, ad_ar, aciklama_tr, aciklama_ar, gorsel_url, aktif,
-      urunler ( * )
-    `,
-    )
+    .select("id, slug, sira, ad_tr, ad_ar, aciklama_tr, aciklama_ar, gorsel_url, aktif")
     .eq("aktif", true)
-    .eq("urunler.aktif", true)
-    .order("sira", { ascending: true })
-    .order("sira", { referencedTable: "urunler", ascending: true });
+    .order("sira", { ascending: true });
 
-  if (error) {
-    throw new Error(`Menu okunamadi: ${error.message}`);
+  if (kategoriHatasi) {
+    throw new Error(`Menu okunamadi: ${kategoriHatasi.message}`);
   }
 
-  return (data ?? [])
+  const kategoriKimlikleri = (kategoriVerisi ?? []).map((k) => k.id as string);
+  if (kategoriKimlikleri.length === 0) return [];
+
+  const { data: bagVerisi, error: bagHatasi } = await db
+    .from("urun_kategorileri")
+    // Urun alani yildiz kalir; sonradan eklenen kolonlar menu sorgusunu kirmaz.
+    .select("kategori_id, sira, urunler!inner(*)")
+    .in("kategori_id", kategoriKimlikleri)
+    .eq("urunler.aktif", true)
+    .order("sira", { ascending: true });
+
+  if (bagHatasi) throw new Error(`Menu urunleri okunamadi: ${bagHatasi.message}`);
+
+  const urunleriKategoriyeGore = new Map<string, Urun[]>();
+  for (const bag of bagVerisi ?? []) {
+    const ham = bag.urunler as unknown as Record<string, unknown> | null;
+    if (!ham) continue;
+    const urun: Urun = {
+      id: ham.id as string,
+      kategori_id: ham.kategori_id as string,
+      slug: ham.slug as string,
+      // Siralama artik kategori-urun bagina aittir.
+      sira: (bag.sira as number) ?? 0,
+      ad_tr: ham.ad_tr as string,
+      ad_ar: ham.ad_ar as string,
+      aciklama_tr: (ham.aciklama_tr as string) ?? null,
+      aciklama_ar: (ham.aciklama_ar as string) ?? null,
+      gorsel_url: nextGorselUrlDogrula(ham.gorsel_url as string | null),
+      fiyat_masa: sayi(ham.fiyat_masa),
+      fiyat_paket: sayi(ham.fiyat_paket),
+      gramaj: (ham.gramaj as string) ?? null,
+      gramaj_ar: (ham.gramaj_ar as string) ?? null,
+      kalori: (ham.kalori as number) ?? null,
+      alerjenler: (ham.alerjenler as string[]) ?? [],
+      rozet: ((ham.rozet as string) ?? "yok") as Rozet,
+      stokta: (ham.stokta as boolean) ?? true,
+      aktif: (ham.aktif as boolean) ?? true,
+    };
+    const liste = urunleriKategoriyeGore.get(bag.kategori_id as string) ?? [];
+    liste.push(urun);
+    urunleriKategoriyeGore.set(bag.kategori_id as string, liste);
+  }
+
+  return (kategoriVerisi ?? [])
     .map((k): KategoriliMenu => {
-      const urunler = ((k.urunler ?? []) as Record<string, unknown>[]).map(
-        (u): Urun => ({
-          id: u.id as string,
-          kategori_id: u.kategori_id as string,
-          slug: u.slug as string,
-          sira: (u.sira as number) ?? 0,
-          ad_tr: u.ad_tr as string,
-          ad_ar: u.ad_ar as string,
-          aciklama_tr: (u.aciklama_tr as string) ?? null,
-          aciklama_ar: (u.aciklama_ar as string) ?? null,
-          gorsel_url: nextGorselUrlDogrula(u.gorsel_url as string | null),
-          fiyat_masa: sayi(u.fiyat_masa),
-          fiyat_paket: sayi(u.fiyat_paket),
-          gramaj: (u.gramaj as string) ?? null,
-          gramaj_ar: (u.gramaj_ar as string) ?? null,
-          kalori: (u.kalori as number) ?? null,
-          alerjenler: (u.alerjenler as string[]) ?? [],
-          rozet: ((u.rozet as string) ?? "yok") as Rozet,
-          stokta: (u.stokta as boolean) ?? true,
-          aktif: (u.aktif as boolean) ?? true,
-        }),
-      );
+      const urunler = urunleriKategoriyeGore.get(k.id as string) ?? [];
 
       return {
         id: k.id as string,
@@ -105,9 +118,14 @@ export function cokSatanlarKategorisi(
   adTr = "Önerilenler",
   adAr = "مقترحاتنا",
 ): KategoriliMenu | null {
-  const urunler = kategoriler
-    .flatMap((k) => k.urunler)
-    .filter((u) => u.rozet === "cok_satan");
+  const urunler = [
+    ...new Map(
+      kategoriler
+        .flatMap((k) => k.urunler)
+        .filter((u) => u.rozet === "cok_satan")
+        .map((u) => [u.id, u]),
+    ).values(),
+  ];
 
   if (urunler.length === 0) return null;
 

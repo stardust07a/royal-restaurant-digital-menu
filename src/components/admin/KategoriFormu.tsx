@@ -35,6 +35,9 @@ export interface FormKategoriSecenegi {
 export interface FormKategoriUrunu {
   id: string;
   kategori_id: string;
+  kategori_ids: string[];
+  /** Bu kategorideki sira; null ise urun bu kategoriye bagli degildir. */
+  kategori_sira: number | null;
   ad_tr: string;
   ad_ar: string;
   aktif: boolean;
@@ -90,11 +93,24 @@ export default function KategoriFormu({
   const [yukleniyor, setYukleniyor] = useState(false);
   const [urunAramasi, setUrunAramasi] = useState("");
   const baslangicUrunIds = useMemo(
-    () => urunler.filter((urun) => urun.kategori_id === baslangic.id).map((urun) => urun.id),
+    () => urunler
+      .filter((urun) => urun.kategori_sira !== null)
+      .sort((a, b) => (a.kategori_sira ?? 0) - (b.kategori_sira ?? 0))
+      .map((urun) => urun.id),
     [baslangic.id, urunler],
   );
+  const baslangicUrunSiralari = useMemo(
+    () => Object.fromEntries(
+      urunler
+        .filter((urun) => urun.kategori_sira !== null)
+        .map((urun) => [urun.id, urun.kategori_sira ?? 0]),
+    ) as Record<string, number>,
+    [urunler],
+  );
   const [seciliUrunIds, setSeciliUrunIds] = useState<string[]>(baslangicUrunIds);
-  const [tasimaKategoriId, setTasimaKategoriId] = useState("");
+  const [urunSiralari, setUrunSiralari] = useState<Record<string, number>>(
+    baslangicUrunSiralari,
+  );
   const dosyaSecici = useRef<HTMLInputElement>(null);
   const fotografDugmesi = useRef<HTMLButtonElement>(null);
   // Dosya secimi, kirpma ve yukleme tek bir islem olsun. State bir render
@@ -106,7 +122,7 @@ export default function KategoriFormu({
   const formImzasi = JSON.stringify({
     kategori: k,
     seciliUrunIds: [...seciliUrunIds].sort(),
-    tasimaKategoriId,
+    urunSiralari,
   });
   const { kaydedildi } = useKaydedilmemisDegisiklik(
     formImzasi,
@@ -124,32 +140,33 @@ export default function KategoriFormu({
     gorsel_url: baslangic.gorsel_url,
     aktif: baslangic.aktif,
   };
-  const baslangicSeciliKumesi = useMemo(
-    () => new Set(baslangicUrunIds),
-    [baslangicUrunIds],
-  );
   const seciliUrunKumesi = useMemo(() => new Set(seciliUrunIds), [seciliUrunIds]);
   const baslangicFormImzasi = useMemo(
     () => JSON.stringify({
       kategori: baslangic,
       seciliUrunIds: [...baslangicUrunIds].sort(),
-      tasimaKategoriId: "",
+      urunSiralari: baslangicUrunSiralari,
     }),
-    [baslangic, baslangicUrunIds],
+    [baslangic, baslangicUrunIds, baslangicUrunSiralari],
   );
   const degisiklikVar = formImzasi !== baslangicFormImzasi;
-  const cikarilanUrunIds = baslangicUrunIds.filter((id) => !seciliUrunKumesi.has(id));
   const guvenliGorselUrl = nextGorselUrlDogrula(k.gorsel_url);
   useEffect(() => {
     setGorselHatali(false);
   }, [guvenliGorselUrl]);
   const gorunenUrunler = useMemo(() => {
     const arama = urunAramasi.trim().toLocaleLowerCase(dil === "ar" ? "ar" : "tr");
-    if (!arama) return urunler;
-    return urunler.filter((urun) =>
+    const bulunanlar = arama ? urunler.filter((urun) =>
       `${urun.ad_tr} ${urun.ad_ar}`.toLocaleLowerCase(dil === "ar" ? "ar" : "tr").includes(arama),
-    );
-  }, [dil, urunAramasi, urunler]);
+    ) : urunler;
+    return [...bulunanlar].sort((a, b) => {
+      const aSecili = seciliUrunKumesi.has(a.id);
+      const bSecili = seciliUrunKumesi.has(b.id);
+      if (aSecili !== bSecili) return aSecili ? -1 : 1;
+      if (aSecili) return (urunSiralari[a.id] ?? 0) - (urunSiralari[b.id] ?? 0);
+      return a.ad_tr.localeCompare(b.ad_tr, "tr");
+    });
+  }, [dil, seciliUrunKumesi, urunAramasi, urunSiralari, urunler]);
   const kategoriAdlari = useMemo(
     () => new Map(kategoriler.map((kategori) => [
       kategori.id,
@@ -157,6 +174,34 @@ export default function KategoriFormu({
     ])),
     [dil, kategoriler],
   );
+
+  function urunSeciminiDegistir(urunId: string) {
+    const secili = seciliUrunKumesi.has(urunId);
+    if (secili) {
+      setSeciliUrunIds((onceki) => onceki.filter((id) => id !== urunId));
+      setUrunSiralari((onceki) => {
+        const sonraki = { ...onceki };
+        delete sonraki[urunId];
+        return sonraki;
+      });
+      return;
+    }
+    const sonrakiSira = Math.max(-1, ...Object.values(urunSiralari)) + 1;
+    setSeciliUrunIds((onceki) => [...onceki, urunId]);
+    setUrunSiralari((onceki) => ({ ...onceki, [urunId]: sonrakiSira }));
+  }
+
+  function urunSirala(urunId: string, yon: -1 | 1) {
+    const sirali = [...seciliUrunIds].sort(
+      (a, b) => (urunSiralari[a] ?? 0) - (urunSiralari[b] ?? 0),
+    );
+    const simdiki = sirali.indexOf(urunId);
+    const hedef = simdiki + yon;
+    if (simdiki < 0 || hedef < 0 || hedef >= sirali.length) return;
+    [sirali[simdiki], sirali[hedef]] = [sirali[hedef], sirali[simdiki]];
+    setSeciliUrunIds(sirali);
+    setUrunSiralari(Object.fromEntries(sirali.map((id, i) => [id, i])));
+  }
 
   function guncelle<T extends keyof FormKategori>(
     alan: T,
@@ -237,8 +282,6 @@ export default function KategoriFormu({
     if (k.aciklama_tr.length > 2000 || k.aciklama_ar.length > 2000)
       return setHata(m("kategoriAciklamaCokUzun"));
     if (urunListesiSiniraUlasti) return setHata(m("urunListesiSiniraUlasti"));
-    if (!yeniKayit && cikarilanUrunIds.length > 0 && !tasimaKategoriId)
-      return setHata(m("cikarilanUrunHedefiZorunlu"));
 
     const kaydedilenImza = formImzasi;
     setKaydediliyor(true);
@@ -255,18 +298,10 @@ export default function KategoriFormu({
       aktif: k.aktif,
     };
 
-    const urunKategoriDegisiklikleri = yeniKayit
-      ? []
-      : urunler.flatMap((urun) => {
-          const onceSecili = baslangicSeciliKumesi.has(urun.id);
-          const simdiSecili = seciliUrunKumesi.has(urun.id);
-          if (onceSecili === simdiSecili) return [];
-          return [{
-            id: urun.id,
-            onceki_kategori_id: urun.kategori_id,
-            kategori_id: simdiSecili ? k.id! : tasimaKategoriId,
-          }];
-        });
+    const urunKategoriDegisiklikleri = seciliUrunIds.map((id) => ({
+      id,
+      sira: urunSiralari[id] ?? 0,
+    }));
 
     const { error } = yeniKayit
       ? await db.from("kategoriler").insert(satir)
@@ -282,6 +317,8 @@ export default function KategoriFormu({
       setHata(
         error.code === "23505"
           ? m("slugKullanimda")
+          : error.code === "23503"
+            ? m("urunEnAzBirKategori")
           : error.code === "40001"
             ? error.message === "Kategori kaydi guncel degil"
               ? m("kategoriKaydiDegisti")
@@ -538,10 +575,18 @@ export default function KategoriFormu({
           <ul className="uzun-liste mt-3 max-h-96 space-y-2 overflow-y-auto pe-1">
             {gorunenUrunler.map((urun) => {
               const secili = seciliUrunKumesi.has(urun.id);
-              const mevcutKategori = kategoriAdlari.get(urun.kategori_id) ?? m("bilinmeyenKategori");
+              const digerKategoriler = urun.kategori_ids
+                .filter((kategoriId) => kategoriId !== k.id)
+                .map((kategoriId) => kategoriAdlari.get(kategoriId))
+                .filter(Boolean)
+                .join(" · ");
+              const siraliSecimler = [...seciliUrunIds].sort(
+                (a, b) => (urunSiralari[a] ?? 0) - (urunSiralari[b] ?? 0),
+              );
+              const siraIndeksi = siraliSecimler.indexOf(urun.id);
               return (
                 <li key={urun.id}>
-                  <label
+                  <div
                     className={`flex min-h-14 cursor-pointer items-center gap-3 rounded-2xl border px-3 py-2 transition ${
                       secili ? "border-brand bg-brand/10" : "border-line bg-bg"
                     }`}
@@ -549,11 +594,7 @@ export default function KategoriFormu({
                     <input
                       type="checkbox"
                       checked={secili}
-                      onChange={() =>
-                        setSeciliUrunIds((onceki) =>
-                          secili ? onceki.filter((id) => id !== urun.id) : [...onceki, urun.id],
-                        )
-                      }
+                      onChange={() => urunSeciminiDegistir(urun.id)}
                       className="h-5 w-5 shrink-0 accent-brand"
                     />
                     <span className="min-w-0 flex-1">
@@ -561,11 +602,33 @@ export default function KategoriFormu({
                         {dil === "ar" ? urun.ad_ar || urun.ad_tr : urun.ad_tr || urun.ad_ar}
                       </span>
                       <span className="block truncate text-xs text-muted">
-                        {urun.kategori_id === k.id ? m("buKategori") : mevcutKategori}
+                        {secili ? m("buKategori") : digerKategoriler || m("bilinmeyenKategori")}
                         {!urun.aktif && ` · ${m("yayindaDegil")}`}
                       </span>
                     </span>
-                  </label>
+                    {secili && (
+                      <span className="flex shrink-0 gap-1">
+                        <button
+                          type="button"
+                          onClick={() => urunSirala(urun.id, -1)}
+                          disabled={siraIndeksi <= 0}
+                          aria-label={`${urun.ad_tr} ${m("yukariTasi")}`}
+                          className="grid min-h-11 min-w-11 place-items-center rounded-xl border border-line bg-card font-bold disabled:opacity-30"
+                        >
+                          ↑
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => urunSirala(urun.id, 1)}
+                          disabled={siraIndeksi < 0 || siraIndeksi === siraliSecimler.length - 1}
+                          aria-label={`${urun.ad_tr} ${m("asagiTasi")}`}
+                          className="grid min-h-11 min-w-11 place-items-center rounded-xl border border-line bg-card font-bold disabled:opacity-30"
+                        >
+                          ↓
+                        </button>
+                      </span>
+                    )}
+                  </div>
                 </li>
               );
             })}
@@ -575,29 +638,6 @@ export default function KategoriFormu({
             <p className="py-6 text-center text-sm text-muted">{m("urunBulunamadi")}</p>
           )}
 
-          {cikarilanUrunIds.length > 0 && (
-            <label className="mt-4 flex flex-col gap-1.5 rounded-2xl border border-accent/40 bg-accent/10 p-3">
-              <span className="text-sm font-semibold">
-                {cikarilanUrunIds.length} {m("cikarilanUrunleriTasi")}
-              </span>
-              <select
-                name="cikarilan-urun-hedef-kategorisi"
-                value={tasimaKategoriId}
-                onChange={(e) => setTasimaKategoriId(e.target.value)}
-                className={kutu}
-              >
-                <option value="">{m("kategoriSec")}</option>
-                {kategoriler
-                  .filter((kategori) => kategori.id !== k.id)
-                  .map((kategori) => (
-                    <option key={kategori.id} value={kategori.id}>
-                      {dil === "ar" ? kategori.ad_ar || kategori.ad_tr : kategori.ad_tr || kategori.ad_ar}
-                    </option>
-                  ))}
-              </select>
-              <span className="text-xs text-muted">{m("cikarilanUrunleriTasiIpucu")}</span>
-            </label>
-          )}
         </section>
       )}
 

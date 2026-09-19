@@ -439,7 +439,13 @@ async function atomikMenuYukle(
 async function ozetiYazdir(db: SupabaseClient): Promise<void> {
   baslik("Veritabani durumu");
 
-  const tablolar = ["kategoriler", "urunler", "cikarilabilirler", "ekstralar"];
+  const tablolar = [
+    "kategoriler",
+    "urunler",
+    "urun_kategorileri",
+    "cikarilabilirler",
+    "ekstralar",
+  ];
   for (const tablo of tablolar) {
     const { count, error } = await db
       .from(tablo)

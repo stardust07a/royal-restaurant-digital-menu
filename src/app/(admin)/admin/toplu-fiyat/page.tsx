@@ -11,7 +11,7 @@ export default async function TopluFiyatSayfasi() {
     db.from("kategoriler").select("id, ad_tr").order("sira"),
     db
       .from("urunler")
-      .select("id, ad_tr, kategori_id, fiyat_masa, fiyat_paket")
+      .select("id, ad_tr, kategori_id, fiyat_masa, fiyat_paket, urun_kategorileri(kategori_id)")
       .order("sira"),
   ]);
 
@@ -19,6 +19,7 @@ export default async function TopluFiyatSayfasi() {
     id: u.id,
     ad_tr: u.ad_tr,
     kategori_id: u.kategori_id ?? "",
+    kategori_ids: (u.urun_kategorileri ?? []).map((bag) => bag.kategori_id),
     fiyat_masa: Number(u.fiyat_masa),
     fiyat_paket: Number(u.fiyat_paket),
   }));

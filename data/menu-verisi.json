@@ -305,11 +305,6 @@
         "fiyat": 50
       },
       {
-        "ad_tr": "İçeceği 1L yap",
-        "ad_ar": "مشروب ١ لتر",
-        "fiyat": 40
-      },
-      {
         "ad_tr": "Humus",
         "ad_ar": "حمص",
         "fiyat": 100
@@ -746,11 +741,11 @@
       "sira": 1,
       "ad_tr": "Döner Menü",
       "ad_ar": "شاورما عربي",
-      "aciklama_tr": "Döner dürüm + patates + içecek",
-      "aciklama_ar": "شاورما عربي مع بطاطا ومشروب",
+      "aciklama_tr": "Döner dürüm + patates",
+      "aciklama_ar": "شاورما عربي مع بطاطا",
       "fiyat_masa": 300,
       "fiyat_paket": 300,
-      "gramaj": "180 g döner + 150 g patates + 330 ml içecek",
+      "gramaj": "180 g döner + 150 g patates",
       "stokta": true,
       "cikarilabilir": "menu_combo",
       "ekstra": "menu_combo",
@@ -759,7 +754,7 @@
       ],
       "rozet": "cok_satan",
       "gorsel_url": "https://images.pexels.com/photos/35255190/pexels-photo-35255190.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
-      "gramaj_ar": "شاورما 180 غ + بطاطا 150 غ + مشروب 330 مل"
+      "gramaj_ar": "شاورما 180 غ + بطاطا 150 غ"
     },
     {
       "slug": "duble-doner-menu",
@@ -767,11 +762,11 @@
       "sira": 2,
       "ad_tr": "Duble Döner Menü",
       "ad_ar": "شاورما عربي دبل",
-      "aciklama_tr": "Çift porsiyon döner + patates + içecek",
-      "aciklama_ar": "شاورما عربي دبل مع بطاطا ومشروب",
+      "aciklama_tr": "Çift porsiyon döner + patates",
+      "aciklama_ar": "شاورما عربي دبل مع بطاطا",
       "fiyat_masa": 400,
       "fiyat_paket": 400,
-      "gramaj": "280 g döner + 150 g patates + 330 ml içecek",
+      "gramaj": "280 g döner + 150 g patates",
       "stokta": true,
       "cikarilabilir": "menu_combo",
       "ekstra": "menu_combo",
@@ -780,7 +775,7 @@
       ],
       "rozet": "yok",
       "gorsel_url": "https://images.pexels.com/photos/11586286/pexels-photo-11586286.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
-      "gramaj_ar": "شاورما 280 غ + بطاطا 150 غ + مشروب 330 مل"
+      "gramaj_ar": "شاورما 280 غ + بطاطا 150 غ"
     },
     {
       "slug": "doner-extra-menu",
@@ -788,11 +783,11 @@
       "sira": 3,
       "ad_tr": "Döner Extra Menü",
       "ad_ar": "شاورما عربي اكسترا",
-      "aciklama_tr": "Ekstra bol döner + patates + içecek",
-      "aciklama_ar": "شاورما عربي اكسترا مع بطاطا ومشروب",
+      "aciklama_tr": "Ekstra bol döner + patates",
+      "aciklama_ar": "شاورما عربي اكسترا مع بطاطا",
       "fiyat_masa": 450,
       "fiyat_paket": 450,
-      "gramaj": "360 g döner + 150 g patates + 330 ml içecek",
+      "gramaj": "360 g döner + 150 g patates",
       "stokta": true,
       "cikarilabilir": "menu_combo",
       "ekstra": "menu_combo",
@@ -801,7 +796,7 @@
       ],
       "rozet": "yok",
       "gorsel_url": "https://images.pexels.com/photos/29306495/pexels-photo-29306495.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
-      "gramaj_ar": "شاورما 360 غ + بطاطا 150 غ + مشروب 330 مل"
+      "gramaj_ar": "شاورما 360 غ + بطاطا 150 غ"
     },
     {
       "slug": "hamburger-menu",
@@ -809,11 +804,11 @@
       "sira": 4,
       "ad_tr": "Hamburger Menü",
       "ad_ar": "وجبة همبرغر",
-      "aciklama_tr": "Hamburger + patates + içecek",
-      "aciklama_ar": "همبرغر مع بطاطا ومشروب",
+      "aciklama_tr": "Hamburger + patates",
+      "aciklama_ar": "همبرغر مع بطاطا",
       "fiyat_masa": 375,
       "fiyat_paket": 375,
-      "gramaj": "280 g burger + 150 g patates + 330 ml içecek",
+      "gramaj": "280 g burger + 150 g patates",
       "stokta": true,
       "cikarilabilir": "menu_combo",
       "ekstra": "menu_combo",
@@ -822,7 +817,7 @@
       ],
       "rozet": "yok",
       "gorsel_url": "https://images.pexels.com/photos/15476368/pexels-photo-15476368.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
-      "gramaj_ar": "برغر 280 غ + بطاطا 150 غ + مشروب 330 مل"
+      "gramaj_ar": "برغر 280 غ + بطاطا 150 غ"
     },
     {
       "slug": "cheese-burger-menu",
@@ -830,11 +825,11 @@
       "sira": 5,
       "ad_tr": "Cheese Burger Menü",
       "ad_ar": "وجبة تشيز برغر",
-      "aciklama_tr": "Cheese burger + patates + içecek",
-      "aciklama_ar": "تشيز برغر مع بطاطا ومشروب",
+      "aciklama_tr": "Cheese burger + patates",
+      "aciklama_ar": "تشيز برغر مع بطاطا",
       "fiyat_masa": 425,
       "fiyat_paket": 425,
-      "gramaj": "300 g burger + 150 g patates + 330 ml içecek",
+      "gramaj": "300 g burger + 150 g patates",
       "stokta": true,
       "cikarilabilir": "menu_combo",
       "ekstra": "menu_combo",
@@ -844,7 +839,7 @@
       ],
       "rozet": "yok",
       "gorsel_url": "https://images.pexels.com/photos/8880741/pexels-photo-8880741.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
-      "gramaj_ar": "برغر 300 غ + بطاطا 150 غ + مشروب 330 مل"
+      "gramaj_ar": "برغر 300 غ + بطاطا 150 غ"
     },
     {
       "slug": "sis-tavuk-menu",
@@ -852,11 +847,11 @@
       "sira": 6,
       "ad_tr": "Şiş Tavuk Menü",
       "ad_ar": "وجبة شيش طاووق",
-      "aciklama_tr": "Şiş tavuk + patates + içecek",
-      "aciklama_ar": "شيش طاووق مع بطاطا ومشروب",
+      "aciklama_tr": "Şiş tavuk + patates",
+      "aciklama_ar": "شيش طاووق مع بطاطا",
       "fiyat_masa": 300,
       "fiyat_paket": 300,
-      "gramaj": "250 g tavuk + 150 g patates + 330 ml içecek",
+      "gramaj": "250 g tavuk + 150 g patates",
       "stokta": true,
       "cikarilabilir": "menu_combo",
       "ekstra": "menu_combo",
@@ -865,7 +860,7 @@
       ],
       "rozet": "yok",
       "gorsel_url": "https://images.pexels.com/photos/33058287/pexels-photo-33058287.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
-      "gramaj_ar": "دجاج 250 غ + بطاطا 150 غ + مشروب 330 مل"
+      "gramaj_ar": "دجاج 250 غ + بطاطا 150 غ"
     },
     {
       "slug": "baharatli-menu",
@@ -873,11 +868,11 @@
       "sira": 7,
       "ad_tr": "Baharatlı Menü",
       "ad_ar": "وجبة سبايسي",
-      "aciklama_tr": "Baharatlı tavuk + patates + içecek",
-      "aciklama_ar": "سبايسي مع بطاطا ومشروب",
+      "aciklama_tr": "Baharatlı tavuk + patates",
+      "aciklama_ar": "سبايسي مع بطاطا",
       "fiyat_masa": 400,
       "fiyat_paket": 400,
-      "gramaj": "300 g + 150 g patates + 330 ml içecek",
+      "gramaj": "300 g + 150 g patates",
       "stokta": true,
       "cikarilabilir": "menu_combo",
       "ekstra": "menu_combo",
@@ -886,7 +881,7 @@
       ],
       "rozet": "acili",
       "gorsel_url": "https://images.pexels.com/photos/19247563/pexels-photo-19247563.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
-      "gramaj_ar": "300 غ + بطاطا 150 غ + مشروب 330 مل"
+      "gramaj_ar": "300 غ + بطاطا 150 غ"
     },
     {
       "slug": "citir-tavuk-menu",
@@ -894,11 +889,11 @@
       "sira": 8,
       "ad_tr": "Çıtır Tavuk (Broasted) Menü",
       "ad_ar": "وجبة بروستد",
-      "aciklama_tr": "Çıtır broasted tavuk + patates + içecek",
-      "aciklama_ar": "بروستد مقرمش مع بطاطا ومشروب",
+      "aciklama_tr": "Çıtır broasted tavuk + patates",
+      "aciklama_ar": "بروستد مقرمش مع بطاطا",
       "fiyat_masa": 425,
       "fiyat_paket": 425,
-      "gramaj": "4 parça + 150 g patates + 330 ml içecek",
+      "gramaj": "4 parça + 150 g patates",
       "stokta": true,
       "cikarilabilir": "menu_combo",
       "ekstra": "menu_combo",
@@ -907,7 +902,7 @@
       ],
       "rozet": "cok_satan",
       "gorsel_url": "https://images.pexels.com/photos/37387410/pexels-photo-37387410.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
-      "gramaj_ar": "4 قطع + بطاطا 150 غ + مشروب 330 مل"
+      "gramaj_ar": "4 قطع + بطاطا 150 غ"
     },
     {
       "slug": "crispy-menu",
@@ -915,11 +910,11 @@
       "sira": 9,
       "ad_tr": "Crispy Menü",
       "ad_ar": "وجبة كريسبي",
-      "aciklama_tr": "Crispy tavuk + patates + içecek",
-      "aciklama_ar": "كريسبي مع بطاطا ومشروب",
+      "aciklama_tr": "Crispy tavuk + patates",
+      "aciklama_ar": "كريسبي مع بطاطا",
       "fiyat_masa": 400,
       "fiyat_paket": 400,
-      "gramaj": "300 g + 150 g patates + 330 ml içecek",
+      "gramaj": "300 g + 150 g patates",
       "stokta": true,
       "cikarilabilir": "menu_combo",
       "ekstra": "menu_combo",
@@ -929,7 +924,7 @@
       ],
       "rozet": "yok",
       "gorsel_url": "https://images.pexels.com/photos/38026242/pexels-photo-38026242.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
-      "gramaj_ar": "300 غ + بطاطا 150 غ + مشروب 330 مل"
+      "gramaj_ar": "300 غ + بطاطا 150 غ"
     },
     {
       "slug": "zincer-menu",
@@ -937,11 +932,11 @@
       "sira": 10,
       "ad_tr": "Zinger Menü",
       "ad_ar": "وجبة زنجر",
-      "aciklama_tr": "Zinger tavuk + patates + içecek",
-      "aciklama_ar": "زنجر مع بطاطا ومشروب",
+      "aciklama_tr": "Zinger tavuk + patates",
+      "aciklama_ar": "زنجر مع بطاطا",
       "fiyat_masa": 400,
       "fiyat_paket": 400,
-      "gramaj": "300 g + 150 g patates + 330 ml içecek",
+      "gramaj": "300 g + 150 g patates",
       "stokta": true,
       "cikarilabilir": "menu_combo",
       "ekstra": "menu_combo",
@@ -951,7 +946,7 @@
       ],
       "rozet": "yok",
       "gorsel_url": "https://images.pexels.com/photos/9268664/pexels-photo-9268664.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
-      "gramaj_ar": "300 غ + بطاطا 150 غ + مشروب 330 مل"
+      "gramaj_ar": "300 غ + بطاطا 150 غ"
     },
     {
       "slug": "kebap-menu",
@@ -959,11 +954,11 @@
       "sira": 11,
       "ad_tr": "Kebap Menü",
       "ad_ar": "وجبة كباب",
-      "aciklama_tr": "Izgara kebap + patates + içecek",
-      "aciklama_ar": "كباب مشوي مع بطاطا ومشروب",
+      "aciklama_tr": "Izgara kebap + patates",
+      "aciklama_ar": "كباب مشوي مع بطاطا",
       "fiyat_masa": 300,
       "fiyat_paket": 300,
-      "gramaj": "250 g + 150 g patates + 330 ml içecek",
+      "gramaj": "250 g + 150 g patates",
       "stokta": true,
       "cikarilabilir": "menu_combo",
       "ekstra": "menu_combo",
@@ -972,7 +967,7 @@
       ],
       "rozet": "yok",
       "gorsel_url": "https://images.pexels.com/photos/37080236/pexels-photo-37080236.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
-      "gramaj_ar": "250 غ + بطاطا 150 غ + مشروب 330 مل"
+      "gramaj_ar": "250 غ + بطاطا 150 غ"
     },
     {
       "slug": "kanat-menu",
@@ -980,18 +975,18 @@
       "sira": 12,
       "ad_tr": "Kanat Menü",
       "ad_ar": "وجبة جناحات",
-      "aciklama_tr": "Izgara tavuk kanat + patates + içecek",
-      "aciklama_ar": "جناحات دجاج مشوية مع بطاطا ومشروب",
+      "aciklama_tr": "Izgara tavuk kanat + patates",
+      "aciklama_ar": "جناحات دجاج مشوية مع بطاطا",
       "fiyat_masa": 300,
       "fiyat_paket": 300,
-      "gramaj": "6 adet + 150 g patates + 330 ml içecek",
+      "gramaj": "6 adet + 150 g patates",
       "stokta": true,
       "cikarilabilir": "menu_combo",
       "ekstra": "menu_combo",
       "alerjenler": [],
       "rozet": "yok",
       "gorsel_url": "https://images.pexels.com/photos/28635451/pexels-photo-28635451.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
-      "gramaj_ar": "6 حبة + بطاطا 150 غ + مشروب 330 مل"
+      "gramaj_ar": "6 حبة + بطاطا 150 غ"
     },
     {
       "slug": "karisik-menu",
@@ -999,11 +994,11 @@
       "sira": 13,
       "ad_tr": "Karışık Menü",
       "ad_ar": "وجبة مشكل",
-      "aciklama_tr": "Kebap, şiş tavuk ve kanat karışık + patates + içecek",
-      "aciklama_ar": "مشكل كباب وشيش وجناحات مع بطاطا ومشروب",
+      "aciklama_tr": "Kebap, şiş tavuk ve kanat karışık + patates",
+      "aciklama_ar": "مشكل كباب وشيش وجناحات مع بطاطا",
       "fiyat_masa": 400,
       "fiyat_paket": 400,
-      "gramaj": "350 g karışık + 150 g patates + 330 ml içecek",
+      "gramaj": "350 g karışık + 150 g patates",
       "stokta": true,
       "cikarilabilir": "menu_combo",
       "ekstra": "menu_combo",
@@ -1012,7 +1007,7 @@
       ],
       "rozet": "sefin_onerisi",
       "gorsel_url": "https://images.pexels.com/photos/25463408/pexels-photo-25463408.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
-      "gramaj_ar": "مشكل 350 غ + بطاطا 150 غ + مشروب 330 مل"
+      "gramaj_ar": "مشكل 350 غ + بطاطا 150 غ"
     },
     {
       "slug": "doner-pilav",
@@ -1078,11 +1073,11 @@
       "sira": 17,
       "ad_tr": "İçli Köfte (Izgara) Menü",
       "ad_ar": "وجبة كبة مشوية",
-      "aciklama_tr": "Izgara içli köfte + patates + içecek",
-      "aciklama_ar": "كبة مشوية مع بطاطا ومشروب",
+      "aciklama_tr": "Izgara içli köfte + patates",
+      "aciklama_ar": "كبة مشوية مع بطاطا",
       "fiyat_masa": 350,
       "fiyat_paket": 350,
-      "gramaj": "300 g + 150 g patates + 330 ml içecek",
+      "gramaj": "300 g + 150 g patates",
       "stokta": true,
       "cikarilabilir": "menu_combo",
       "ekstra": "menu_combo",
@@ -1091,7 +1086,7 @@
       ],
       "rozet": "yok",
       "gorsel_url": "https://images.pexels.com/photos/28902897/pexels-photo-28902897.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
-      "gramaj_ar": "300 غ + بطاطا 150 غ + مشروب 330 مل"
+      "gramaj_ar": "300 غ + بطاطا 150 غ"
     },
     {
       "slug": "kizarmis-tavuk",
@@ -1254,18 +1249,18 @@
       "sira": 9,
       "ad_tr": "Duble Kanat Menü",
       "ad_ar": "وجبة جناح دبل",
-      "aciklama_tr": "Çift porsiyon tavuk kanat + patates + içecek",
-      "aciklama_ar": "جناحات دبل مع بطاطا ومشروب",
+      "aciklama_tr": "Çift porsiyon tavuk kanat + patates",
+      "aciklama_ar": "جناحات دبل مع بطاطا",
       "fiyat_masa": 400,
       "fiyat_paket": 400,
-      "gramaj": "12 adet + 150 g patates + 330 ml içecek",
+      "gramaj": "12 adet + 150 g patates",
       "stokta": true,
       "cikarilabilir": "menu_combo",
       "ekstra": "menu_combo",
       "alerjenler": [],
       "rozet": "yok",
       "gorsel_url": "https://images.pexels.com/photos/17429043/pexels-photo-17429043.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
-      "gramaj_ar": "12 حبة + بطاطا 150 غ + مشروب 330 مل"
+      "gramaj_ar": "12 حبة + بطاطا 150 غ"
     },
     {
       "slug": "duble-sis-menu",
@@ -1273,18 +1268,18 @@
       "sira": 10,
       "ad_tr": "Duble Şiş Menü",
       "ad_ar": "وجبة شيش دبل",
-      "aciklama_tr": "Çift porsiyon şiş tavuk + patates + içecek",
-      "aciklama_ar": "شيش دبل مع بطاطا ومشروب",
+      "aciklama_tr": "Çift porsiyon şiş tavuk + patates",
+      "aciklama_ar": "شيش دبل مع بطاطا",
       "fiyat_masa": 400,
       "fiyat_paket": 400,
-      "gramaj": "500 g + 150 g patates + 330 ml içecek",
+      "gramaj": "500 g + 150 g patates",
       "stokta": true,
       "cikarilabilir": "menu_combo",
       "ekstra": "menu_combo",
       "alerjenler": [],
       "rozet": "yok",
       "gorsel_url": "https://images.pexels.com/photos/25570427/pexels-photo-25570427.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
-      "gramaj_ar": "500 غ + بطاطا 150 غ + مشروب 330 مل"
+      "gramaj_ar": "500 غ + بطاطا 150 غ"
     },
     {
       "slug": "duble-kebap-menu",
@@ -1292,18 +1287,18 @@
       "sira": 11,
       "ad_tr": "Duble Kebap Menü",
       "ad_ar": "وجبة كباب دبل",
-      "aciklama_tr": "Çift porsiyon kebap + patates + içecek",
-      "aciklama_ar": "كباب دبل مع بطاطا ومشروب",
+      "aciklama_tr": "Çift porsiyon kebap + patates",
+      "aciklama_ar": "كباب دبل مع بطاطا",
       "fiyat_masa": 400,
       "fiyat_paket": 400,
-      "gramaj": "500 g + 150 g patates + 330 ml içecek",
+      "gramaj": "500 g + 150 g patates",
       "stokta": true,
       "cikarilabilir": "menu_combo",
       "ekstra": "menu_combo",
       "alerjenler": [],
       "rozet": "yok",
       "gorsel_url": "https://images.pexels.com/photos/31249644/pexels-photo-31249644.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
-      "gramaj_ar": "500 غ + بطاطا 150 غ + مشروب 330 مل"
+      "gramaj_ar": "500 غ + بطاطا 150 غ"
     },
     {
       "slug": "patates-tabagi",

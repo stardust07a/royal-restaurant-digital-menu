@@ -142,6 +142,8 @@ const SOZLUK = {
   ekstralar: ["Ekstralar", "الإضافات"],
   ucretsiz: ["ücretsiz", "مجاناً"],
   ucretli: ["ücretli", "مدفوع"],
+  ekstraUrunSec: ["Mevcut üründen ekstra ekle", "إضافة من المنتجات الموجودة"],
+  ekstraUrunKopyaIpucu: ["Ürün adı ve paket fiyatı kopyalanır; aşağıda değiştirebilirsin.", "يُنسخ اسم المنتج وسعره الخارجي، ويمكنك تعديله أدناه."],
   satirEkle: ["+ Satır ekle", "+ إضافة سطر"],
   yukariTasi: ["Yukarı taşı", "تحريك لأعلى"],
   asagiTasi: ["Aşağı taşı", "تحريك لأسفل"],
@@ -195,8 +197,8 @@ const SOZLUK = {
   ],
   kategoriUrunleri: ["Bu kategorideki ürünler", "منتجات هذا القسم"],
   kategoriUrunleriIpucu: [
-    "Kutuyu işaretleyerek ürünü bu kategoriye taşıyabilirsin.",
-    "حدّد المنتج لنقله إلى هذا القسم.",
+    "İşaretlenen ürün bu kategoriye de eklenir. Sıra otomatik oluşur; oklarla değiştirebilirsin.",
+    "يُضاف المنتج المحدد إلى هذا القسم أيضاً. يُرتب تلقائياً ويمكن تغييره بالأسهم.",
   ],
   urunSecimiAra: ["Ürünlerde ara…", "ابحث في المنتجات…"],
   buKategori: ["Bu kategori", "هذا القسم"],
@@ -221,6 +223,10 @@ const SOZLUK = {
   kategoriKaydiDegisti: [
     "Kategori başka bir yerde güncellendi. Sayfayı yenileyip tekrar dene.",
     "تم تحديث القسم في مكان آخر. حدّث الصفحة وحاول مجدداً.",
+  ],
+  urunEnAzBirKategori: [
+    "Ürün en az bir kategoride kalmalı. Önce başka kategoriye ekleyip sonra buradan çıkar.",
+    "يجب أن يبقى المنتج في قسم واحد على الأقل. أضفه أولاً إلى قسم آخر ثم أزله من هنا.",
   ],
   kategoriAdiCokUzun: [
     "Kategori adı en fazla 200 karakter olabilir.",
@@ -326,10 +332,12 @@ const SOZLUK = {
 
   // --- qr ---
   qrBaslik: ["QR kodu", "رمز QR"],
+  qrMasaSecIpucu: ["15 masadan birini seç, o masaya ait QR'ı indir veya yazdır.", "اختر واحدة من ١٥ طاولة ونزّل أو اطبع رمز QR الخاص بها."],
+  qrYapilandirmaHatasi: ["QR anahtarı eksik; yöneticiye haber verin.", "مفتاح رمز QR غير موجود؛ يرجى إبلاغ المسؤول."],
   qrAdres: ["QR'ın açacağı adres", "الرابط الذي يفتحه رمز QR"],
   qrAdresIpucu: [
-    "Yayına aldıktan sonra burayı gerçek alan adıyla değiştir ve QR'ı yeniden indir.",
-    "بعد النشر غيّر هذا إلى اسم النطاق الحقيقي وأعد تنزيل الرمز.",
+    "QR'ları gerçek alan adında açtıktan sonra indirin. Yerel adresle basılan QR müşteride açılmaz.",
+    "نزّل رموز QR بعد فتح لوحة الإدارة من النطاق الحقيقي؛ رابط localhost لا يعمل لدى الزبائن.",
   ],
   pngIndir: ["PNG indir", "تنزيل PNG"],
   a5Baski: ["A5 baskı sayfası aç", "فتح صفحة طباعة A5"],
@@ -369,6 +377,7 @@ const SOZLUK = {
   kategoriSecilmeli: ["Kategori seçilmeli.", "يجب اختيار قسم."],
   slugZorunlu: ["Bağlantı adı zorunlu.", "اسم الرابط إلزامي."],
   fiyatNegatif: ["Fiyatlar negatif olamaz.", "لا يمكن أن تكون الأسعار سالبة."],
+  fiyatZorunlu: ["Fiyat alanını boş bırakma.", "لا تترك حقل السعر فارغاً."],
   slugKullanimda: [
     "Bu bağlantı adı başka bir kayıtta kullanılıyor.",
     "اسم الرابط هذا مستخدم في سجل آخر.",

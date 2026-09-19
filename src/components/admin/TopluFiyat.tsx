@@ -11,6 +11,7 @@ export interface TopluUrun {
   id: string;
   ad_tr: string;
   kategori_id: string;
+  kategori_ids: string[];
   fiyat_masa: number;
   fiyat_paket: number;
 }
@@ -45,7 +46,7 @@ export default function TopluFiyat({
     () =>
       kategoriId === "hepsi"
         ? urunler
-        : urunler.filter((u) => u.kategori_id === kategoriId),
+        : urunler.filter((u) => u.kategori_ids.includes(kategoriId)),
     [kategoriId, urunler],
   );
 
@@ -133,7 +134,7 @@ export default function TopluFiyat({
             {kategoriler.map((k) => (
               <option key={k.id} value={k.id}>
                 {k.ad_tr} (
-                {urunler.filter((u) => u.kategori_id === k.id).length})
+                {urunler.filter((u) => u.kategori_ids.includes(k.id)).length})
               </option>
             ))}
           </select>

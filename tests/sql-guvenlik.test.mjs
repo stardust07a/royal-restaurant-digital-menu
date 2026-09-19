@@ -18,10 +18,11 @@ const migration1 = oku("supabase/migrations/202608180001_order_security.sql");
 const migration2 = oku("supabase/migrations/202608180002_admin_integrity.sql");
 const migration3 = oku("supabase/migrations/202609110001_category_product_assignment.sql");
 const migration4 = oku("supabase/migrations/202609110002_approved_menu_additions.sql");
+const migration5 = oku("supabase/migrations/202609160001_multi_category_product_order.sql");
 const sema = oku("supabase/sema.sql");
 
 function fonksiyon(sql, ad) {
-  const baslangic = sql.indexOf(`create or replace function public.${ad}`);
+  const baslangic = sql.lastIndexOf(`create or replace function public.${ad}`);
   assert.notEqual(baslangic, -1, `${ad} fonksiyonu bulunamadı`);
   const bitis = sql.indexOf("\n$$;", baslangic);
   assert.notEqual(bitis, -1, `${ad} fonksiyonu kapanmıyor`);
@@ -29,12 +30,13 @@ function fonksiyon(sql, ad) {
 }
 
 function bosluksuz(metin) {
-  return metin.replace(/\s+/g, " ").trim();
+  return metin.replace(/--[^\r\n]*/g, "").replace(/\s+/g, " ").trim();
 }
 
 test("migration dosyaları transaction sınırı içinde çalışır", () => {
   assert.ok(migrationDosyalari.includes("202609110001_category_product_assignment.sql"));
   assert.ok(migrationDosyalari.includes("202609110002_approved_menu_additions.sql"));
+  assert.ok(migrationDosyalari.includes("202609160001_multi_category_product_order.sql"));
   for (const { ad, sql } of migrationlar) {
     assert.match(
       sql,
@@ -96,27 +98,37 @@ test("onaylı menü migration'ı yalnız kararlaştırılan ürünleri içerir",
   assert.doesNotMatch(migration4, /سندويش كباب دجاج/);
 });
 
-test("kategori içinden ürün atama RPC'si yetkili ve atomiktir", () => {
-  const govde = fonksiyon(migration3, "admin_kategori_urunlerini_kaydet");
+test("çoklu kategori tablosu güvenli, geriye uyumlu ve kategoriye özel sıralıdır", () => {
+  assert.match(migration5, /create table if not exists public\.urun_kategorileri[\s\S]*primary key \(kategori_id, urun_id\)/i);
+  assert.match(migration5, /insert into public\.urun_kategorileri[\s\S]*select u\.kategori_id, u\.id, u\.sira/i);
+  assert.match(migration5, /create trigger urun_ana_kategorisini_esle_tetikleyici[\s\S]*after insert or update of kategori_id/i);
+  assert.match(migration5, /alter table public\.urun_kategorileri enable row level security/i);
+  assert.match(migration5, /create policy "menu_herkes_okur" on public\.urun_kategorileri/i);
+  assert.match(migration5, /create policy "menu_admin_yazar" on public\.urun_kategorileri[\s\S]*public\.is_admin\(\)/i);
+  assert.match(sema, /create table if not exists urun_kategorileri[\s\S]*primary key \(kategori_id, urun_id\)/i);
+});
+
+test("kategori içinden çoklu ürün atama RPC'si yetkili ve atomiktir", () => {
+  const govde = fonksiyon(migration5, "admin_kategori_urunlerini_kaydet");
   assert.match(govde, /security definer/i);
   assert.match(govde, /set search_path = public, pg_temp/i);
   assert.match(govde, /auth\.role\(\).*authenticated[\s\S]*public\.is_admin\(\)/i);
-  assert.match(govde, /update public\.kategoriler[\s\S]*update public\.urunler/i);
+  assert.match(govde, /update public\.kategoriler[\s\S]*insert into public\.urun_kategorileri/i);
   assert.match(govde, /p_orijinal_kategori[\s\S]*k\.aciklama_tr is not distinct from p_orijinal_kategori->>'aciklama_tr'/i);
   assert.match(govde, /not \(p_orijinal_kategori \? 'gorsel_url'\)/i);
   assert.match(govde, /v_beklenen not between 0 and 2000/i);
   assert.match(govde, /char_length\(coalesce\(v_aciklama_tr, ''\)\) > 2000/i);
-  assert.match(govde, /onceki_kategori_id[\s\S]*u\.kategori_id = g\.onceki_kategori_id/i);
-  assert.match(govde, /jsonb_typeof\(deger->'kategori_id'\) is distinct from 'string'/i);
-  assert.match(govde, /lock table public\.urunler in share row exclusive mode[\s\S]*perform k\.id[\s\S]*order by k\.id[\s\S]*for key share[\s\S]*update public\.kategoriler/i);
-  assert.match(govde, /v_kilitlenen <> v_kategori_beklenen[\s\S]*errcode = '40001'/i);
-  assert.match(govde, /v_etkilenen <> v_beklenen[\s\S]*errcode = '40001'/i);
+  assert.match(govde, /jsonb_typeof\(deger->'id'\) is distinct from 'string'/i);
+  assert.match(govde, /jsonb_typeof\(deger->'sira'\) is distinct from 'number'/i);
+  assert.match(govde, /lock table public\.urunler, public\.urun_kategorileri in share row exclusive mode/i);
+  assert.match(govde, /Urun en az bir kategoride olmali[\s\S]*errcode = '23503'/i);
+  assert.match(govde, /on conflict \(kategori_id, urun_id\) do update set sira = excluded\.sira/i);
   assert.match(
-    migration3,
+    migration5,
     /revoke all on function public\.admin_kategori_urunlerini_kaydet\(uuid, jsonb, jsonb, jsonb\)[\s\S]*from public, anon, authenticated, service_role/i,
   );
   assert.match(
-    migration3,
+    migration5,
     /grant execute on function public\.admin_kategori_urunlerini_kaydet\(uuid, jsonb, jsonb, jsonb\)[\s\S]*to authenticated/i,
   );
   assert.equal(
@@ -138,14 +150,18 @@ test("ürün kategori yabancı anahtarı doğrudan cascade silmeye izin vermez",
 test("kategori formu ürünleri kategori içinden topluca yönetir", () => {
   const form = oku("src/components/admin/KategoriFormu.tsx");
   assert.match(form, /type="checkbox"/);
-  assert.match(form, /cikarilanUrunIds\.length > 0 && !tasimaKategoriId/);
   assert.match(form, /admin_kategori_urunlerini_kaydet/);
   assert.match(form, /p_orijinal_kategori: kategoriParmakIzi/);
   assert.match(form, /error\.message === "Kategori kaydi guncel degil"[\s\S]*kategoriKaydiDegisti/);
   assert.match(form, /name=\{`kategori-adi-\$\{dilSekmesi\}`\}[\s\S]*maxLength=\{200\}/);
   assert.match(form, /<textarea[\s\S]*name=\{`kategori-aciklama-\$\{dilSekmesi\}`\}[\s\S]*maxLength=\{2000\}/);
-  assert.match(form, /onceki_kategori_id: urun\.kategori_id/);
-  assert.match(form, /kategori_id: simdiSecili \? k\.id! : tasimaKategoriId/);
+  assert.match(form, /kategori_ids: string\[\]/);
+  assert.match(form, /kategori_sira: number \| null/);
+  assert.match(form, /const sonrakiSira = Math\.max\(-1, \.\.\.Object\.values\(urunSiralari\)\) \+ 1/);
+  assert.match(form, /sira: urunSiralari\[id\] \?\? 0/);
+  assert.match(form, /onClick=\{\(\) => urunSirala\(urun\.id, -1\)\}/);
+  assert.match(form, /onClick=\{\(\) => urunSirala\(urun\.id, 1\)\}/);
+  assert.doesNotMatch(form, /tasimaKategoriId/);
   assert.match(form, /admin_kategori_sil/);
   assert.match(form, /nextGorselUrlDogrula\(k\.gorsel_url\)/);
   assert.match(form, /const kategoriAdi = dil === "ar" \? k\.ad_ar \|\| k\.ad_tr : k\.ad_tr \|\| k\.ad_ar/);
@@ -156,21 +172,21 @@ test("kategori formu ürünleri kategori içinden topluca yönetir", () => {
 });
 
 test("kategori silme RPC'si ürün varsa cascade silmeyi engeller", () => {
-  const govde = fonksiyon(migration3, "admin_kategori_sil");
+  const govde = fonksiyon(migration5, "admin_kategori_sil");
   assert.match(govde, /security definer/i);
   assert.match(govde, /set search_path = public, pg_temp/i);
   assert.match(govde, /auth\.role\(\).*authenticated[\s\S]*public\.is_admin\(\)/i);
-  assert.match(govde, /lock table public\.urunler in share row exclusive mode[\s\S]*for update/i);
-  assert.match(govde, /exists \(select 1 from public\.urunler where kategori_id = p_kategori_id\)[\s\S]*errcode = '23503'/i);
+  assert.match(govde, /lock table public\.urunler, public\.urun_kategorileri in share row exclusive mode[\s\S]*for update/i);
+  assert.match(govde, /select 1 from public\.urun_kategorileri where kategori_id = p_kategori_id[\s\S]*errcode = '23503'/i);
   assert.match(govde, /delete from public\.kategoriler where id = p_kategori_id/i);
-  assert.match(migration3, /revoke all on function public\.admin_kategori_sil\(uuid\)[\s\S]*from public, anon, authenticated, service_role/i);
-  assert.match(migration3, /grant execute on function public\.admin_kategori_sil\(uuid\)[\s\S]*to authenticated/i);
+  assert.match(migration5, /revoke all on function public\.admin_kategori_sil\(uuid\)[\s\S]*from public, anon, authenticated, service_role/i);
+  assert.match(migration5, /grant execute on function public\.admin_kategori_sil\(uuid\)[\s\S]*to authenticated/i);
   assert.equal(bosluksuz(fonksiyon(sema, "admin_kategori_sil")), bosluksuz(govde));
 });
 
 test("kategori düzenleme en fazla 2000 ürün yükler ve sınır aşımını bildirir", () => {
   const sayfa = oku("src/app/(admin)/admin/kategori/[id]/page.tsx");
-  assert.match(sayfa, /\.select\("id, kategori_id, ad_tr, ad_ar, aktif, sira", \{ count: "exact" \}\)[\s\S]*\.limit\(2000\)/);
+  assert.match(sayfa, /urun_kategorileri\(kategori_id, sira\)[\s\S]*count: "exact"[\s\S]*\.limit\(2000\)/);
   assert.match(sayfa, /urunListesiSonucu\.count \?\? 0\) > 2000/);
   assert.match(sayfa, /urunListesiSiniraUlasti=\{urunListesiSiniraUlasti\}/);
 });

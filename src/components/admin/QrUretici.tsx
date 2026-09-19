@@ -13,15 +13,17 @@ const QR_BOYUT = 1024;
  * Adres tarayicidan okunur — geliştirme sirasinda localhost, yayinda gercek
  * alan adi cikar. Boylece elle guncelleme gerekmez.
  */
-export default function QrUretici() {
+export default function QrUretici({ masaImzalari }: { masaImzalari: string[] }) {
   const { dil, m } = useAdminDil();
+  const [seciliMasa, setSeciliMasa] = useState(1);
   const [adres, setAdres] = useState("");
   const [pngUrl, setPngUrl] = useState("");
   const [hata, setHata] = useState(false);
 
   useEffect(() => {
-    setAdres(`${window.location.origin}/menu`);
-  }, []);
+    const imza = masaImzalari[seciliMasa - 1];
+    setAdres(imza ? `${window.location.origin}/masa/${seciliMasa}?imza=${imza}` : "");
+  }, [masaImzalari, seciliMasa]);
 
   useEffect(() => {
     if (!adres) return;
@@ -48,13 +50,27 @@ export default function QrUretici() {
 
   return (
     <div className="mx-auto max-w-lg px-4 pb-28">
+      <p className="mt-4 text-sm text-muted">{m("qrMasaSecIpucu")}</p>
+      <div className="mt-3 grid grid-cols-5 gap-2" role="group" aria-label={m("qrMasaSecIpucu")}>
+        {masaImzalari.map((_, i) => (
+          <button
+            key={i + 1}
+            type="button"
+            onClick={() => setSeciliMasa(i + 1)}
+            aria-pressed={seciliMasa === i + 1}
+            className={`min-h-12 rounded-xl border font-bold ${seciliMasa === i + 1 ? "border-brand bg-brand text-white" : "border-line bg-card"}`}
+          >
+            {i + 1}
+          </button>
+        ))}
+      </div>
       <label className="mt-4 flex flex-col gap-1.5">
-        <span className="text-sm text-muted">{m("qrAdres")}</span>
+        <span className="text-sm text-muted">{m("masaNo")} {seciliMasa} · {m("qrAdres")}</span>
         <input
           type="url"
           name="qr-adresi"
           value={adres}
-          onChange={(e) => setAdres(e.target.value)}
+          readOnly
           inputMode="url"
           autoComplete="off"
           spellCheck={false}
@@ -65,6 +81,10 @@ export default function QrUretici() {
       <p className="mt-1 text-xs text-muted">
         {m("qrAdresIpucu")}
       </p>
+
+      {!masaImzalari[seciliMasa - 1] && (
+        <p role="alert" className="mt-3 text-sm text-danger">{m("qrYapilandirmaHatasi")}</p>
+      )}
 
       {hata && (
         <p
@@ -91,7 +111,7 @@ export default function QrUretici() {
 
           <a
             href={pngUrl}
-            download="royal-menu-qr.png"
+            download={`royal-masa-${seciliMasa}-qr.png`}
             className="mt-4 flex min-h-13 items-center justify-center rounded-2xl bg-brand font-bold text-bg transition active:scale-[0.98]"
           >
             {m("pngIndir")}
@@ -102,8 +122,8 @@ export default function QrUretici() {
             onClick={() =>
               yazdir(pngUrl, adres, {
                 dil,
-                baslik: m("qrBaskiBaslik"),
-                menuEtiketi: m("qrMenuEtiketi"),
+                baslik: `${m("qrBaskiBaslik")} — ${m("masaNo")} ${seciliMasa}`,
+                menuEtiketi: `${m("masaNo")} ${seciliMasa}`,
               })
             }
             className="mt-3 flex min-h-13 w-full items-center justify-center rounded-2xl border border-brand/50 font-semibold text-brand-light transition active:scale-[0.98]"

@@ -55,6 +55,15 @@ export default async function UrunDuzenleSayfasi({
     .order("sira", { ascending: true });
 
   const kategoriListesi = kategoriler ?? [];
+  const { data: ekstraAdaylari } = await db
+    .from("urunler")
+    .select("id, ad_tr, ad_ar, fiyat_paket, aktif, stokta")
+    .eq("aktif", true)
+    .order("ad_tr", { ascending: true });
+  const secilebilirUrunler = (ekstraAdaylari ?? []).map((urun) => ({
+    ...urun,
+    fiyat_paket: Number(urun.fiyat_paket),
+  }));
 
   if (id === "yeni") {
     return (
@@ -63,6 +72,7 @@ export default async function UrunDuzenleSayfasi({
         <UrunFormu
           baslangic={bosUrun(kategoriListesi[0]?.id ?? "")}
           kategoriler={kategoriListesi}
+          ekstraAdaylari={secilebilirUrunler}
         />
       </main>
     );
@@ -120,7 +130,7 @@ export default async function UrunDuzenleSayfasi({
   return (
     <main id="admin-ana-icerik" className="min-h-dvh">
         <AdminUstBar baslikTr={data.ad_tr} baslikAr={data.ad_ar} geriLinki="/admin" />
-      <UrunFormu baslangic={baslangic} kategoriler={kategoriListesi} />
+      <UrunFormu baslangic={baslangic} kategoriler={kategoriListesi} ekstraAdaylari={secilebilirUrunler} />
     </main>
   );
 }

@@ -166,7 +166,11 @@ boş kalır.
    ile `Tavuk` kategorilerini Türkçe/Arapça içerikleriyle ekler. Kategori veya
    ürün zaten varsa üzerine yazmaz; slug ile Türkçe/Arapça ad kontrolleri
    sayesinde tekrar çalıştırıldığında kopya oluşturmaz.
-9. RPC ve Storage sınırlarını doğrula:
+9. Bir ürünü birden fazla kategoriye eklemek ve her kategoride ayrı sırada
+   göstermek için
+   `supabase/migrations/202609160001_multi_category_product_order.sql`
+   dosyasını çalıştır. Mevcut ürünlerin kategori bağları otomatik korunur.
+10. RPC ve Storage sınırlarını doğrula:
 
    ```sql
    select proname
@@ -193,7 +197,7 @@ boş kalır.
    `image/webp` görülmelidir. `admin_*` RPC'leri yalnız allowlist adminlerinin
    oturum rolüne; `bakim_*` RPC'leri yalnız gizli `service_role` anahtarına
    açıktır.
-10. Yeni uygulama kodunu deploy et. Admin hesabıyla bir ürün kaydı, bir toplu
+11. Yeni uygulama kodunu deploy et. Admin hesabıyla bir ürün kaydı, bir toplu
    fiyat güncellemesi ve kategori sıra değişimini; ardından bir masa ve bir
    paket siparişini prova et.
 
@@ -206,7 +210,7 @@ Migration uygulanmadan yeni kod siparişleri güvenli biçimde durdurur; eski ko
 yeni politikalarla çalıştırmak ise anon insert kapandığı için sipariş alamaz.
 İkinci migration uygulanmadan yeni admin kodundaki RPC çağrıları da bulunamaz.
 Bu nedenle sıra kesin olarak **180001 → admin allowlist kontrolü → 180002 →
-280001 → 202609110001 → 202609110002 → uygulama deploy'u** olmalıdır; bu
+280001 → 202609110001 → 202609110002 → 202609160001 → uygulama deploy'u** olmalıdır; bu
 aralıkta checkout bilerek bakımda sayılır. Eski emoji kolonlarına ihtiyaç duyan
 bir kurulumda geriye dönük `202608270001` dosyasını `202608280001`den önce
 çalıştır.

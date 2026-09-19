@@ -12,7 +12,7 @@ export default async function KategorilerSayfasi() {
 
   const { data, error } = await db
     .from("kategoriler")
-    .select("id, slug, sira, ad_tr, ad_ar, gorsel_url, aktif, urunler(id)")
+    .select("id, slug, sira, ad_tr, ad_ar, gorsel_url, aktif, urun_kategorileri(urun_id)")
     .order("sira", { ascending: true });
 
   if (error) {
@@ -34,7 +34,7 @@ export default async function KategorilerSayfasi() {
       ad_ar: k.ad_ar,
       gorsel_url: k.gorsel_url,
       aktif: k.aktif,
-      urunSayisi: (k.urunler ?? []).length,
+      urunSayisi: (k.urun_kategorileri ?? []).length,
     }),
   );
 

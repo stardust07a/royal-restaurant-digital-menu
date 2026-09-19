@@ -7,6 +7,8 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 const production = process.env.NODE_ENV === "production";
 
 const nextConfig: NextConfig = {
+  // Calisan gelistirme sunucusunun .next dosyalarina dokunmadan dogrulama derlemesi.
+  ...(process.env.NEXT_DIST_DIR ? { distDir: process.env.NEXT_DIST_DIR } : {}),
   poweredByHeader: false,
   async headers() {
     return [{ source: "/:path*", headers: guvenlikBasliklariniOlustur(production) }];

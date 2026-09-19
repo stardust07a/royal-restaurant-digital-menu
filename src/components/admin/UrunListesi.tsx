@@ -99,7 +99,8 @@ export default function UrunListesi({
     await menuyuTazele();
   }
 
-  const toplamUrun = kategoriler.reduce((t, k) => t + k.urunler.length, 0);
+  // Ayni urun birden cok kategoride olabilir; sayac tekil urunleri gostersin.
+  const toplamUrun = new Set(kategoriler.flatMap((k) => k.urunler.map((u) => u.id))).size;
   const tukenenSayisi = Object.values(stoklar).filter((v) => !v).length;
 
   return (

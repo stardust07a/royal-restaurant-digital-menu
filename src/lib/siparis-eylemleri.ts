@@ -5,6 +5,7 @@ import { headers } from "next/headers";
 import { acikMi } from "./ayarlar";
 import { kurus, fiyatYaz } from "./sabitler";
 import { siparisMetniNormalize, telefonGecerliMi, telefonNormalize } from "./telefon";
+import { masaOturumuGetir } from "./masa-erisim";
 import { katiSiparisAyarlari } from "./siparis-ayar-dogrulama";
 import { siparisHizCagiranAnahtari } from "./siparis-hiz-kaynagi";
 import {
@@ -247,9 +248,13 @@ export async function siparisOlustur(girdi: SiparisGirdisi): Promise<SiparisSonu
   let telefon = "";
   let masaNo = "";
   if (masaSiparisi) {
-    if (typeof girdi.masaNo !== "string") return { durum: "hata", kod: "masa_no_gecersiz" };
-    masaNo = siparisMetniNormalize(girdi.masaNo);
-    if (!masaNo || masaNo.length > 10) return { durum: "hata", kod: "masa_no_gecersiz" };
+    // Istemciden gonderilen masa numarasina guvenilmez; yalniz imzali QR
+    // oturumunun bagladigi masa siparise yazilir.
+    const qrMasaNo = await masaOturumuGetir();
+    if (!qrMasaNo || girdi.masaNo !== qrMasaNo) {
+      return { durum: "hata", kod: "masa_no_gecersiz" };
+    }
+    masaNo = qrMasaNo;
   } else {
     if (typeof girdi.musteriAd !== "string" || typeof girdi.musteriTelefon !== "string") {
       return { durum: "hata", kod: "gecersiz_istek" };

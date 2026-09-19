@@ -26,14 +26,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     ...girdiler("/", 1, "weekly"),
-    ...girdiler("/menu", 0.9, "daily"),
     ...girdiler("/siparis", 0.9, "daily"),
     ...kategoriler.flatMap((kategori) => [
-      ...girdiler(`/menu/${kategori.slug}`, 0.8, "daily"),
       ...girdiler(`/siparis/${kategori.slug}`, 0.8, "daily"),
     ]),
     ...urunSluglari.flatMap((slug) => [
-      ...girdiler(`/menu/urun/${slug}`, 0.7, "daily"),
       ...girdiler(`/siparis/urun/${slug}`, 0.7, "daily"),
     ]),
   ];

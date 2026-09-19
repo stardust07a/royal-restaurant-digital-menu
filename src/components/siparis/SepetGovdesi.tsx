@@ -30,6 +30,7 @@ export default function SepetGovdesi({
   minimumSiparis,
   acik,
   tur = "paket",
+  masaNo = "",
   temelYol = "/siparis",
   saltOkunur = false,
   whatsappNumarasi,
@@ -40,6 +41,8 @@ export default function SepetGovdesi({
   acik: boolean;
   /** Masa siparisinde teslimat ucreti ve minimum yok; ad/telefon yerine masa no */
   tur?: "masa" | "paket";
+  /** QR oturumundan gelen, misafirin degistiremedigi masa numarasi. */
+  masaNo?: string;
   temelYol?: string;
   saltOkunur?: boolean;
   whatsappNumarasi?: string | null;
@@ -56,7 +59,6 @@ export default function SepetGovdesi({
 
   const [baglandi, setBaglandi] = useState(false);
   const masaSiparisi = tur === "masa";
-  const [masaNo, setMasaNo] = useState("");
   const [musteriAd, setMusteriAd] = useState("");
   const [telefon, setTelefon] = useState("");
   const [telefonDokunuldu, setTelefonDokunuldu] = useState(false);
@@ -360,24 +362,15 @@ export default function SepetGovdesi({
 
       {/* ---------- MUSTERI BILGISI ----------
           Masa siparisinde ad, telefon ve adres alinmaz: misafir zaten
-          restoranda. Yalnizca hangi masada oturdugu sorulur. */}
+          restoranda. Masa numarasi QR oturumundan okunur. */}
       {masaSiparisi ? (
         <section className="mt-6">
-          <label className="flex flex-col gap-1.5">
+          <div className="flex flex-col gap-1.5">
             <span className="text-sm text-muted">{t("siparis.masaNo")}</span>
-            <input
-              type="text"
-              name="masa-no"
-              inputMode="numeric"
-              value={masaNo}
-              onChange={(e) => setMasaNo(e.target.value)}
-              placeholder={t("siparis.masaNoYerTutucu")}
-              maxLength={10}
-              autoComplete="off"
-              spellCheck={false}
-              className="fiyat min-h-15 w-full rounded-2xl border border-line bg-card px-4 text-center text-2xl font-bold text-ink shadow-sm transition-colors duration-200 hover:border-brand focus:border-brand"
-            />
-          </label>
+            <span className="fiyat flex min-h-15 items-center justify-center rounded-2xl border border-line bg-card px-4 text-2xl font-bold text-ink shadow-sm">
+              {masaNo}
+            </span>
+          </div>
         </section>
       ) : (
       <section className="mt-6 flex flex-col gap-3">

@@ -74,7 +74,9 @@ export default async function AnaSayfa({
   const saltOkunur = menuSonucu.kaynak === "yerel";
   const acik = acikMi(ayarlar);
   const adi = restoranAdi(ayarlar, locale);
-  const tumUrunler = kategoriler.flatMap((k) => k.urunler);
+  const tumUrunler = [
+    ...new Map(kategoriler.flatMap((k) => k.urunler).map((u) => [u.id, u])).values(),
+  ];
 
   // Öne çıkanlar: cok satan rozetli urunler
   const oneCikanlar: Urun[] = tumUrunler
@@ -87,7 +89,7 @@ export default async function AnaSayfa({
   ] as string[];
 
   const kapakGorseli = fotograflar[0] ?? null;
-  const menuKapaklari = [fotograflar[1], fotograflar[2]];
+  const menuKapaklari = [fotograflar[1]];
   const galeri = fotograflar.slice(3, 9);
 
   const adres = dil === "ar" ? ayarlar.adres_ar : ayarlar.adres_tr;
@@ -127,7 +129,7 @@ export default async function AnaSayfa({
   );
 
   const restoranKimligi = `${SITE_ORIGIN}/#restaurant`;
-  const menuKimligi = `${yerelUrl(dil, "/menu")}#menu`;
+  const menuKimligi = `${yerelUrl(dil, "/siparis")}#menu`;
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -155,7 +157,7 @@ export default async function AnaSayfa({
         "@type": "Menu",
         "@id": menuKimligi,
         name: t("menu.baslik"),
-        url: yerelUrl(dil, "/menu"),
+        url: yerelUrl(dil, "/siparis"),
         inLanguage: dil === "ar" ? "ar" : "tr",
         hasMenuSection: kategoriler.map((kategori) => ({
           "@type": "MenuSection",
@@ -166,7 +168,7 @@ export default async function AnaSayfa({
           hasMenuItem: kategori.urunler.map((urun) => ({
             "@type": "MenuItem",
             name: ad(urun, dil),
-            url: yerelUrl(dil, `/menu/urun/${urun.slug}`),
+            url: yerelUrl(dil, `/siparis/urun/${urun.slug}`),
             ...((dil === "ar" ? urun.aciklama_ar : urun.aciklama_tr)
               ? {
                   description:
@@ -178,7 +180,7 @@ export default async function AnaSayfa({
               : {}),
             offers: {
               "@type": "Offer",
-              price: urun.fiyat_masa,
+              price: urun.fiyat_paket,
               priceCurrency: "TRY",
               availability: urun.stokta
                 ? "https://schema.org/InStock"
@@ -270,17 +272,10 @@ export default async function AnaSayfa({
             </p>
           </div>
 
-          <div className="hero-eylem-gir mt-8 grid w-full max-w-md gap-3 sm:grid-cols-2">
-          <Link
-            href="/menu"
-            className="flex min-h-15 items-center justify-center gap-2 rounded-2xl bg-accent px-5 text-base font-extrabold text-white shadow-[0_14px_34px_rgba(0,0,0,.25)] transition-[background-color,transform] duration-200 hover:bg-[#b17c0b] active:scale-[0.98]"
-          >
-            {t("anasayfa.masaMenusu")}
-            <span aria-hidden className="rtl:-scale-x-100">→</span>
-          </Link>
+          <div className="hero-eylem-gir mt-8 w-full max-w-md">
           <Link
             href="/siparis"
-            className="cam-yuzey flex min-h-15 items-center justify-center gap-2 rounded-2xl px-5 text-base font-extrabold text-white transition-[background-color,transform] duration-200 hover:bg-white/20 active:scale-[0.98]"
+            className="flex min-h-15 items-center justify-center gap-2 rounded-2xl bg-accent px-5 text-base font-extrabold text-white shadow-[0_14px_34px_rgba(0,0,0,.25)] transition-[background-color,transform] duration-200 hover:bg-[#b17c0b] active:scale-[0.98]"
           >
             {t("anasayfa.paketSiparis")}
             <span aria-hidden className="rtl:-scale-x-100">→</span>
@@ -312,21 +307,14 @@ export default async function AnaSayfa({
           <h2 className="mt-2 max-w-xl text-3xl leading-tight font-black sm:text-4xl">
             {t("anasayfa.menulerBaslik")}
           </h2>
-          <ul className="mt-8 grid gap-5 sm:grid-cols-2">
+          <ul className="mt-8 grid gap-5">
             {[
-              {
-                href: "/menu" as const,
-                baslik: t("anasayfa.masaMenusu"),
-                metin: t("anasayfa.masaMenusuAciklama"),
-                eylem: t("anasayfa.masaMenusunuAc"),
-                gorsel: menuKapaklari[0],
-              },
               {
                 href: "/siparis" as const,
                 baslik: t("anasayfa.paketSiparis"),
                 metin: t("anasayfa.paketSiparisAciklama"),
                 eylem: t("anasayfa.paketMenusunuAc"),
-                gorsel: menuKapaklari[1],
+                gorsel: menuKapaklari[0],
               },
             ].map((k) => (
               <li key={k.href} className="flex min-w-0">
@@ -346,7 +334,7 @@ export default async function AnaSayfa({
                     )}
                     <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-ink/45 via-transparent to-transparent" />
                     <span className="absolute bottom-3 start-3 rounded-full bg-white/92 px-3 py-1 text-xs font-bold text-ink shadow-sm">
-                      {k.href === "/menu" ? "🍽️" : "🛵"}
+                      🛵
                     </span>
                   </div>
                   <div className="flex min-w-0 flex-1 flex-col p-5">
@@ -582,12 +570,6 @@ export default async function AnaSayfa({
         <p className="etiket text-accent">{adi}</p>
         {/* min-h-11: dokunma hedefi 44px altina dusmesin */}
         <div className="mt-2 flex justify-center gap-2">
-          <Link
-            href="/menu"
-            className="flex min-h-11 items-center px-3 text-sm text-white/75 underline underline-offset-4 transition-colors duration-200 hover:text-white"
-          >
-            {t("anasayfa.masaMenusu")}
-          </Link>
           <Link
             href="/siparis"
             className="flex min-h-11 items-center px-3 text-sm text-white/75 underline underline-offset-4 transition-colors duration-200 hover:text-white"

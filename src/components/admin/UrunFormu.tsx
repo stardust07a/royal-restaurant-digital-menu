@@ -42,7 +42,15 @@ export interface FormSecenek {
 }
 
 export interface FormEkstra extends FormSecenek {
-  fiyat: number;
+  fiyat: number | "";
+  stokta: boolean;
+}
+
+interface EkstraAdayi {
+  id: string;
+  ad_tr: string;
+  ad_ar: string;
+  fiyat_paket: number;
   stokta: boolean;
 }
 
@@ -72,13 +80,17 @@ export interface FormUrun {
 export default function UrunFormu({
   baslangic,
   kategoriler,
+  ekstraAdaylari = [],
 }: {
   baslangic: FormUrun;
   kategoriler: { id: string; ad_tr: string; ad_ar: string }[];
+  ekstraAdaylari?: EkstraAdayi[];
 }) {
   const { m, dil } = useAdminDil();
   const router = useRouter();
   const [u, setU] = useState<FormUrun>(baslangic);
+  const [masaFiyatGirdisi, setMasaFiyatGirdisi] = useState(String(baslangic.fiyat_masa));
+  const [paketFiyatGirdisi, setPaketFiyatGirdisi] = useState(String(baslangic.fiyat_paket));
   const [dilSekmesi, setDilSekmesi] = useState<"tr" | "ar">("tr");
   const [kaydediliyor, setKaydediliyor] = useState(false);
   const [hata, setHata] = useState<string | null>(null);
@@ -97,7 +109,7 @@ export default function UrunFormu({
   useEffect(() => {
     setGorselHatali(false);
   }, [guvenliGorselUrl]);
-  const formImzasi = JSON.stringify(u);
+  const formImzasi = JSON.stringify({ u, masaFiyatGirdisi, paketFiyatGirdisi });
   const { kaydedildi } = useKaydedilmemisDegisiklik(
     formImzasi,
     m("kaydedilmemisUyari"),
@@ -107,6 +119,15 @@ export default function UrunFormu({
 
   function guncelle<K extends keyof FormUrun>(alan: K, deger: FormUrun[K]) {
     setU((o) => ({ ...o, [alan]: deger }));
+  }
+
+  function fiyatGirdisiDegisti(alan: "fiyat_masa" | "fiyat_paket", ham: string) {
+    const metin = /^0\d+$/.test(ham) ? String(Number(ham)) : ham;
+    if (alan === "fiyat_masa") setMasaFiyatGirdisi(metin);
+    else setPaketFiyatGirdisi(metin);
+    if (metin !== "" && Number.isFinite(Number(metin))) {
+      guncelle(alan, Number(metin));
+    }
   }
 
   /** Masa ve paket fiyati arasindaki yuzde fark — yanlis giris yakalanir. */
@@ -180,8 +201,12 @@ export default function UrunFormu({
     if (!u.ad_ar.trim()) return setHata(m("adArZorunlu"));
     if (!u.kategori_id) return setHata(m("kategoriSecilmeli"));
     if (!u.slug.trim()) return setHata(m("slugZorunlu"));
+    if (!masaFiyatGirdisi.trim() || !paketFiyatGirdisi.trim())
+      return setHata(m("fiyatZorunlu"));
     if (u.fiyat_masa < 0 || u.fiyat_paket < 0)
       return setHata(m("fiyatNegatif"));
+    if (u.ekstralar.some((ekstra) => ekstra.ad_tr.trim() && ekstra.fiyat === ""))
+      return setHata(m("fiyatZorunlu"));
 
     const kaydedilenImza = formImzasi;
     setKaydediliyor(true);
@@ -221,7 +246,7 @@ export default function UrunFormu({
         id: e.id ?? null,
         ad_tr: e.ad_tr.trim(),
         ad_ar: e.ad_ar.trim() || e.ad_tr.trim(),
-        fiyat: kurus(e.fiyat),
+        fiyat: kurus(Number(e.fiyat)),
         stokta: e.stokta,
       }));
 
@@ -409,8 +434,8 @@ export default function UrunFormu({
               inputMode="decimal"
               min={0}
               step="0.01"
-              value={u.fiyat_masa}
-              onChange={(e) => guncelle("fiyat_masa", Number(e.target.value))}
+              value={masaFiyatGirdisi}
+              onChange={(e) => fiyatGirdisiDegisti("fiyat_masa", e.target.value)}
               className={metinKutusu}
             />
           </label>
@@ -423,8 +448,8 @@ export default function UrunFormu({
               inputMode="decimal"
               min={0}
               step="0.01"
-              value={u.fiyat_paket}
-              onChange={(e) => guncelle("fiyat_paket", Number(e.target.value))}
+              value={paketFiyatGirdisi}
+              onChange={(e) => fiyatGirdisiDegisti("fiyat_paket", e.target.value)}
               className={metinKutusu}
             />
           </label>
@@ -622,8 +647,9 @@ export default function UrunFormu({
         ipucu={m("ucretli")}
         satirlar={u.ekstralar}
         degistir={(s) => guncelle("ekstralar", s as FormEkstra[])}
-        bosSatir={{ ad_tr: "", ad_ar: "", fiyat: 0, stokta: true }}
+        bosSatir={{ ad_tr: "", ad_ar: "", fiyat: "", stokta: true }}
         fiyatli
+        urunAdaylari={ekstraAdaylari.filter((aday) => aday.id !== u.id)}
       />
 
       {hata && (
@@ -703,6 +729,7 @@ function SatirDuzenleyici({
   degistir,
   bosSatir,
   fiyatli = false,
+  urunAdaylari = [],
 }: {
   baslik: string;
   ipucu: string;
@@ -710,6 +737,7 @@ function SatirDuzenleyici({
   degistir: (s: FormSecenek[]) => void;
   bosSatir: FormSecenek | FormEkstra;
   fiyatli?: boolean;
+  urunAdaylari?: EkstraAdayi[];
 }) {
   const { m, dil } = useAdminDil();
 
@@ -735,6 +763,35 @@ function SatirDuzenleyici({
         </h2>
         <span className="text-xs text-muted">({ipucu})</span>
       </div>
+
+      {fiyatli && urunAdaylari.length > 0 && (
+        <label className="mt-3 block">
+          <span className="block text-sm text-muted">{m("ekstraUrunSec")}</span>
+          <select
+            value=""
+            onChange={(e) => {
+              const secilen = urunAdaylari.find((aday) => aday.id === e.target.value);
+              if (!secilen) return;
+              const yeniEkstra: FormEkstra = {
+                ad_tr: secilen.ad_tr,
+                ad_ar: secilen.ad_ar,
+                fiyat: secilen.fiyat_paket,
+                stokta: secilen.stokta,
+              };
+              degistir([...satirlar, yeniEkstra]);
+            }}
+            className="mt-1 min-h-12 w-full rounded-2xl border border-line bg-card px-3 text-base"
+          >
+            <option value="">{m("ekstraUrunSec")}</option>
+            {urunAdaylari.map((aday) => (
+              <option key={aday.id} value={aday.id}>
+                {dil === "ar" ? aday.ad_ar || aday.ad_tr : aday.ad_tr || aday.ad_ar}
+              </option>
+            ))}
+          </select>
+          <span className="mt-1 block text-xs text-muted">{m("ekstraUrunKopyaIpucu")}</span>
+        </label>
+      )}
 
       <ul className="mt-3 flex flex-col gap-2">
         {satirlar.map((s, i) => (
@@ -776,7 +833,7 @@ function SatirDuzenleyici({
                   step="0.01"
                   value={(s as FormEkstra).fiyat}
                   onChange={(e) =>
-                    satirGuncelle(i, "fiyat", Number(e.target.value))
+                    satirGuncelle(i, "fiyat", e.target.value === "" ? "" : Number(e.target.value))
                   }
                   placeholder={m("fiyat")}
                   className="fiyat min-h-11 w-28 rounded-xl border border-line bg-bg px-3 text-sm focus:border-brand"

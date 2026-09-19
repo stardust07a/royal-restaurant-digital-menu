@@ -36,7 +36,7 @@ export async function generateMetadata({
       (urun && aciklama(urun, dil)) || t("anasayfa.masaMenusuAciklama"),
     siteAdi: t("anasayfa.ustBaslik"),
     gorsel: urun?.gorsel_url,
-    indeksle: Boolean(urun),
+    indeksle: false,
   });
 }
 

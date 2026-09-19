@@ -5,6 +5,30 @@ import { routing } from "./i18n/routing";
 
 const intlMiddleware = createMiddleware(routing);
 
+/** Statik uretilen menu sayfalari dahil her istekte masa oturumunu dogrula. */
+async function masaOturumuGecerli(request: NextRequest): Promise<boolean> {
+  const deger = request.cookies.get("royal_masa_oturumu")?.value ?? "";
+  const eslesme = /^v1\.(\d{1,2})\.(\d{10})\.([0-9a-f]{64})$/.exec(deger);
+  if (!eslesme || !/^(?:[1-9]|1[0-5])$/.test(eslesme[1])) return false;
+  if (Number(eslesme[2]) <= Math.floor(Date.now() / 1000)) return false;
+  const sir = process.env.MASA_QR_SECRET || process.env.SIPARIS_MAKBUZ_SECRET;
+  if (!sir) return false;
+  const anahtar = await crypto.subtle.importKey(
+    "raw",
+    new TextEncoder().encode(sir),
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    ["sign"],
+  );
+  const imza = await crypto.subtle.sign(
+    "HMAC",
+    anahtar,
+    new TextEncoder().encode(`royal-masa-oturum:v1.${eslesme[1]}.${eslesme[2]}`),
+  );
+  const beklenen = Array.from(new Uint8Array(imza), (b) => b.toString(16).padStart(2, "0")).join("");
+  return beklenen === eslesme[3];
+}
+
 /**
  * Admin panelini korur ve Supabase oturumunu tazeler.
  *
@@ -63,8 +87,15 @@ async function adminKorumasi(request: NextRequest) {
 }
 
 export default async function middleware(request: NextRequest) {
+  const menuEslesmesi = /^\/(tr|ar)\/menu(?:\/|$)/.exec(request.nextUrl.pathname);
+  if (menuEslesmesi && !(await masaOturumuGecerli(request))) {
+    return NextResponse.redirect(new URL(`/${menuEslesmesi[1]}`, request.url));
+  }
   if (request.nextUrl.pathname.startsWith("/admin")) {
     return adminKorumasi(request);
+  }
+  if (request.nextUrl.pathname.startsWith("/masa/")) {
+    return NextResponse.next();
   }
   return intlMiddleware(request);
 }

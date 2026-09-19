@@ -25,12 +25,13 @@ export async function generateMetadata({
     baslik: t("menu.baslik"),
     aciklama: t("anasayfa.masaMenusuAciklama"),
     siteAdi: t("anasayfa.ustBaslik"),
+    indeksle: false,
   });
 }
 
 /**
  * Masa QR menusu — kategori secimi ve masa siparisi girisi.
- * Misafir urunleri sepetine ekler, son adimda masa numarasini yazar.
+ * Misafir urunleri sepetine ekler; masa numarasi QR oturumundan gelir.
  */
 export default async function MenuSayfasi({
   params,

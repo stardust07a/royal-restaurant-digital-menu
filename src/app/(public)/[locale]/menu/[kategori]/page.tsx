@@ -41,7 +41,7 @@ export async function generateMetadata({
     aciklama: aciklamaMetni,
     siteAdi: t("anasayfa.ustBaslik"),
     gorsel: secili?.gorsel_url ?? secili?.urunler[0]?.gorsel_url,
-    indeksle: Boolean(secili),
+    indeksle: false,
   });
 }
 
