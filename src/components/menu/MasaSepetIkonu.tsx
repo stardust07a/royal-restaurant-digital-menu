@@ -43,8 +43,8 @@ export default function MasaSepetIkonu() {
       </svg>
 
       {adet > 0 && (
-        <span className="fiyat absolute -top-1 -end-1 flex h-5 min-w-5 items-center justify-center rounded-full border-2 border-bg bg-brand px-1 text-[0.68rem] font-black text-white shadow-sm">
-          {adet}
+        <span className="absolute -top-1 -end-1 grid h-5 min-w-5 place-items-center rounded-full border-2 border-bg bg-brand px-1 text-[0.68rem] font-black text-white shadow-sm">
+          <span className="fiyat">{adet}</span>
         </span>
       )}
     </Link>

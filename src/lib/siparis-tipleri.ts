@@ -19,7 +19,6 @@ export interface SiparisGirdisi {
   /** Masa siparisinde zorunlu, pakette bos */
   masaNo?: string;
   /** Masa siparisinde alinmaz */
-  musteriAd: string;
   musteriTelefon: string;
   kalemler: {
     urunId: string;

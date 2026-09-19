@@ -27,8 +27,6 @@ import type {
   OnaylanmisKalem,
 } from "./siparis-tipleri";
 
-const AD_EN_AZ = 2;
-const AD_EN_COK = 60;
 const NOT_EN_COK = 200;
 const ADET_EN_COK = 99;
 const KALEM_EN_COK = 30;
@@ -256,11 +254,12 @@ export async function siparisOlustur(girdi: SiparisGirdisi): Promise<SiparisSonu
     }
     masaNo = qrMasaNo;
   } else {
-    if (typeof girdi.musteriAd !== "string" || typeof girdi.musteriTelefon !== "string") {
+    if (typeof girdi.musteriTelefon !== "string") {
       return { durum: "hata", kod: "gecersiz_istek" };
     }
-    ad = siparisMetniNormalize(girdi.musteriAd);
-    if (ad.length < AD_EN_AZ || ad.length > AD_EN_COK) return { durum: "hata", kod: "ad_gecersiz" };
+    // Siparis kaydi eski DB sozlesmesi geregi bos ad kabul etmiyor.
+    // Musteriden ad istenmez; veritabaninda gercek kisi adi olmayan etiket tutulur.
+    ad = girdi.dil === "ar" ? "طلب خارجي" : "Paket Sipariş";
     const guvenliTelefon = siparisMetniNormalize(girdi.musteriTelefon);
     if (!telefonGecerliMi(guvenliTelefon)) return { durum: "hata", kod: "telefon_gecersiz" };
     telefon = telefonNormalize(guvenliTelefon);

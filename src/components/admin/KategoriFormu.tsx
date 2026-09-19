@@ -11,6 +11,7 @@ import { nextGorselUrlDogrula } from "@/lib/guvenli-url";
 import FotografKirpma from "./FotografKirpma";
 import { useAdminDil } from "@/lib/admin-dil";
 import { useKaydedilmemisDegisiklik } from "@/lib/kaydedilmemis-degisiklik";
+import { slugla } from "@/lib/slug";
 
 export interface FormKategori {
   id: string | null;
@@ -56,19 +57,6 @@ export interface FormKategoriParmakIzi {
   aktif: boolean;
 }
 
-/** Turkce karakterleri sadelestirip slug uretir. */
-function slugla(ham: string): string {
-  const harita: Record<string, string> = {
-    ç: "c", ğ: "g", ı: "i", ö: "o", ş: "s", ü: "u",
-    Ç: "c", Ğ: "g", İ: "i", Ö: "o", Ş: "s", Ü: "u",
-  };
-  return ham
-    .replace(/[çğıöşüÇĞİÖŞÜ]/g, (h) => harita[h] ?? h)
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-}
-
 export default function KategoriFormu({
   baslangic,
   kategoriler = [],
@@ -92,6 +80,12 @@ export default function KategoriFormu({
   const [kirpilacak, setKirpilacak] = useState<string | null>(null);
   const [yukleniyor, setYukleniyor] = useState(false);
   const [urunAramasi, setUrunAramasi] = useState("");
+  const [slugElleDegisti, setSlugElleDegisti] = useState(false);
+  const [suruklenenId, setSuruklenenId] = useState<string | null>(null);
+  const urunListesiRef = useRef<HTMLUListElement>(null);
+  const suruklenenRef = useRef<string | null>(null);
+  const isaretciRef = useRef({ x: 0, y: 0 });
+  const kaydirmaRef = useRef<number | null>(null);
   const baslangicUrunIds = useMemo(
     () => urunler
       .filter((urun) => urun.kategori_sira !== null)
@@ -111,6 +105,10 @@ export default function KategoriFormu({
   const [urunSiralari, setUrunSiralari] = useState<Record<string, number>>(
     baslangicUrunSiralari,
   );
+  const seciliUrunIdsRef = useRef(seciliUrunIds);
+  const urunSiralariRef = useRef(urunSiralari);
+  seciliUrunIdsRef.current = seciliUrunIds;
+  urunSiralariRef.current = urunSiralari;
   const dosyaSecici = useRef<HTMLInputElement>(null);
   const fotografDugmesi = useRef<HTMLButtonElement>(null);
   // Dosya secimi, kirpma ve yukleme tek bir islem olsun. State bir render
@@ -199,9 +197,72 @@ export default function KategoriFormu({
     const hedef = simdiki + yon;
     if (simdiki < 0 || hedef < 0 || hedef >= sirali.length) return;
     [sirali[simdiki], sirali[hedef]] = [sirali[hedef], sirali[simdiki]];
-    setSeciliUrunIds(sirali);
-    setUrunSiralari(Object.fromEntries(sirali.map((id, i) => [id, i])));
+    sirayiUygula(sirali);
   }
+
+  function sirayiUygula(ids: string[]) {
+    const siralar = Object.fromEntries(ids.map((id, i) => [id, i]));
+    seciliUrunIdsRef.current = ids;
+    urunSiralariRef.current = siralar;
+    setSeciliUrunIds(ids);
+    setUrunSiralari(siralar);
+  }
+
+  function surukHedefiniGuncelle() {
+    const kaynakId = suruklenenRef.current;
+    const liste = urunListesiRef.current;
+    if (!kaynakId || !liste) return;
+    const { x, y } = isaretciRef.current;
+    const hedef = document.elementFromPoint(x, y)?.closest<HTMLElement>("[data-kategori-urun-id]") ?? null;
+    const hedefId = liste.contains(hedef) ? hedef?.dataset.kategoriUrunId : undefined;
+    const sirali = [...seciliUrunIdsRef.current].sort(
+      (a, b) => (urunSiralariRef.current[a] ?? 0) - (urunSiralariRef.current[b] ?? 0),
+    );
+    const eski = sirali.indexOf(kaynakId);
+    const yeni = hedefId ? sirali.indexOf(hedefId) : -1;
+    if (eski < 0 || yeni < 0 || eski === yeni) return;
+    sirali.splice(eski, 1);
+    sirali.splice(yeni, 0, kaynakId);
+    sirayiUygula(sirali);
+  }
+
+  function kaydirarakSurukle() {
+    const liste = urunListesiRef.current;
+    if (!suruklenenRef.current || !liste) return;
+    const sinir = liste.getBoundingClientRect();
+    const y = isaretciRef.current.y;
+    if (y < sinir.top + 48 && y >= sinir.top - 16) liste.scrollTop -= 12;
+    if (y > sinir.bottom - 48 && y <= sinir.bottom + 16) liste.scrollTop += 12;
+    surukHedefiniGuncelle();
+    kaydirmaRef.current = requestAnimationFrame(kaydirarakSurukle);
+  }
+
+  function surukBaslat(olay: React.PointerEvent<HTMLButtonElement>, urunId: string) {
+    if (olay.pointerType === "mouse" && olay.button !== 0) return;
+    olay.preventDefault();
+    olay.currentTarget.setPointerCapture(olay.pointerId);
+    suruklenenRef.current = urunId;
+    isaretciRef.current = { x: olay.clientX, y: olay.clientY };
+    setSuruklenenId(urunId);
+    kaydirmaRef.current = requestAnimationFrame(kaydirarakSurukle);
+  }
+
+  function surukTasi(olay: React.PointerEvent<HTMLButtonElement>) {
+    if (!suruklenenRef.current) return;
+    isaretciRef.current = { x: olay.clientX, y: olay.clientY };
+    surukHedefiniGuncelle();
+  }
+
+  function surukBitir() {
+    suruklenenRef.current = null;
+    setSuruklenenId(null);
+    if (kaydirmaRef.current !== null) cancelAnimationFrame(kaydirmaRef.current);
+    kaydirmaRef.current = null;
+  }
+
+  useEffect(() => () => {
+    if (kaydirmaRef.current !== null) cancelAnimationFrame(kaydirmaRef.current);
+  }, []);
 
   function guncelle<T extends keyof FormKategori>(
     alan: T,
@@ -215,7 +276,7 @@ export default function KategoriFormu({
     setK((o) => ({
       ...o,
       ad_tr: deger,
-      slug: yeniKayit ? slugla(deger) : o.slug,
+      slug: yeniKayit && !slugElleDegisti ? slugla(deger) : o.slug,
     }));
   }
 
@@ -494,8 +555,8 @@ export default function KategoriFormu({
       </section>
 
       {/* ---------- DETAY ---------- */}
-      <section className="mt-6 flex gap-3">
-        <label className="flex flex-1 flex-col gap-1.5">
+      <section className="mt-6">
+        <label className="flex flex-col gap-1.5">
           <span className="text-sm text-muted">{m("sira")}</span>
           <input
             type="number"
@@ -507,18 +568,25 @@ export default function KategoriFormu({
             className={kutu}
           />
         </label>
-        <label className="flex flex-1 flex-col gap-1.5">
-          <span className="text-sm text-muted">{m("slug")}</span>
-          <input
-            name="kategori-slug"
-            value={k.slug}
-            onChange={(e) => guncelle("slug", e.target.value)}
-            dir="ltr"
-            autoComplete="off"
-            spellCheck={false}
-            className={kutu}
-          />
-        </label>
+        <details className="mt-3 rounded-2xl border border-line bg-card px-4 py-3">
+          <summary className="cursor-pointer text-sm font-semibold">{m("slugGelismis")}</summary>
+          <p className="mt-2 text-xs text-muted">{m("slugOtomatikIpucu")}</p>
+          <label className="mt-3 flex flex-col gap-1.5">
+            <span className="text-sm text-muted">{m("slug")}</span>
+            <input
+              name="kategori-slug"
+              value={k.slug}
+              onChange={(e) => {
+                setSlugElleDegisti(true);
+                guncelle("slug", e.target.value);
+              }}
+              dir="ltr"
+              autoComplete="off"
+              spellCheck={false}
+              className={kutu}
+            />
+          </label>
+        </details>
       </section>
 
       <div className="mt-4 flex items-center justify-between rounded-2xl border border-line bg-card px-4 py-2">
@@ -572,7 +640,7 @@ export default function KategoriFormu({
             />
           </label>
 
-          <ul className="uzun-liste mt-3 max-h-96 space-y-2 overflow-y-auto pe-1">
+          <ul ref={urunListesiRef} className="uzun-liste mt-3 max-h-96 space-y-2 overflow-y-auto pe-1">
             {gorunenUrunler.map((urun) => {
               const secili = seciliUrunKumesi.has(urun.id);
               const digerKategoriler = urun.kategori_ids
@@ -585,10 +653,11 @@ export default function KategoriFormu({
               );
               const siraIndeksi = siraliSecimler.indexOf(urun.id);
               return (
-                <li key={urun.id}>
+                <li key={urun.id} data-kategori-urun-id={urun.id}>
                   <div
-                    className={`flex min-h-14 cursor-pointer items-center gap-3 rounded-2xl border px-3 py-2 transition ${
+                    className={`flex min-h-14 items-center gap-2 rounded-2xl border px-3 py-2 transition ${
                       secili ? "border-brand bg-brand/10" : "border-line bg-bg"
+                    } ${suruklenenId === urun.id ? "relative z-10 opacity-70 ring-2 ring-brand" : ""
                     }`}
                   >
                     <input
@@ -607,26 +676,28 @@ export default function KategoriFormu({
                       </span>
                     </span>
                     {secili && (
-                      <span className="flex shrink-0 gap-1">
-                        <button
-                          type="button"
-                          onClick={() => urunSirala(urun.id, -1)}
-                          disabled={siraIndeksi <= 0}
-                          aria-label={`${urun.ad_tr} ${m("yukariTasi")}`}
-                          className="grid min-h-11 min-w-11 place-items-center rounded-xl border border-line bg-card font-bold disabled:opacity-30"
-                        >
-                          ↑
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => urunSirala(urun.id, 1)}
-                          disabled={siraIndeksi < 0 || siraIndeksi === siraliSecimler.length - 1}
-                          aria-label={`${urun.ad_tr} ${m("asagiTasi")}`}
-                          className="grid min-h-11 min-w-11 place-items-center rounded-xl border border-line bg-card font-bold disabled:opacity-30"
-                        >
-                          ↓
-                        </button>
-                      </span>
+                      <button
+                        type="button"
+                        onPointerDown={(olay) => surukBaslat(olay, urun.id)}
+                        onPointerMove={surukTasi}
+                        onPointerUp={surukBitir}
+                        onPointerCancel={surukBitir}
+                        onKeyDown={(olay) => {
+                          if (olay.key === "ArrowUp" || olay.key === "ArrowDown") {
+                            olay.preventDefault();
+                            urunSirala(urun.id, olay.key === "ArrowUp" ? -1 : 1);
+                          }
+                        }}
+                        aria-label={`${urun.ad_tr}: ${m("surukleSirala")}, ${siraIndeksi + 1}/${siraliSecimler.length}`}
+                        title={m("surukleSirala")}
+                        className="grid min-h-11 min-w-11 shrink-0 touch-none select-none place-items-center rounded-xl border border-line bg-card text-xl font-bold text-brand cursor-grab active:cursor-grabbing"
+                      >
+                        <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden>
+                          <circle cx="8" cy="6" r="1.5" /><circle cx="16" cy="6" r="1.5" />
+                          <circle cx="8" cy="12" r="1.5" /><circle cx="16" cy="12" r="1.5" />
+                          <circle cx="8" cy="18" r="1.5" /><circle cx="16" cy="18" r="1.5" />
+                        </svg>
+                      </button>
                     )}
                   </div>
                 </li>

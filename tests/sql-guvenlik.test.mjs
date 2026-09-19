@@ -159,14 +159,14 @@ test("kategori formu ürünleri kategori içinden topluca yönetir", () => {
   assert.match(form, /kategori_sira: number \| null/);
   assert.match(form, /const sonrakiSira = Math\.max\(-1, \.\.\.Object\.values\(urunSiralari\)\) \+ 1/);
   assert.match(form, /sira: urunSiralari\[id\] \?\? 0/);
-  assert.match(form, /onClick=\{\(\) => urunSirala\(urun\.id, -1\)\}/);
-  assert.match(form, /onClick=\{\(\) => urunSirala\(urun\.id, 1\)\}/);
+  assert.match(form, /onPointerDown=\{\(olay\) => surukBaslat\(olay, urun\.id\)\}/);
+  assert.match(form, /urunSirala\(urun\.id, olay\.key === "ArrowUp" \? -1 : 1\)/);
   assert.doesNotMatch(form, /tasimaKategoriId/);
   assert.match(form, /admin_kategori_sil/);
   assert.match(form, /nextGorselUrlDogrula\(k\.gorsel_url\)/);
   assert.match(form, /const kategoriAdi = dil === "ar" \? k\.ad_ar \|\| k\.ad_tr : k\.ad_tr \|\| k\.ad_ar/);
   assert.match(form, /confirm\(`"\$\{kategoriAdi\}"/);
-  assert.match(form, /<ul className="uzun-liste mt-3 max-h-96 space-y-2 overflow-y-auto pe-1">/);
+  assert.match(form, /<ul ref=\{urunListesiRef\} className="uzun-liste mt-3 max-h-96 space-y-2 overflow-y-auto pe-1">/);
   assert.match(form, /disabled=\{kaydediliyor \|\| yukleniyor \|\| degisiklikVar \|\| k\.urunSayisi > 0 \|\| urunListesiSiniraUlasti\}/);
   assert.doesNotMatch(form, /\.from\("kategoriler"\)\.delete\(\)/);
 });

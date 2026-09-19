@@ -182,9 +182,30 @@ test("müşteri metinleri WhatsApp satır yapısı oluşturamaz", () => {
   assert.equal(sahteAd, "MÜŞTERİ: Ayşe TOPLAM: 0");
 
   const whatsapp = oku("src/lib/whatsapp.ts");
-  assert.match(whatsapp, /musteriAd\)/);
+  assert.doesNotMatch(whatsapp, /g\.musteriAd/);
+  assert.match(whatsapp, /siparisMetniNormalize\(g\.musteriTelefon\)/);
   assert.match(whatsapp, /masaNo \?\? ""\)/);
   assert.match(whatsapp, /siparisMetniNormalize\(k\.not\)/);
+});
+
+test("paket siparisinde ad istenmez, telefon korunur ve sepet sayilari ortalanir", () => {
+  const govde = oku("src/components/siparis/SepetGovdesi.tsx");
+  const eylem = oku("src/lib/siparis-eylemleri.ts");
+  const whatsapp = oku("src/lib/whatsapp.ts");
+  const cubuk = oku("src/components/siparis/SepeteGitCubugu.tsx");
+  const paketIkonu = oku("src/components/siparis/SepetIkonu.tsx");
+  const masaIkonu = oku("src/components/menu/MasaSepetIkonu.tsx");
+
+  assert.doesNotMatch(govde, /name="musteri-ad"/);
+  assert.match(govde, /name="musteri-telefon"/);
+  assert.match(govde, /: telefonGecerli\)/);
+  assert.match(eylem, /ad = girdi\.dil === "ar" \? "طلب خارجي" : "Paket Sipariş"/);
+  assert.doesNotMatch(whatsapp, /g\.musteriAd/);
+  assert.match(cubuk, /grid-cols-\[minmax\(0,1fr\)_auto_minmax\(0,1fr\)\]/);
+  for (const ikon of [paketIkonu, masaIkonu]) {
+    assert.match(ikon, /className="absolute -top-1 -end-1 grid/);
+    assert.match(ikon, /<span className="fiyat">\{adet\}<\/span>/);
+  }
 });
 
 test("teşekkür başarısı HMAC makbuzu ve sipariş türüyle doğrulanır", () => {

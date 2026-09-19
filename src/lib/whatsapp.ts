@@ -36,7 +36,6 @@ export interface MesajGirdisi {
   araToplam: number;
   servisUcreti: number;
   toplam: number;
-  musteriAd: string;
   musteriTelefon: string;
   etiket: EtiketFn;
   tarih?: Date;
@@ -89,11 +88,10 @@ function toplamlar(g: MesajGirdisi): string[] {
     noktali(g.etiket("toplam"), fiyatYaz(g.toplam)),
     AYRAC,
     "",
-    // Masa siparisinde ad, telefon ve adres alinmaz — musteri zaten iceride.
+    // Masa siparisinde telefon/adres; paket siparisinde ad alinmaz.
     ...(g.tur === "masa"
       ? [`${g.etiket("masaNo")}: ${siparisMetniNormalize(g.masaNo ?? "")}`]
       : [
-          `${g.etiket("musteri")}: ${siparisMetniNormalize(g.musteriAd)}`,
           `${g.etiket("telefon")}: ${siparisMetniNormalize(g.musteriTelefon)}`,
           "",
           g.etiket("adresBaslik"),

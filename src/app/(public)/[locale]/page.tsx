@@ -24,6 +24,7 @@ import {
   yerelUrl,
 } from "@/lib/seo";
 import type { Dil, Urun } from "@/lib/tipler";
+import { IkonMotor } from "@/components/Ikon";
 
 export const revalidate = 60;
 
@@ -277,6 +278,7 @@ export default async function AnaSayfa({
             href="/siparis"
             className="flex min-h-15 items-center justify-center gap-2 rounded-2xl bg-accent px-5 text-base font-extrabold text-white shadow-[0_14px_34px_rgba(0,0,0,.25)] transition-[background-color,transform] duration-200 hover:bg-[#b17c0b] active:scale-[0.98]"
           >
+            <IkonMotor className="h-5 w-5 shrink-0" />
             {t("anasayfa.paketSiparis")}
             <span aria-hidden className="rtl:-scale-x-100">→</span>
           </Link>
@@ -333,8 +335,8 @@ export default async function AnaSayfa({
                       />
                     )}
                     <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-ink/45 via-transparent to-transparent" />
-                    <span className="absolute bottom-3 start-3 rounded-full bg-white/92 px-3 py-1 text-xs font-bold text-ink shadow-sm">
-                      🛵
+                    <span className="absolute bottom-3 start-3 grid h-11 w-11 place-items-center rounded-full bg-white/95 text-brand shadow-sm">
+                      <IkonMotor className="h-6 w-6" />
                     </span>
                   </div>
                   <div className="flex min-w-0 flex-1 flex-col p-5">

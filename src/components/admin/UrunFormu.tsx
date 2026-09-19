@@ -12,6 +12,7 @@ import FotografKirpma from "./FotografKirpma";
 import { useAdminDil, type MetinAnahtari } from "@/lib/admin-dil";
 import { useKaydedilmemisDegisiklik } from "@/lib/kaydedilmemis-degisiklik";
 import { nextGorselUrlDogrula } from "@/lib/guvenli-url";
+import { slugla } from "@/lib/slug";
 
 const ALERJENLER: { kod: string; anahtar: MetinAnahtari }[] = [
   { kod: "gluten", anahtar: "alerjenGluten" },
@@ -92,6 +93,7 @@ export default function UrunFormu({
   const [masaFiyatGirdisi, setMasaFiyatGirdisi] = useState(String(baslangic.fiyat_masa));
   const [paketFiyatGirdisi, setPaketFiyatGirdisi] = useState(String(baslangic.fiyat_paket));
   const [dilSekmesi, setDilSekmesi] = useState<"tr" | "ar">("tr");
+  const [slugElleDegisti, setSlugElleDegisti] = useState(false);
   const [kaydediliyor, setKaydediliyor] = useState(false);
   const [hata, setHata] = useState<string | null>(null);
   const [gorselHatali, setGorselHatali] = useState(false);
@@ -119,6 +121,14 @@ export default function UrunFormu({
 
   function guncelle<K extends keyof FormUrun>(alan: K, deger: FormUrun[K]) {
     setU((o) => ({ ...o, [alan]: deger }));
+  }
+
+  function adDegisti(deger: string) {
+    setU((onceki) => ({
+      ...onceki,
+      ad_tr: deger,
+      slug: yeniKayit && !slugElleDegisti ? slugla(deger) : onceki.slug,
+    }));
   }
 
   function fiyatGirdisiDegisti(alan: "fiyat_masa" | "fiyat_paket", ham: string) {
@@ -392,7 +402,9 @@ export default function UrunFormu({
               autoComplete="off"
               value={dilSekmesi === "tr" ? u.ad_tr : u.ad_ar}
               onChange={(e) =>
-                guncelle(dilSekmesi === "tr" ? "ad_tr" : "ad_ar", e.target.value)
+                dilSekmesi === "tr"
+                  ? adDegisti(e.target.value)
+                  : guncelle("ad_ar", e.target.value)
               }
               dir={dilSekmesi === "ar" ? "rtl" : "ltr"}
               className={metinKutusu}
@@ -592,8 +604,8 @@ export default function UrunFormu({
           })}
         </ul>
 
-        <div className="mt-4 flex gap-3">
-          <label className="flex flex-1 flex-col gap-1.5">
+        <div className="mt-4">
+          <label className="flex flex-col gap-1.5">
             <span className="text-sm text-muted">{m("sira")}</span>
             <input
               type="number"
@@ -605,17 +617,25 @@ export default function UrunFormu({
               className={metinKutusu}
             />
           </label>
-          <label className="flex flex-1 flex-col gap-1.5">
-            <span className="text-sm text-muted">{m("slug")}</span>
-            <input
-              name="urun-slug"
-              value={u.slug}
-              onChange={(e) => guncelle("slug", e.target.value)}
-              className={metinKutusu}
-              autoComplete="off"
-              spellCheck={false}
-            />
-          </label>
+          <details className="mt-3 rounded-2xl border border-line bg-card px-4 py-3">
+            <summary className="cursor-pointer text-sm font-semibold">{m("slugGelismis")}</summary>
+            <p className="mt-2 text-xs text-muted">{m("slugOtomatikIpucu")}</p>
+            <label className="mt-3 flex flex-col gap-1.5">
+              <span className="text-sm text-muted">{m("slug")}</span>
+              <input
+                name="urun-slug"
+                value={u.slug}
+                onChange={(e) => {
+                  setSlugElleDegisti(true);
+                  guncelle("slug", e.target.value);
+                }}
+                dir="ltr"
+                className={metinKutusu}
+                autoComplete="off"
+                spellCheck={false}
+              />
+            </label>
+          </details>
         </div>
 
         <div className="mt-4 flex flex-col gap-2">

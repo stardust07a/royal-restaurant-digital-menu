@@ -59,7 +59,6 @@ export default function SepetGovdesi({
 
   const [baglandi, setBaglandi] = useState(false);
   const masaSiparisi = tur === "masa";
-  const [musteriAd, setMusteriAd] = useState("");
   const [telefon, setTelefon] = useState("");
   const [telefonDokunuldu, setTelefonDokunuldu] = useState(false);
   const [gonderiliyor, setGonderiliyor] = useState(false);
@@ -129,7 +128,7 @@ export default function SepetGovdesi({
     !gonderiliyor &&
     (masaSiparisi
       ? masaNo.trim().length > 0
-      : musteriAd.trim().length >= 2 && telefonGecerli);
+      : telefonGecerli);
 
   async function gonder() {
     if (saltOkunur) return;
@@ -143,7 +142,6 @@ export default function SepetGovdesi({
         dil,
         tur,
         masaNo: masaNo.trim(),
-        musteriAd: musteriAd.trim(),
         musteriTelefon: telefon.trim(),
         kalemler: gecerliKalemler.map((k) => ({
           urunId: k.urunId,
@@ -170,7 +168,6 @@ export default function SepetGovdesi({
         araToplam: sonuc.araToplam,
         servisUcreti: sonuc.servisUcreti,
         toplam: sonuc.toplam,
-        musteriAd: musteriAd.trim(),
         musteriTelefon: telefon.trim(),
         etiket: (anahtar, degerler) =>
           t(`whatsapp.${anahtar}`, degerler ?? {}),
@@ -360,33 +357,18 @@ export default function SepetGovdesi({
         </p>
       )}
 
-      {/* ---------- MUSTERI BILGISI ----------
-          Masa siparisinde ad, telefon ve adres alinmaz: misafir zaten
-          restoranda. Masa numarasi QR oturumundan okunur. */}
+      {/* Masa numarasi QR oturumundan gelir. Paket siparisinde yalniz telefon alinir. */}
       {masaSiparisi ? (
         <section className="mt-6">
           <div className="flex flex-col gap-1.5">
             <span className="text-sm text-muted">{t("siparis.masaNo")}</span>
-            <span className="fiyat flex min-h-15 items-center justify-center rounded-2xl border border-line bg-card px-4 text-2xl font-bold text-ink shadow-sm">
-              {masaNo}
-            </span>
+            <div className="flex min-h-15 w-full items-center justify-center rounded-2xl border border-line bg-card px-4 text-2xl font-bold text-ink shadow-sm" dir="ltr">
+              <span className="fiyat">{masaNo}</span>
+            </div>
           </div>
         </section>
       ) : (
       <section className="mt-6 flex flex-col gap-3">
-        <label className="flex flex-col gap-1.5">
-          <span className="text-sm text-muted">{t("siparis.adSoyad")}</span>
-          <input
-            type="text"
-            name="musteri-ad"
-            value={musteriAd}
-            onChange={(e) => setMusteriAd(e.target.value)}
-            autoComplete="name"
-            maxLength={60}
-            className="min-h-12 rounded-2xl border border-line bg-card px-4 text-base text-ink focus:border-brand"
-          />
-        </label>
-
         <label className="flex flex-col gap-1.5">
           <span className="text-sm text-muted">{t("siparis.telefon")}</span>
           <input

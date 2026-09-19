@@ -66,6 +66,17 @@ export function IkonUyari(p: Props) {
   );
 }
 
+/** Paket siparis motosikleti */
+export function IkonMotor(p: Props) {
+  return (
+    <Govde {...p}>
+      <circle cx="5" cy="18" r="2" />
+      <circle cx="19" cy="18" r="2" />
+      <path d="M7 18h5l2-5h3l2 5M8 13h5l-1.5-3H8M17 13l1-3h3M2 9h6v4H2z" />
+    </Govde>
+  );
+}
+
 /** Telefon */
 export function IkonTelefon(p: Props) {
   return (

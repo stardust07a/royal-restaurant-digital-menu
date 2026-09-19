@@ -40,16 +40,16 @@ export default function SepeteGitCubugu({
     <div className="fixed inset-x-0 bottom-0 z-30 border-t border-line/70 bg-bg/92 px-4 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] pt-3 shadow-[0_-12px_32px_rgba(16,43,40,.08)] backdrop-blur-xl">
       <Link
         href={`${temelYol}/sepet`}
-        className="mx-auto flex min-h-15 max-w-lg items-center gap-3 rounded-2xl bg-brand px-4 font-black text-white shadow-[0_12px_28px_rgba(8,119,110,.22)] transition-[background-color,transform] duration-200 hover:bg-brand-dark active:scale-[0.99]"
+        className="mx-auto grid min-h-15 max-w-lg grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-2 rounded-2xl bg-brand px-4 font-black text-white shadow-[0_12px_28px_rgba(8,119,110,.22)] transition-[background-color,transform] duration-200 hover:bg-brand-dark active:scale-[0.99]"
       >
         <span
           aria-hidden
-          className="fiyat flex h-8 min-w-8 items-center justify-center rounded-xl bg-white px-1.5 text-brand"
+          className="grid h-8 min-w-8 justify-self-start place-items-center rounded-xl bg-white px-1.5 text-brand"
         >
-          {adet}
+          <span className="fiyat">{adet}</span>
         </span>
-        <span className="flex-1 text-start">{t("siparis.sepeteGit")}</span>
-        <span className="fiyat whitespace-nowrap">{fiyatYaz(tutar)}</span>
+        <span className="whitespace-nowrap text-center text-sm sm:text-base">{t("siparis.sepeteGit")}</span>
+        <span className="fiyat justify-self-end whitespace-nowrap text-sm sm:text-base">{fiyatYaz(tutar)}</span>
       </Link>
     </div>
   );
