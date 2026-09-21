@@ -65,43 +65,279 @@
     "_not": "Turkuaz ana renk + mevcut menüdeki bakır/altın vurgu korundu. Koyu zemin markayla uyumlu."
   },
   "cikarilabilir_sablonlari": {
-    "_aciklama": "Ürüne atanan ücretsiz çıkarma seçenekleri. Müşteri işaretlerse WhatsApp mesajında 'Çıkan:' satırında görünür.",
-    "durum_sandvic": [
+    "_aciklama": "Suriye usulü servis biçimine göre yalnız üründe gerçekten bulunan ve sipariş sırasında çıkarılabilen malzemeler.",
+    "suriye_sarimsak_tursu_patates": [
+      {
+        "ad_tr": "Sarımsak sosu",
+        "ad_ar": "ثومية"
+      },
+      {
+        "ad_tr": "Turşu",
+        "ad_ar": "مخلل خيار"
+      },
+      {
+        "ad_tr": "Patates",
+        "ad_ar": "بطاطا مقلية"
+      }
+    ],
+    "suriye_patates_tursu_kasar_ozelSos": [
+      {
+        "ad_tr": "Patates",
+        "ad_ar": "بطاطا مقلية"
+      },
+      {
+        "ad_tr": "Turşu",
+        "ad_ar": "مخلل خيار"
+      },
+      {
+        "ad_tr": "Kaşar peyniri",
+        "ad_ar": "جبنة قشقوان"
+      },
+      {
+        "ad_tr": "Özel sos",
+        "ad_ar": "صلصة خاصة"
+      }
+    ],
+    "suriye_sarimsak_tursu": [
+      {
+        "ad_tr": "Sarımsak sosu",
+        "ad_ar": "ثومية"
+      },
+      {
+        "ad_tr": "Turşu",
+        "ad_ar": "مخلل خيار"
+      }
+    ],
+    "suriye_sogan_maydanoz_domates_sumak": [
       {
         "ad_tr": "Soğan",
         "ad_ar": "بصل"
+      },
+      {
+        "ad_tr": "Maydanoz",
+        "ad_ar": "بقدونس"
       },
       {
         "ad_tr": "Domates",
         "ad_ar": "بندورة"
       },
       {
+        "ad_tr": "Sumak",
+        "ad_ar": "سماق"
+      }
+    ],
+    "suriye_marul_tursu_mayonez": [
+      {
         "ad_tr": "Marul",
         "ad_ar": "خس"
       },
       {
         "ad_tr": "Turşu",
-        "ad_ar": "مخلل"
+        "ad_ar": "مخلل خيار"
       },
       {
-        "ad_tr": "Patates",
-        "ad_ar": "بطاطا"
+        "ad_tr": "Mayonez",
+        "ad_ar": "مايونيز"
+      }
+    ],
+    "suriye_marul_tursu_aciSos": [
+      {
+        "ad_tr": "Marul",
+        "ad_ar": "خس"
+      },
+      {
+        "ad_tr": "Turşu",
+        "ad_ar": "مخلل خيار"
+      },
+      {
+        "ad_tr": "Acı sos",
+        "ad_ar": "صلصة حارة"
+      }
+    ],
+    "suriye_marul_tursu_ozelSos": [
+      {
+        "ad_tr": "Marul",
+        "ad_ar": "خس"
+      },
+      {
+        "ad_tr": "Turşu",
+        "ad_ar": "مخلل خيار"
+      },
+      {
+        "ad_tr": "Özel sos",
+        "ad_ar": "صلصة خاصة"
+      }
+    ],
+    "suriye_marul_domates_tursu": [
+      {
+        "ad_tr": "Marul",
+        "ad_ar": "خس"
+      },
+      {
+        "ad_tr": "Domates",
+        "ad_ar": "بندورة"
+      },
+      {
+        "ad_tr": "Turşu",
+        "ad_ar": "مخلل خيار"
+      }
+    ],
+    "suriye_marul_domates_tursu_kasar_ozelSos": [
+      {
+        "ad_tr": "Marul",
+        "ad_ar": "خس"
+      },
+      {
+        "ad_tr": "Domates",
+        "ad_ar": "بندورة"
+      },
+      {
+        "ad_tr": "Turşu",
+        "ad_ar": "مخلل خيار"
+      },
+      {
+        "ad_tr": "Kaşar peyniri",
+        "ad_ar": "جبنة قشقوان"
+      },
+      {
+        "ad_tr": "Özel sos",
+        "ad_ar": "صلصة خاصة"
+      }
+    ],
+    "suriye_marul_tursu_mayonez_kasar": [
+      {
+        "ad_tr": "Marul",
+        "ad_ar": "خس"
+      },
+      {
+        "ad_tr": "Turşu",
+        "ad_ar": "مخلل خيار"
       },
       {
         "ad_tr": "Mayonez",
         "ad_ar": "مايونيز"
       },
       {
-        "ad_tr": "Ketçap",
-        "ad_ar": "كاتشب"
+        "ad_tr": "Kaşar peyniri",
+        "ad_ar": "جبنة قشقوان"
+      }
+    ],
+    "suriye_marul_domates_tursu_patates": [
+      {
+        "ad_tr": "Marul",
+        "ad_ar": "خس"
+      },
+      {
+        "ad_tr": "Domates",
+        "ad_ar": "بندورة"
+      },
+      {
+        "ad_tr": "Turşu",
+        "ad_ar": "مخلل خيار"
+      },
+      {
+        "ad_tr": "Patates",
+        "ad_ar": "بطاطا مقلية"
+      }
+    ],
+    "suriye_marul_domates_tursu_kasar_ozelSos_patates": [
+      {
+        "ad_tr": "Marul",
+        "ad_ar": "خس"
+      },
+      {
+        "ad_tr": "Domates",
+        "ad_ar": "بندورة"
+      },
+      {
+        "ad_tr": "Turşu",
+        "ad_ar": "مخلل خيار"
+      },
+      {
+        "ad_tr": "Kaşar peyniri",
+        "ad_ar": "جبنة قشقوان"
+      },
+      {
+        "ad_tr": "Özel sos",
+        "ad_ar": "صلصة خاصة"
+      },
+      {
+        "ad_tr": "Patates",
+        "ad_ar": "بطاطا مقلية"
+      }
+    ],
+    "suriye_marul_tursu_ozelSos_patates": [
+      {
+        "ad_tr": "Marul",
+        "ad_ar": "خس"
+      },
+      {
+        "ad_tr": "Turşu",
+        "ad_ar": "مخلل خيار"
+      },
+      {
+        "ad_tr": "Özel sos",
+        "ad_ar": "صلصة خاصة"
+      },
+      {
+        "ad_tr": "Patates",
+        "ad_ar": "بطاطا مقلية"
+      }
+    ],
+    "suriye_marul_tursu_aciSos_patates": [
+      {
+        "ad_tr": "Marul",
+        "ad_ar": "خس"
+      },
+      {
+        "ad_tr": "Turşu",
+        "ad_ar": "مخلل خيار"
       },
       {
         "ad_tr": "Acı sos",
         "ad_ar": "صلصة حارة"
       },
       {
+        "ad_tr": "Patates",
+        "ad_ar": "بطاطا مقلية"
+      }
+    ],
+    "suriye_marul_tursu_mayonez_patates": [
+      {
+        "ad_tr": "Marul",
+        "ad_ar": "خس"
+      },
+      {
+        "ad_tr": "Turşu",
+        "ad_ar": "مخلل خيار"
+      },
+      {
+        "ad_tr": "Mayonez",
+        "ad_ar": "مايونيز"
+      },
+      {
+        "ad_tr": "Patates",
+        "ad_ar": "بطاطا مقلية"
+      }
+    ],
+    "suriye_patates_sarimsak_tursu": [
+      {
+        "ad_tr": "Patates",
+        "ad_ar": "بطاطا مقلية"
+      },
+      {
         "ad_tr": "Sarımsak sosu",
         "ad_ar": "ثومية"
+      },
+      {
+        "ad_tr": "Turşu",
+        "ad_ar": "مخلل خيار"
+      }
+    ],
+    "suriye_sogan_maydanoz_sumak_izgaraDomates_patates": [
+      {
+        "ad_tr": "Soğan",
+        "ad_ar": "بصل"
       },
       {
         "ad_tr": "Maydanoz",
@@ -110,110 +346,88 @@
       {
         "ad_tr": "Sumak",
         "ad_ar": "سماق"
+      },
+      {
+        "ad_tr": "Izgara domates",
+        "ad_ar": "بندورة مشوية"
+      },
+      {
+        "ad_tr": "Patates",
+        "ad_ar": "بطاطا مقلية"
       }
     ],
-    "burger": [
-      {
-        "ad_tr": "Marul",
-        "ad_ar": "خس"
-      },
-      {
-        "ad_tr": "Domates",
-        "ad_ar": "بندورة"
-      },
+    "suriye_sogan_maydanoz_izgaraDomates_sarimsak_patates": [
       {
         "ad_tr": "Soğan",
         "ad_ar": "بصل"
       },
       {
-        "ad_tr": "Turşu",
-        "ad_ar": "مخلل"
+        "ad_tr": "Maydanoz",
+        "ad_ar": "بقدونس"
       },
       {
-        "ad_tr": "Peynir",
-        "ad_ar": "جبنة"
-      },
-      {
-        "ad_tr": "Mayonez",
-        "ad_ar": "مايونيز"
-      },
-      {
-        "ad_tr": "Ketçap",
-        "ad_ar": "كاتشب"
-      },
-      {
-        "ad_tr": "Barbekü sos",
-        "ad_ar": "صلصة باربكيو"
-      }
-    ],
-    "tavuk_izgara": [
-      {
-        "ad_tr": "Baharat",
-        "ad_ar": "بهارات"
-      },
-      {
-        "ad_tr": "Acı",
-        "ad_ar": "حار"
+        "ad_tr": "Izgara domates",
+        "ad_ar": "بندورة مشوية"
       },
       {
         "ad_tr": "Sarımsak sosu",
         "ad_ar": "ثومية"
       },
       {
-        "ad_tr": "Limon",
-        "ad_ar": "ليمون"
+        "ad_tr": "Patates",
+        "ad_ar": "بطاطا مقلية"
       }
     ],
-    "salata": [
+    "suriye_sogan_maydanoz_sumak_izgaraDomates": [
       {
         "ad_tr": "Soğan",
         "ad_ar": "بصل"
-      },
-      {
-        "ad_tr": "Zeytin",
-        "ad_ar": "زيتون"
-      },
-      {
-        "ad_tr": "Limon",
-        "ad_ar": "ليمون"
-      },
-      {
-        "ad_tr": "Nar ekşisi",
-        "ad_ar": "دبس رمان"
       },
       {
         "ad_tr": "Maydanoz",
         "ad_ar": "بقدونس"
+      },
+      {
+        "ad_tr": "Sumak",
+        "ad_ar": "سماق"
+      },
+      {
+        "ad_tr": "Izgara domates",
+        "ad_ar": "بندورة مشوية"
       }
     ],
-    "menu_combo": [
+    "suriye_patates": [
+      {
+        "ad_tr": "Patates",
+        "ad_ar": "بطاطا مقلية"
+      }
+    ],
+    "suriye_sogan_maydanoz_narEksisi": [
       {
         "ad_tr": "Soğan",
         "ad_ar": "بصل"
       },
       {
-        "ad_tr": "Domates",
-        "ad_ar": "بندورة"
+        "ad_tr": "Maydanoz",
+        "ad_ar": "بقدونس"
       },
       {
-        "ad_tr": "Marul",
-        "ad_ar": "خس"
+        "ad_tr": "Nar ekşisi",
+        "ad_ar": "دبس رمان"
+      }
+    ],
+    "suriye_sogan_maydanoz_ozelSos": [
+      {
+        "ad_tr": "Soğan",
+        "ad_ar": "بصل"
       },
       {
-        "ad_tr": "Turşu",
-        "ad_ar": "مخلل"
+        "ad_tr": "Maydanoz",
+        "ad_ar": "بقدونس"
       },
       {
-        "ad_tr": "Mayonez",
-        "ad_ar": "مايونيز"
-      },
-      {
-        "ad_tr": "Ketçap",
-        "ad_ar": "كاتشب"
-      },
-      {
-        "ad_tr": "Acı sos",
-        "ad_ar": "صلصة حارة"
+        "ad_tr": "Özel sos",
+        "ad_ar": "صلصة خاصة"
       }
     ]
   },
@@ -416,13 +630,13 @@
       "sira": 1,
       "ad_tr": "Döner",
       "ad_ar": "شاورما",
-      "aciklama_tr": "Lavaş içinde döner, patates, turşu ve özel sos",
-      "aciklama_ar": "شاورما مع بطاطا ومخلل وصلصة خاصة",
+      "aciklama_tr": "Suriye usulü tavuk şavurma; lavaşta sarımsak sosu, turşu ve patates.",
+      "aciklama_ar": "شاورما دجاج سورية في خبز الصاج مع ثومية ومخلل خيار وبطاطا مقلية.",
       "fiyat_masa": 150,
       "fiyat_paket": 150,
       "gramaj": "180 g",
       "stokta": false,
-      "cikarilabilir": "durum_sandvic",
+      "cikarilabilir": "suriye_sarimsak_tursu_patates",
       "ekstra": "durum_sandvic",
       "alerjenler": [
         "gluten"
@@ -438,13 +652,13 @@
       "sira": 2,
       "ad_tr": "Duble Döner",
       "ad_ar": "شاورما دبل",
-      "aciklama_tr": "Çift porsiyon döner, patates, turşu ve özel sos",
-      "aciklama_ar": "شاورما مضاعفة مع بطاطا ومخلل وصلصة",
+      "aciklama_tr": "Çift porsiyon Suriye usulü tavuk şavurma; lavaşta sarımsak sosu, turşu ve patates.",
+      "aciklama_ar": "شاورما دجاج سورية دبل في خبز الصاج مع ثومية ومخلل خيار وبطاطا مقلية.",
       "fiyat_masa": 180,
       "fiyat_paket": 180,
       "gramaj": "280 g",
       "stokta": true,
-      "cikarilabilir": "durum_sandvic",
+      "cikarilabilir": "suriye_sarimsak_tursu_patates",
       "ekstra": "durum_sandvic",
       "alerjenler": [
         "gluten"
@@ -459,13 +673,13 @@
       "sira": 3,
       "ad_tr": "Royal Döner",
       "ad_ar": "شاورما رويال",
-      "aciklama_tr": "Bol etli özel Royal döner, kaşar ve özel sos",
-      "aciklama_ar": "شاورما رويال بلحمة وفيرة وجبنة وصلصة خاصة",
+      "aciklama_tr": "Bol tavuk şavurma; patates, turşu, kaşar peyniri ve Royal özel sos.",
+      "aciklama_ar": "شاورما دجاج رويال مع بطاطا مقلية ومخلل خيار وجبنة قشقوان وصلصة رويال الخاصة.",
       "fiyat_masa": 200,
       "fiyat_paket": 200,
       "gramaj": "320 g",
       "stokta": true,
-      "cikarilabilir": "durum_sandvic",
+      "cikarilabilir": "suriye_patates_tursu_kasar_ozelSos",
       "ekstra": "durum_sandvic",
       "alerjenler": [
         "gluten",
@@ -481,13 +695,13 @@
       "sira": 4,
       "ad_tr": "Baharatlı Dürüm",
       "ad_ar": "سبايسي",
-      "aciklama_tr": "Baharatlı çıtır tavuk, marul ve acı sos",
-      "aciklama_ar": "دجاج سبايسي مقرمش مع خس وصلصة حارة",
+      "aciklama_tr": "Baharatlı çıtır tavuk; lavaşta marul, turşu ve acı sos.",
+      "aciklama_ar": "دجاج سبايسي مقرمش في خبز الصاج مع خس ومخلل خيار وصلصة حارة.",
       "fiyat_masa": 220,
       "fiyat_paket": 220,
       "gramaj": "300 g",
       "stokta": true,
-      "cikarilabilir": "durum_sandvic",
+      "cikarilabilir": "suriye_marul_tursu_aciSos",
       "ekstra": "durum_sandvic",
       "alerjenler": [
         "gluten"
@@ -502,13 +716,13 @@
       "sira": 5,
       "ad_tr": "Baharatlı Burger",
       "ad_ar": "سبايسي برغر",
-      "aciklama_tr": "Baharatlı çıtır tavuk burger, marul ve acı sos",
-      "aciklama_ar": "برغر دجاج سبايسي مع خس وصلصة حارة",
+      "aciklama_tr": "Baharatlı çıtır tavuk burger; marul, turşu ve acı sos.",
+      "aciklama_ar": "برغر دجاج سبايسي مع خس ومخلل خيار وصلصة حارة.",
       "fiyat_masa": 250,
       "fiyat_paket": 250,
       "gramaj": "310 g",
       "stokta": true,
-      "cikarilabilir": "burger",
+      "cikarilabilir": "suriye_marul_tursu_aciSos",
       "ekstra": "burger",
       "alerjenler": [
         "gluten",
@@ -524,13 +738,13 @@
       "sira": 6,
       "ad_tr": "Zinger Dürüm",
       "ad_ar": "زنجر",
-      "aciklama_tr": "Çıtır zinger tavuk, marul ve mayonez",
-      "aciklama_ar": "زنجر دجاج مقرمش مع خس ومايونيز",
+      "aciklama_tr": "Çıtır zinger tavuk; lavaşta marul, turşu ve mayonez.",
+      "aciklama_ar": "دجاج زنجر مقرمش في خبز الصاج مع خس ومخلل خيار ومايونيز.",
       "fiyat_masa": 220,
       "fiyat_paket": 220,
       "gramaj": "300 g",
       "stokta": true,
-      "cikarilabilir": "durum_sandvic",
+      "cikarilabilir": "suriye_marul_tursu_mayonez",
       "ekstra": "durum_sandvic",
       "alerjenler": [
         "gluten",
@@ -546,13 +760,13 @@
       "sira": 7,
       "ad_tr": "Peynirli Zinger Burger",
       "ad_ar": "زنجر برغر مع جبنة",
-      "aciklama_tr": "Zinger tavuk burger, çift kaşar peyniri",
-      "aciklama_ar": "برغر زنجر مع جبنة مضاعفة",
+      "aciklama_tr": "Ekmek arasında zinger tavuk, marul, turşu, mayonez ve çift kaşar peyniri.",
+      "aciklama_ar": "زنجر صمون مع خس ومخلل خيار ومايونيز وجبنة قشقوان دبل.",
       "fiyat_masa": 250,
       "fiyat_paket": 250,
       "gramaj": "330 g",
       "stokta": true,
-      "cikarilabilir": "burger",
+      "cikarilabilir": "suriye_marul_tursu_mayonez_kasar",
       "ekstra": "burger",
       "alerjenler": [
         "gluten",
@@ -569,13 +783,13 @@
       "sira": 8,
       "ad_tr": "Zinger Burger",
       "ad_ar": "زنجر برغر",
-      "aciklama_tr": "Çıtır zinger tavuk burger, marul ve mayonez",
-      "aciklama_ar": "برغر زنجر مقرمش مع خس ومايونيز",
+      "aciklama_tr": "Çıtır zinger tavuk burger; marul, turşu ve mayonez.",
+      "aciklama_ar": "برغر دجاج زنجر مقرمش مع خس ومخلل خيار ومايونيز.",
       "fiyat_masa": 250,
       "fiyat_paket": 250,
       "gramaj": "310 g",
       "stokta": true,
-      "cikarilabilir": "burger",
+      "cikarilabilir": "suriye_marul_tursu_mayonez",
       "ekstra": "burger",
       "alerjenler": [
         "gluten",
@@ -591,13 +805,13 @@
       "sira": 9,
       "ad_tr": "Crispy Dürüm",
       "ad_ar": "كريسبي",
-      "aciklama_tr": "Crispy tavuk, marul, domates ve özel sos",
-      "aciklama_ar": "دجاج كريسبي مع خس وبندورة وصلصة خاصة",
+      "aciklama_tr": "Çıtır tavuk; lavaşta marul, turşu ve özel sos.",
+      "aciklama_ar": "دجاج كريسبي في خبز الصاج مع خس ومخلل خيار وصلصة خاصة.",
       "fiyat_masa": 220,
       "fiyat_paket": 220,
       "gramaj": "300 g",
       "stokta": true,
-      "cikarilabilir": "durum_sandvic",
+      "cikarilabilir": "suriye_marul_tursu_ozelSos",
       "ekstra": "durum_sandvic",
       "alerjenler": [
         "gluten",
@@ -613,13 +827,13 @@
       "sira": 10,
       "ad_tr": "Crispy Burger",
       "ad_ar": "كريسبي برغر",
-      "aciklama_tr": "Crispy tavuk burger, marul ve özel sos",
-      "aciklama_ar": "برغر دجاج كريسبي مع خس وصلصة خاصة",
+      "aciklama_tr": "Çıtır tavuk burger; marul, turşu ve özel sos.",
+      "aciklama_ar": "برغر دجاج كريسبي مع خس ومخلل خيار وصلصة خاصة.",
       "fiyat_masa": 250,
       "fiyat_paket": 250,
       "gramaj": "310 g",
       "stokta": true,
-      "cikarilabilir": "burger",
+      "cikarilabilir": "suriye_marul_tursu_ozelSos",
       "ekstra": "burger",
       "alerjenler": [
         "gluten",
@@ -635,13 +849,13 @@
       "sira": 11,
       "ad_tr": "Kebap",
       "ad_ar": "كباب",
-      "aciklama_tr": "Izgara kebap, lavaş, soğan ve sumak",
-      "aciklama_ar": "كباب مشوي مع خبز وبصل وسماق",
+      "aciklama_tr": "Izgara kebap; lavaşta soğan, maydanoz, domates ve sumak.",
+      "aciklama_ar": "كباب مشوي في خبز الصاج مع بصل وبقدونس وبندورة وسماق.",
       "fiyat_masa": 200,
       "fiyat_paket": 200,
       "gramaj": "250 g",
       "stokta": true,
-      "cikarilabilir": "durum_sandvic",
+      "cikarilabilir": "suriye_sogan_maydanoz_domates_sumak",
       "ekstra": "durum_sandvic",
       "alerjenler": [
         "gluten"
@@ -656,13 +870,13 @@
       "sira": 12,
       "ad_tr": "Şiş Tavuk",
       "ad_ar": "شيش طاووق",
-      "aciklama_tr": "Izgara şiş tavuk, sarımsak sosu ve turşu",
-      "aciklama_ar": "شيش طاووق مشوي مع ثومية ومخلل",
+      "aciklama_tr": "Izgara şiş tavuk; lavaşta sarımsak sosu, turşu ve patates.",
+      "aciklama_ar": "شيش طاووق مشوي في خبز الصاج مع ثومية ومخلل خيار وبطاطا مقلية.",
       "fiyat_masa": 200,
       "fiyat_paket": 200,
       "gramaj": "250 g",
       "stokta": true,
-      "cikarilabilir": "durum_sandvic",
+      "cikarilabilir": "suriye_sarimsak_tursu_patates",
       "ekstra": "durum_sandvic",
       "alerjenler": [
         "gluten"
@@ -677,13 +891,13 @@
       "sira": 13,
       "ad_tr": "Hamburger",
       "ad_ar": "همبرغر",
-      "aciklama_tr": "Izgara dana köfte, marul, domates ve turşu",
-      "aciklama_ar": "برغر لحم مشوي مع خس وبندورة ومخلل",
+      "aciklama_tr": "Izgara dana köfte, marul, domates ve turşu.",
+      "aciklama_ar": "برغر لحم مشوي مع خس وبندورة ومخلل خيار.",
       "fiyat_masa": 240,
       "fiyat_paket": 240,
       "gramaj": "280 g",
       "stokta": true,
-      "cikarilabilir": "burger",
+      "cikarilabilir": "suriye_marul_domates_tursu",
       "ekstra": "burger",
       "alerjenler": [
         "gluten"
@@ -698,13 +912,13 @@
       "sira": 14,
       "ad_tr": "Cheese Burger",
       "ad_ar": "تشيز برغر",
-      "aciklama_tr": "Izgara dana köfte, kaşar peyniri ve özel sos",
-      "aciklama_ar": "برغر لحم مع جبنة وصلصة خاصة",
+      "aciklama_tr": "Izgara dana köfte, marul, domates, turşu, kaşar peyniri ve özel sos.",
+      "aciklama_ar": "برغر لحم مشوي مع خس وبندورة ومخلل خيار وجبنة قشقوان وصلصة خاصة.",
       "fiyat_masa": 250,
       "fiyat_paket": 250,
       "gramaj": "300 g",
       "stokta": true,
-      "cikarilabilir": "burger",
+      "cikarilabilir": "suriye_marul_domates_tursu_kasar_ozelSos",
       "ekstra": "burger",
       "alerjenler": [
         "gluten",
@@ -720,13 +934,13 @@
       "sira": 15,
       "ad_tr": "Patso",
       "ad_ar": "بطاطا",
-      "aciklama_tr": "Patates kızartması dolu ekmek, turşu ve sos",
-      "aciklama_ar": "ساندويش بطاطا مقلية مع مخلل وصلصة",
+      "aciklama_tr": "Suriye usulü lavaşta patates kızartması, sarımsak sosu ve turşu.",
+      "aciklama_ar": "ساندويش بطاطا سوري في خبز الصاج مع ثومية ومخلل خيار.",
       "fiyat_masa": 140,
       "fiyat_paket": 140,
       "gramaj": "220 g",
       "stokta": true,
-      "cikarilabilir": "durum_sandvic",
+      "cikarilabilir": "suriye_sarimsak_tursu",
       "ekstra": "durum_sandvic",
       "alerjenler": [
         "gluten"
@@ -741,13 +955,13 @@
       "sira": 1,
       "ad_tr": "Döner Menü",
       "ad_ar": "شاورما عربي",
-      "aciklama_tr": "Döner dürüm + patates",
-      "aciklama_ar": "شاورما عربي مع بطاطا",
+      "aciklama_tr": "Dilimlenmiş Suriye usulü şavurma dürüm; patates, sarımsak sosu ve turşuyla.",
+      "aciklama_ar": "وجبة شاورما عربي مقطعة مع بطاطا مقلية وثومية ومخلل خيار.",
       "fiyat_masa": 300,
       "fiyat_paket": 300,
       "gramaj": "180 g döner + 150 g patates",
       "stokta": true,
-      "cikarilabilir": "menu_combo",
+      "cikarilabilir": "suriye_sarimsak_tursu_patates",
       "ekstra": "menu_combo",
       "alerjenler": [
         "gluten"
@@ -762,13 +976,13 @@
       "sira": 2,
       "ad_tr": "Duble Döner Menü",
       "ad_ar": "شاورما عربي دبل",
-      "aciklama_tr": "Çift porsiyon döner + patates",
-      "aciklama_ar": "شاورما عربي دبل مع بطاطا",
+      "aciklama_tr": "Çift porsiyon Suriye usulü şavurma dürüm; patates, sarımsak sosu ve turşuyla.",
+      "aciklama_ar": "وجبة شاورما عربي دبل مع بطاطا مقلية وثومية ومخلل خيار.",
       "fiyat_masa": 400,
       "fiyat_paket": 400,
       "gramaj": "280 g döner + 150 g patates",
       "stokta": true,
-      "cikarilabilir": "menu_combo",
+      "cikarilabilir": "suriye_sarimsak_tursu_patates",
       "ekstra": "menu_combo",
       "alerjenler": [
         "gluten"
@@ -783,13 +997,13 @@
       "sira": 3,
       "ad_tr": "Döner Extra Menü",
       "ad_ar": "شاورما عربي اكسترا",
-      "aciklama_tr": "Ekstra bol döner + patates",
-      "aciklama_ar": "شاورما عربي اكسترا مع بطاطا",
+      "aciklama_tr": "Bol tavuklu Suriye usulü şavurma dürüm; patates, sarımsak sosu ve turşuyla.",
+      "aciklama_ar": "وجبة شاورما عربي إكسترا مع بطاطا مقلية وثومية ومخلل خيار.",
       "fiyat_masa": 450,
       "fiyat_paket": 450,
       "gramaj": "360 g döner + 150 g patates",
       "stokta": true,
-      "cikarilabilir": "menu_combo",
+      "cikarilabilir": "suriye_sarimsak_tursu_patates",
       "ekstra": "menu_combo",
       "alerjenler": [
         "gluten"
@@ -804,13 +1018,13 @@
       "sira": 4,
       "ad_tr": "Hamburger Menü",
       "ad_ar": "وجبة همبرغر",
-      "aciklama_tr": "Hamburger + patates",
-      "aciklama_ar": "همبرغر مع بطاطا",
+      "aciklama_tr": "Hamburger; marul, domates ve turşuyla, yanında patates kızartması.",
+      "aciklama_ar": "وجبة همبرغر مع خس وبندورة ومخلل خيار وبطاطا مقلية.",
       "fiyat_masa": 375,
       "fiyat_paket": 375,
       "gramaj": "280 g burger + 150 g patates",
       "stokta": true,
-      "cikarilabilir": "menu_combo",
+      "cikarilabilir": "suriye_marul_domates_tursu_patates",
       "ekstra": "menu_combo",
       "alerjenler": [
         "gluten"
@@ -825,13 +1039,13 @@
       "sira": 5,
       "ad_tr": "Cheese Burger Menü",
       "ad_ar": "وجبة تشيز برغر",
-      "aciklama_tr": "Cheese burger + patates",
-      "aciklama_ar": "تشيز برغر مع بطاطا",
+      "aciklama_tr": "Cheese burger; marul, domates, turşu, kaşar ve özel sosla, yanında patates.",
+      "aciklama_ar": "وجبة تشيز برغر مع خس وبندورة ومخلل خيار وجبنة وصلصة خاصة وبطاطا مقلية.",
       "fiyat_masa": 425,
       "fiyat_paket": 425,
       "gramaj": "300 g burger + 150 g patates",
       "stokta": true,
-      "cikarilabilir": "menu_combo",
+      "cikarilabilir": "suriye_marul_domates_tursu_kasar_ozelSos_patates",
       "ekstra": "menu_combo",
       "alerjenler": [
         "gluten",
@@ -847,13 +1061,13 @@
       "sira": 6,
       "ad_tr": "Şiş Tavuk Menü",
       "ad_ar": "وجبة شيش طاووق",
-      "aciklama_tr": "Şiş tavuk + patates",
-      "aciklama_ar": "شيش طاووق مع بطاطا",
+      "aciklama_tr": "Izgara şiş tavuk; patates, sarımsak sosu ve turşuyla.",
+      "aciklama_ar": "وجبة شيش طاووق مشوي مع بطاطا مقلية وثومية ومخلل خيار.",
       "fiyat_masa": 300,
       "fiyat_paket": 300,
       "gramaj": "250 g tavuk + 150 g patates",
       "stokta": true,
-      "cikarilabilir": "menu_combo",
+      "cikarilabilir": "suriye_patates_sarimsak_tursu",
       "ekstra": "menu_combo",
       "alerjenler": [
         "gluten"
@@ -868,13 +1082,13 @@
       "sira": 7,
       "ad_tr": "Baharatlı Menü",
       "ad_ar": "وجبة سبايسي",
-      "aciklama_tr": "Baharatlı tavuk + patates",
-      "aciklama_ar": "سبايسي مع بطاطا",
+      "aciklama_tr": "Baharatlı çıtır tavuk; marul, turşu ve acı sosla, yanında patates.",
+      "aciklama_ar": "وجبة سبايسي مع خس ومخلل خيار وصلصة حارة وبطاطا مقلية.",
       "fiyat_masa": 400,
       "fiyat_paket": 400,
       "gramaj": "300 g + 150 g patates",
       "stokta": true,
-      "cikarilabilir": "menu_combo",
+      "cikarilabilir": "suriye_marul_tursu_aciSos_patates",
       "ekstra": "menu_combo",
       "alerjenler": [
         "gluten"
@@ -889,13 +1103,13 @@
       "sira": 8,
       "ad_tr": "Çıtır Tavuk (Broasted) Menü",
       "ad_ar": "وجبة بروستد",
-      "aciklama_tr": "Çıtır broasted tavuk + patates",
-      "aciklama_ar": "بروستد مقرمش مع بطاطا",
+      "aciklama_tr": "Suriye usulü çıtır broasted tavuk; patates, sarımsak sosu ve turşuyla.",
+      "aciklama_ar": "وجبة بروستد سوري مقرمش مع بطاطا مقلية وثومية ومخلل خيار.",
       "fiyat_masa": 425,
       "fiyat_paket": 425,
       "gramaj": "4 parça + 150 g patates",
       "stokta": true,
-      "cikarilabilir": "menu_combo",
+      "cikarilabilir": "suriye_patates_sarimsak_tursu",
       "ekstra": "menu_combo",
       "alerjenler": [
         "gluten"
@@ -910,13 +1124,13 @@
       "sira": 9,
       "ad_tr": "Crispy Menü",
       "ad_ar": "وجبة كريسبي",
-      "aciklama_tr": "Crispy tavuk + patates",
-      "aciklama_ar": "كريسبي مع بطاطا",
+      "aciklama_tr": "Crispy tavuk; marul, turşu ve özel sosla, yanında patates.",
+      "aciklama_ar": "وجبة كريسبي مع خس ومخلل خيار وصلصة خاصة وبطاطا مقلية.",
       "fiyat_masa": 400,
       "fiyat_paket": 400,
       "gramaj": "300 g + 150 g patates",
       "stokta": true,
-      "cikarilabilir": "menu_combo",
+      "cikarilabilir": "suriye_marul_tursu_ozelSos_patates",
       "ekstra": "menu_combo",
       "alerjenler": [
         "gluten",
@@ -932,13 +1146,13 @@
       "sira": 10,
       "ad_tr": "Zinger Menü",
       "ad_ar": "وجبة زنجر",
-      "aciklama_tr": "Zinger tavuk + patates",
-      "aciklama_ar": "زنجر مع بطاطا",
+      "aciklama_tr": "Zinger tavuk; marul, turşu ve mayonezle, yanında patates.",
+      "aciklama_ar": "وجبة زنجر مع خس ومخلل خيار ومايونيز وبطاطا مقلية.",
       "fiyat_masa": 400,
       "fiyat_paket": 400,
       "gramaj": "300 g + 150 g patates",
       "stokta": true,
-      "cikarilabilir": "menu_combo",
+      "cikarilabilir": "suriye_marul_tursu_mayonez_patates",
       "ekstra": "menu_combo",
       "alerjenler": [
         "gluten",
@@ -954,13 +1168,13 @@
       "sira": 11,
       "ad_tr": "Kebap Menü",
       "ad_ar": "وجبة كباب",
-      "aciklama_tr": "Izgara kebap + patates",
-      "aciklama_ar": "كباب مشوي مع بطاطا",
+      "aciklama_tr": "Izgara kebap; soğan, maydanoz, sumak ve ızgara domatesle, yanında patates.",
+      "aciklama_ar": "وجبة كباب مشوي مع بصل وبقدونس وسماق وبندورة مشوية وبطاطا مقلية.",
       "fiyat_masa": 300,
       "fiyat_paket": 300,
       "gramaj": "250 g + 150 g patates",
       "stokta": true,
-      "cikarilabilir": "menu_combo",
+      "cikarilabilir": "suriye_sogan_maydanoz_sumak_izgaraDomates_patates",
       "ekstra": "menu_combo",
       "alerjenler": [
         "gluten"
@@ -975,13 +1189,13 @@
       "sira": 12,
       "ad_tr": "Kanat Menü",
       "ad_ar": "وجبة جناحات",
-      "aciklama_tr": "Izgara tavuk kanat + patates",
-      "aciklama_ar": "جناحات دجاج مشوية مع بطاطا",
+      "aciklama_tr": "Izgara tavuk kanat; patates, sarımsak sosu ve turşuyla.",
+      "aciklama_ar": "وجبة أجنحة دجاج مشوية مع بطاطا مقلية وثومية ومخلل خيار.",
       "fiyat_masa": 300,
       "fiyat_paket": 300,
       "gramaj": "6 adet + 150 g patates",
       "stokta": true,
-      "cikarilabilir": "menu_combo",
+      "cikarilabilir": "suriye_patates_sarimsak_tursu",
       "ekstra": "menu_combo",
       "alerjenler": [],
       "rozet": "yok",
@@ -994,13 +1208,13 @@
       "sira": 13,
       "ad_tr": "Karışık Menü",
       "ad_ar": "وجبة مشكل",
-      "aciklama_tr": "Kebap, şiş tavuk ve kanat karışık + patates",
-      "aciklama_ar": "مشكل كباب وشيش وجناحات مع بطاطا",
+      "aciklama_tr": "Kebap, şiş tavuk ve kanat; soğan, maydanoz, ızgara domates, sarımsak sosu ve patatesle.",
+      "aciklama_ar": "وجبة مشاوي مشكلة مع بصل وبقدونس وبندورة مشوية وثومية وبطاطا مقلية.",
       "fiyat_masa": 400,
       "fiyat_paket": 400,
       "gramaj": "350 g karışık + 150 g patates",
       "stokta": true,
-      "cikarilabilir": "menu_combo",
+      "cikarilabilir": "suriye_sogan_maydanoz_izgaraDomates_sarimsak_patates",
       "ekstra": "menu_combo",
       "alerjenler": [
         "gluten"
@@ -1015,13 +1229,13 @@
       "sira": 14,
       "ad_tr": "Döner Pilav",
       "ad_ar": "شاورما ورز",
-      "aciklama_tr": "Döner, pilav ve yanında sos",
-      "aciklama_ar": "شاورما مع رز وصلصة",
+      "aciklama_tr": "Tavuk şavurma ve pilav; yanında sarımsak sosu ve turşu.",
+      "aciklama_ar": "شاورما دجاج مع أرز، وتقدم مع ثومية ومخلل خيار.",
       "fiyat_masa": 400,
       "fiyat_paket": 400,
       "gramaj": "200 g döner + 250 g pilav",
       "stokta": true,
-      "cikarilabilir": "menu_combo",
+      "cikarilabilir": "suriye_sarimsak_tursu",
       "ekstra": "tavuk_izgara",
       "alerjenler": [],
       "rozet": "yok",
@@ -1035,13 +1249,13 @@
       "sira": 15,
       "ad_tr": "Kebap Pilav",
       "ad_ar": "كباب ورز",
-      "aciklama_tr": "Izgara kebap, pilav ve yanında sos",
-      "aciklama_ar": "كباب مشوي مع رز وصلصة",
+      "aciklama_tr": "Izgara kebap ve pilav; yanında soğan, maydanoz, sumak ve ızgara domates.",
+      "aciklama_ar": "كباب مشوي مع أرز، ويقدم مع بصل وبقدونس وسماق وبندورة مشوية.",
       "fiyat_masa": 400,
       "fiyat_paket": 400,
       "gramaj": "250 g kebap + 250 g pilav",
       "stokta": true,
-      "cikarilabilir": "menu_combo",
+      "cikarilabilir": "suriye_sogan_maydanoz_sumak_izgaraDomates",
       "ekstra": "tavuk_izgara",
       "alerjenler": [],
       "rozet": "yok",
@@ -1054,13 +1268,13 @@
       "sira": 16,
       "ad_tr": "Şiş Tavuk Pilav",
       "ad_ar": "شيش ورز",
-      "aciklama_tr": "Şiş tavuk, pilav ve sarımsak sosu",
-      "aciklama_ar": "شيش طاووق مع رز وثومية",
+      "aciklama_tr": "Izgara şiş tavuk ve pilav; yanında sarımsak sosu ve turşu.",
+      "aciklama_ar": "شيش طاووق مشوي مع أرز، ويقدم مع ثومية ومخلل خيار.",
       "fiyat_masa": 400,
       "fiyat_paket": 400,
       "gramaj": "250 g tavuk + 250 g pilav",
       "stokta": true,
-      "cikarilabilir": "menu_combo",
+      "cikarilabilir": "suriye_sarimsak_tursu",
       "ekstra": "tavuk_izgara",
       "alerjenler": [],
       "rozet": "yok",
@@ -1073,13 +1287,13 @@
       "sira": 17,
       "ad_tr": "İçli Köfte (Izgara) Menü",
       "ad_ar": "وجبة كبة مشوية",
-      "aciklama_tr": "Izgara içli köfte + patates",
-      "aciklama_ar": "كبة مشوية مع بطاطا",
+      "aciklama_tr": "Suriye usulü ızgara içli köfte; yanında patates kızartması.",
+      "aciklama_ar": "وجبة كبة مشوية سورية مع بطاطا مقلية.",
       "fiyat_masa": 350,
       "fiyat_paket": 350,
       "gramaj": "300 g + 150 g patates",
       "stokta": true,
-      "cikarilabilir": "menu_combo",
+      "cikarilabilir": "suriye_patates",
       "ekstra": "menu_combo",
       "alerjenler": [
         "gluten"
@@ -1094,13 +1308,13 @@
       "sira": 1,
       "ad_tr": "Kızarmış Tavuk (Bütün)",
       "ad_ar": "فروج مشوي",
-      "aciklama_tr": "Bütün kızarmış tavuk",
-      "aciklama_ar": "فروج كامل مشوي",
+      "aciklama_tr": "Suriye usulü bütün kızarmış tavuk; patates, sarımsak sosu ve turşuyla.",
+      "aciklama_ar": "فروج كامل مشوي على الطريقة السورية مع بطاطا مقلية وثومية ومخلل خيار.",
       "fiyat_masa": 650,
       "fiyat_paket": 650,
       "gramaj": "yaklaşık 1200 g",
       "stokta": true,
-      "cikarilabilir": "tavuk_izgara",
+      "cikarilabilir": "suriye_patates_sarimsak_tursu",
       "ekstra": "tavuk_izgara",
       "alerjenler": [],
       "rozet": "yok",
@@ -1113,13 +1327,13 @@
       "sira": 2,
       "ad_tr": "Yarım Kızarmış Tavuk",
       "ad_ar": "نصف فروج مشوي",
-      "aciklama_tr": "Yarım kızarmış tavuk",
-      "aciklama_ar": "نصف فروج مشوي",
+      "aciklama_tr": "Suriye usulü yarım kızarmış tavuk; patates, sarımsak sosu ve turşuyla.",
+      "aciklama_ar": "نصف فروج مشوي على الطريقة السورية مع بطاطا مقلية وثومية ومخلل خيار.",
       "fiyat_masa": 350,
       "fiyat_paket": 350,
       "gramaj": "yaklaşık 600 g",
       "stokta": true,
-      "cikarilabilir": "tavuk_izgara",
+      "cikarilabilir": "suriye_patates_sarimsak_tursu",
       "ekstra": "tavuk_izgara",
       "alerjenler": [],
       "rozet": "yok",
@@ -1132,13 +1346,13 @@
       "sira": 3,
       "ad_tr": "Yarım Mangal Tavuk",
       "ad_ar": "نصف فروج عالفحم",
-      "aciklama_tr": "Kömür ateşinde yarım tavuk",
-      "aciklama_ar": "نصف فروج على الفحم",
+      "aciklama_tr": "Kömür ateşinde yarım tavuk; patates, sarımsak sosu ve turşuyla.",
+      "aciklama_ar": "نصف فروج مشوي على الفحم مع بطاطا مقلية وثومية ومخلل خيار.",
       "fiyat_masa": 350,
       "fiyat_paket": 350,
       "gramaj": "yaklaşık 600 g",
       "stokta": true,
-      "cikarilabilir": "tavuk_izgara",
+      "cikarilabilir": "suriye_patates_sarimsak_tursu",
       "ekstra": "tavuk_izgara",
       "alerjenler": [],
       "rozet": "sefin_onerisi",
@@ -1151,13 +1365,13 @@
       "sira": 4,
       "ad_tr": "Mangal Tavuk + Pilav",
       "ad_ar": "فروج عالفحم مع رز",
-      "aciklama_tr": "Kömür ateşinde bütün tavuk, yanında pilav",
-      "aciklama_ar": "فروج كامل على الفحم مع رز",
+      "aciklama_tr": "Kömür ateşinde bütün tavuk ve pilav; yanında sarımsak sosu ve turşu.",
+      "aciklama_ar": "فروج كامل مشوي على الفحم مع أرز وثومية ومخلل خيار.",
       "fiyat_masa": 850,
       "fiyat_paket": 850,
       "gramaj": "1200 g tavuk + 500 g pilav",
       "stokta": true,
-      "cikarilabilir": "tavuk_izgara",
+      "cikarilabilir": "suriye_sarimsak_tursu",
       "ekstra": "tavuk_izgara",
       "alerjenler": [],
       "rozet": "yok",
@@ -1170,13 +1384,13 @@
       "sira": 5,
       "ad_tr": "Kızarmış Tavuk + Pilav",
       "ad_ar": "فروج مشوي مع رز",
-      "aciklama_tr": "Bütün kızarmış tavuk, yanında pilav",
-      "aciklama_ar": "فروج كامل مشوي مع رز",
+      "aciklama_tr": "Suriye usulü bütün kızarmış tavuk ve pilav; yanında sarımsak sosu ve turşu.",
+      "aciklama_ar": "فروج كامل مشوي مع أرز، ويقدم مع ثومية ومخلل خيار.",
       "fiyat_masa": 800,
       "fiyat_paket": 800,
       "gramaj": "1200 g tavuk + 500 g pilav",
       "stokta": true,
-      "cikarilabilir": "tavuk_izgara",
+      "cikarilabilir": "suriye_sarimsak_tursu",
       "ekstra": "tavuk_izgara",
       "alerjenler": [],
       "rozet": "yok",
@@ -1249,13 +1463,13 @@
       "sira": 9,
       "ad_tr": "Duble Kanat Menü",
       "ad_ar": "وجبة جناح دبل",
-      "aciklama_tr": "Çift porsiyon tavuk kanat + patates",
-      "aciklama_ar": "جناحات دبل مع بطاطا",
+      "aciklama_tr": "Çift porsiyon ızgara tavuk kanat; patates, sarımsak sosu ve turşuyla.",
+      "aciklama_ar": "وجبة أجنحة دجاج دبل مع بطاطا مقلية وثومية ومخلل خيار.",
       "fiyat_masa": 400,
       "fiyat_paket": 400,
       "gramaj": "12 adet + 150 g patates",
       "stokta": true,
-      "cikarilabilir": "menu_combo",
+      "cikarilabilir": "suriye_patates_sarimsak_tursu",
       "ekstra": "menu_combo",
       "alerjenler": [],
       "rozet": "yok",
@@ -1268,13 +1482,13 @@
       "sira": 10,
       "ad_tr": "Duble Şiş Menü",
       "ad_ar": "وجبة شيش دبل",
-      "aciklama_tr": "Çift porsiyon şiş tavuk + patates",
-      "aciklama_ar": "شيش دبل مع بطاطا",
+      "aciklama_tr": "Çift porsiyon ızgara şiş tavuk; patates, sarımsak sosu ve turşuyla.",
+      "aciklama_ar": "وجبة شيش طاووق دبل مع بطاطا مقلية وثومية ومخلل خيار.",
       "fiyat_masa": 400,
       "fiyat_paket": 400,
       "gramaj": "500 g + 150 g patates",
       "stokta": true,
-      "cikarilabilir": "menu_combo",
+      "cikarilabilir": "suriye_patates_sarimsak_tursu",
       "ekstra": "menu_combo",
       "alerjenler": [],
       "rozet": "yok",
@@ -1287,13 +1501,13 @@
       "sira": 11,
       "ad_tr": "Duble Kebap Menü",
       "ad_ar": "وجبة كباب دبل",
-      "aciklama_tr": "Çift porsiyon kebap + patates",
-      "aciklama_ar": "كباب دبل مع بطاطا",
+      "aciklama_tr": "Çift porsiyon ızgara kebap; soğan, maydanoz, sumak ve ızgara domatesle, yanında patates.",
+      "aciklama_ar": "وجبة كباب دبل مع بصل وبقدونس وسماق وبندورة مشوية وبطاطا مقلية.",
       "fiyat_masa": 400,
       "fiyat_paket": 400,
       "gramaj": "500 g + 150 g patates",
       "stokta": true,
-      "cikarilabilir": "menu_combo",
+      "cikarilabilir": "suriye_sogan_maydanoz_sumak_izgaraDomates_patates",
       "ekstra": "menu_combo",
       "alerjenler": [],
       "rozet": "yok",
@@ -1345,13 +1559,13 @@
       "sira": 3,
       "ad_tr": "Türk Salatası",
       "ad_ar": "سلطة تركية",
-      "aciklama_tr": "Domates, salatalık, biber ve maydanoz",
-      "aciklama_ar": "بندورة وخيار وفليفلة وبقدونس",
+      "aciklama_tr": "İnce doğranmış domates, salatalık, biber, soğan ve maydanoz; nar ekşili sosla.",
+      "aciklama_ar": "سلطة تركية من بندورة وخيار وفليفلة وبصل وبقدونس مع دبس الرمان.",
       "fiyat_masa": 120,
       "fiyat_paket": 120,
       "gramaj": "250 g",
       "stokta": true,
-      "cikarilabilir": "salata",
+      "cikarilabilir": "suriye_sogan_maydanoz_narEksisi",
       "ekstra": "yok",
       "alerjenler": [],
       "rozet": "yok",
@@ -1364,13 +1578,13 @@
       "sira": 4,
       "ad_tr": "Royal Salata",
       "ad_ar": "سلطة رويال",
-      "aciklama_tr": "Karışık yeşillik, özel sos ve mevsim sebzeleri",
-      "aciklama_ar": "سلطة مشكلة مع صلصة خاصة",
+      "aciklama_tr": "Karışık yeşillik, domates, salatalık, soğan ve maydanoz; Royal özel sosla.",
+      "aciklama_ar": "سلطة رويال من خضار ورقية وبندورة وخيار وبصل وبقدونس مع صلصة رويال الخاصة.",
       "fiyat_masa": 150,
       "fiyat_paket": 150,
       "gramaj": "300 g",
       "stokta": true,
-      "cikarilabilir": "salata",
+      "cikarilabilir": "suriye_sogan_maydanoz_ozelSos",
       "ekstra": "yok",
       "alerjenler": [],
       "rozet": "sefin_onerisi",
@@ -1646,13 +1860,13 @@
       "sira": 16,
       "ad_tr": "Uzun Ekmek Crispy Sandviç",
       "ad_ar": "كريسبي صمون طويل",
-      "aciklama_tr": "Uzun ekmekte çıtır tavuk sandviç.",
-      "aciklama_ar": "ساندويش دجاج كريسبي في صمون طويل.",
+      "aciklama_tr": "Uzun ekmekte çıtır tavuk, marul, turşu ve mayonez.",
+      "aciklama_ar": "ساندويش دجاج كريسبي في صمون طويل مع خس ومخلل خيار ومايونيز.",
       "fiyat_masa": 225,
       "fiyat_paket": 225,
       "gramaj": "1 adet",
       "stokta": true,
-      "cikarilabilir": "durum_sandvic",
+      "cikarilabilir": "suriye_marul_tursu_mayonez",
       "ekstra": "durum_sandvic",
       "alerjenler": [
         "gluten",
@@ -1668,13 +1882,13 @@
       "sira": 1,
       "ad_tr": "Yarım Mangal Tavuk + Mendi Pilav",
       "ad_ar": "نصف دجاج فحم مع أرز مندي",
-      "aciklama_tr": "Mangalda pişmiş yarım tavuk ve mendi pilavı.",
-      "aciklama_ar": "نصف دجاج مشوي على الفحم مع أرز مندي.",
+      "aciklama_tr": "Kömür ateşinde yarım tavuk ve mendi pilavı; yanında sarımsak sosu ve turşu.",
+      "aciklama_ar": "نصف دجاج مشوي على الفحم مع أرز مندي وثومية ومخلل خيار.",
       "fiyat_masa": 400,
       "fiyat_paket": 400,
       "gramaj": "Yarım tavuk + pilav",
       "stokta": true,
-      "cikarilabilir": "tavuk_izgara",
+      "cikarilabilir": "suriye_sarimsak_tursu",
       "ekstra": "tavuk_izgara",
       "alerjenler": [],
       "rozet": "yok",
@@ -1763,13 +1977,13 @@
       "sira": 3,
       "ad_tr": "Bütün Mangal Tavuk",
       "ad_ar": "فروج على الفحم",
-      "aciklama_tr": "Kömür ateşinde pişmiş bütün tavuk.",
-      "aciklama_ar": "فروج كامل مشوي على الفحم.",
+      "aciklama_tr": "Kömür ateşinde bütün tavuk; patates, sarımsak sosu ve turşuyla.",
+      "aciklama_ar": "فروج كامل مشوي على الفحم مع بطاطا مقلية وثومية ومخلل خيار.",
       "fiyat_masa": 550,
       "fiyat_paket": 550,
       "gramaj": "1 bütün tavuk",
       "stokta": true,
-      "cikarilabilir": "tavuk_izgara",
+      "cikarilabilir": "suriye_patates_sarimsak_tursu",
       "ekstra": "tavuk_izgara",
       "alerjenler": [],
       "rozet": "yok",
@@ -1782,13 +1996,13 @@
       "sira": 4,
       "ad_tr": "Izgara Kanat Porsiyon (250 g / 5 Adet)",
       "ad_ar": "أجنحة دجاج مشوي",
-      "aciklama_tr": "250 g, 5 adet ızgara tavuk kanat.",
-      "aciklama_ar": "وجبة 250 غرام، 5 قطع أجنحة دجاج مشوية.",
+      "aciklama_tr": "250 g, 5 adet Suriye usulü ızgara tavuk kanat.",
+      "aciklama_ar": "وجبة 250 غرام، 5 قطع أجنحة دجاج مشوية على الطريقة السورية.",
       "fiyat_masa": 225,
       "fiyat_paket": 225,
       "gramaj": "250 g / 5 adet",
       "stokta": true,
-      "cikarilabilir": "tavuk_izgara",
+      "cikarilabilir": "yok",
       "ekstra": "tavuk_izgara",
       "alerjenler": [],
       "rozet": "yok",
@@ -1801,13 +2015,13 @@
       "sira": 5,
       "ad_tr": "Bütün Broasted (8 Parça)",
       "ad_ar": "بروستد كامل",
-      "aciklama_tr": "8 parça çıtır broasted tavuk.",
-      "aciklama_ar": "بروستد كامل مقرمش، 8 قطع.",
+      "aciklama_tr": "8 parça Suriye usulü çıtır broasted tavuk; patates, sarımsak sosu ve turşuyla.",
+      "aciklama_ar": "بروستد سوري كامل، 8 قطع، مع بطاطا مقلية وثومية ومخلل خيار.",
       "fiyat_masa": 800,
       "fiyat_paket": 800,
       "gramaj": "8 parça",
       "stokta": true,
-      "cikarilabilir": "tavuk_izgara",
+      "cikarilabilir": "suriye_patates_sarimsak_tursu",
       "ekstra": "tavuk_izgara",
       "alerjenler": [
         "gluten"
@@ -1822,13 +2036,13 @@
       "sira": 17,
       "ad_tr": "Duble Zinger Sandviç",
       "ad_ar": "سندويش زنجر دبل",
-      "aciklama_tr": "Çift porsiyon zinger tavuk sandviç.",
-      "aciklama_ar": "ساندويش زنجر دبل.",
+      "aciklama_tr": "Ekmek arasında baharatlı çıtır tavuk, marul, turşu ve acı sos.",
+      "aciklama_ar": "سبايسي صمون مع دجاج مقرمش وخس ومخلل خيار وصلصة حارة.",
       "fiyat_masa": 220,
       "fiyat_paket": 220,
       "gramaj": "Duble",
       "stokta": true,
-      "cikarilabilir": "durum_sandvic",
+      "cikarilabilir": "suriye_marul_tursu_aciSos",
       "ekstra": "durum_sandvic",
       "alerjenler": [
         "gluten",
@@ -1844,13 +2058,13 @@
       "sira": 18,
       "ad_tr": "Duble Spicy Sandviç",
       "ad_ar": "سندويش سبايسي دبل",
-      "aciklama_tr": "Çift porsiyon baharatlı çıtır tavuk sandviç.",
-      "aciklama_ar": "ساندويش دجاج سبايسي دبل.",
+      "aciklama_tr": "Çift porsiyon baharatlı çıtır tavuk; marul, turşu ve acı sos.",
+      "aciklama_ar": "ساندويش دجاج سبايسي دبل مع خس ومخلل خيار وصلصة حارة.",
       "fiyat_masa": 220,
       "fiyat_paket": 220,
       "gramaj": "Duble",
       "stokta": true,
-      "cikarilabilir": "durum_sandvic",
+      "cikarilabilir": "suriye_marul_tursu_aciSos",
       "ekstra": "durum_sandvic",
       "alerjenler": [
         "gluten"
@@ -1903,13 +2117,13 @@
       "sira": 19,
       "ad_tr": "Parmak Döner",
       "ad_ar": "أصبع شاورما",
-      "aciklama_tr": "Atıştırmalık küçük döner porsiyonu.",
-      "aciklama_ar": "قطعة شاورما صغيرة مناسبة كوجبة خفيفة.",
+      "aciklama_tr": "Küçük boy Suriye usulü tavuk şavurma; sarımsak sosu, turşu ve patates.",
+      "aciklama_ar": "أصبع شاورما دجاج سورية مع ثومية ومخلل خيار وبطاطا مقلية.",
       "fiyat_masa": 100,
       "fiyat_paket": 100,
       "gramaj": "1 adet",
       "stokta": true,
-      "cikarilabilir": "durum_sandvic",
+      "cikarilabilir": "suriye_sarimsak_tursu_patates",
       "ekstra": "durum_sandvic",
       "alerjenler": [
         "gluten"
