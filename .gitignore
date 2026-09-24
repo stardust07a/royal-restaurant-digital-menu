@@ -17,3 +17,6 @@ backups/
 Claude outputs/
 DESIGN-IS-*/
 royal-restaurant/
+
+.vercel
+.env*

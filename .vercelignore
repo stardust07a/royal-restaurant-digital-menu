@@ -1,0 +1,14 @@
+node_modules/
+.next/
+.git/
+.vercel/
+.env*
+backups/
+.playwright/
+.agents/
+.claude/
+Claude outputs/
+DESIGN-IS-*/
+royal-restaurant/
+*.tsbuildinfo
+next-env.d.ts
