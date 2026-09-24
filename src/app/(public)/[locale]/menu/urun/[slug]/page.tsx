@@ -12,6 +12,7 @@ import {
 import { ayarlariGetir, acikMi, restoranAdi } from "@/lib/ayarlar";
 import { ad, aciklama } from "@/lib/dil";
 import { kamuSayfasiMetadata } from "@/lib/seo";
+import { masaMenusunuFiltrele } from "@/lib/menu";
 import type { Dil } from "@/lib/tipler";
 
 export const revalidate = 60;
@@ -31,11 +32,11 @@ export async function generateMetadata({
   return kamuSayfasiMetadata({
     locale: dil,
     yol: `/menu/urun/${slug}`,
-    baslik: urun ? ad(urun, dil) : t("menu.baslik"),
+    baslik: urun && urun.masa_aktif !== false && urun.fiyat_masa > 0 ? ad(urun, dil) : t("menu.baslik"),
     aciklama:
-      (urun && aciklama(urun, dil)) || t("anasayfa.masaMenusuAciklama"),
+      (urun && urun.masa_aktif !== false && urun.fiyat_masa > 0 && aciklama(urun, dil)) || t("anasayfa.masaMenusuAciklama"),
     siteAdi: t("anasayfa.ustBaslik"),
-    gorsel: urun?.gorsel_url,
+    gorsel: urun && urun.masa_aktif !== false && urun.fiyat_masa > 0 ? urun.gorsel_url : null,
     indeksle: false,
   });
 }
@@ -56,13 +57,13 @@ export default async function MasaUrunSayfasi({
 
   const urunSonucu = await kamuUrunSonucuGetir(slug);
   const urun = urunSonucu.veri;
-  if (!urun) notFound();
+  if (!urun || urun.masa_aktif === false || urun.fiyat_masa <= 0) notFound();
 
   const [menuSonucu, ayarlar] = await Promise.all([
     kamuMenuSonucuGetir(),
     ayarlariGetir(),
   ]);
-  const kategoriler = menuSonucu.veri;
+  const kategoriler = masaMenusunuFiltrele(menuSonucu.veri);
   const kategori = kategoriler.find((k) => k.id === urun.kategori_id);
 
   return (

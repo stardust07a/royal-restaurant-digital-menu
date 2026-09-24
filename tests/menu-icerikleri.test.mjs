@@ -23,11 +23,12 @@ test("Suriye usulu tavuk savurma yalniz gercek sandvic malzemelerini gosterir", 
     [
       ["Sarımsak sosu", "ثومية"],
       ["Turşu", "مخلل خيار"],
-      ["Patates", "بطاطا مقلية"],
     ],
   );
-  assert.match(urun("doner").aciklama_tr, /Suriye usulü.*sarımsak sosu.*turşu.*patates/i);
-  assert.match(urun("doner").aciklama_ar, /شاورما دجاج سورية.*ثومية.*مخلل خيار.*بطاطا مقلية/);
+  assert.match(urun("doner").aciklama_tr, /Suriye usulü.*sarımsak sosu.*turşu/i);
+  assert.doesNotMatch(urun("doner").aciklama_tr, /patates/i);
+  assert.match(urun("doner").aciklama_ar, /شاورما دجاج سورية.*ثومية.*مخلل خيار/);
+  assert.doesNotMatch(urun("doner").aciklama_ar, /بطاطا/);
 });
 
 test("genel sandvic, burger ve menu kaliplari artik kullanilmaz", () => {

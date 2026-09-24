@@ -76,6 +76,7 @@ export async function menuyuGetir(): Promise<KategoriliMenu[]> {
       rozet: ((ham.rozet as string) ?? "yok") as Rozet,
       stokta: (ham.stokta as boolean) ?? true,
       aktif: (ham.aktif as boolean) ?? true,
+      masa_aktif: (ham.masa_aktif as boolean) ?? true,
     };
     const liste = urunleriKategoriyeGore.get(bag.kategori_id as string) ?? [];
     liste.push(urun);
@@ -154,6 +155,18 @@ export function kategorileriHazirla(
   return cokSatan ? [cokSatan, ...kategoriler] : kategoriler;
 }
 
+/** Masa QR menusunde kapatilan veya fiyati olmayan urunleri gizler. */
+export function masaMenusunuFiltrele(kategoriler: KategoriliMenu[]): KategoriliMenu[] {
+  return kategoriler
+    .map((kategori) => ({
+      ...kategori,
+      urunler: kategori.urunler.filter(
+        (urun) => urun.masa_aktif !== false && urun.fiyat_masa > 0,
+      ),
+    }))
+    .filter((kategori) => kategori.urunler.length > 0);
+}
+
 /**
  * Tek bir urunu cikarilabilirleri ve ekstralariyla birlikte getirir.
  * Paket siparis urun detay sayfasi icin — menu listelerinde bu kadari gerekmez.
@@ -167,7 +180,7 @@ export async function urunGetir(slug: string): Promise<Urun | null> {
       `
       *,
       cikarilabilirler ( id, sira, ad_tr, ad_ar ),
-      ekstralar ( id, sira, ad_tr, ad_ar, fiyat, stokta )
+      ekstralar!ekstralar_urun_id_fkey ( id, sira, ad_tr, ad_ar, fiyat, stokta )
     `,
     )
     .eq("slug", slug)
@@ -223,6 +236,7 @@ export async function urunGetir(slug: string): Promise<Urun | null> {
     rozet: (data.rozet ?? "yok") as Rozet,
     stokta: data.stokta ?? true,
     aktif: data.aktif ?? true,
+    masa_aktif: data.masa_aktif ?? true,
     cikarilabilirler,
     ekstralar,
   };

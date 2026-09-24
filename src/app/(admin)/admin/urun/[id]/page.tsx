@@ -36,6 +36,7 @@ function bosUrun(kategoriId: string): FormUrun {
     rozet: "yok",
     stokta: true,
     aktif: true,
+    masa_aktif: true,
     cikarilabilirler: [],
     ekstralar: [],
   };
@@ -85,7 +86,7 @@ export default async function UrunDuzenleSayfasi({
       `
       *,
       cikarilabilirler ( id, sira, ad_tr, ad_ar ),
-      ekstralar ( id, sira, ad_tr, ad_ar, fiyat, stokta )
+      ekstralar!ekstralar_urun_id_fkey ( id, sira, ad_tr, ad_ar, fiyat, stokta )
     `,
     )
     .eq("id", id)
@@ -112,6 +113,7 @@ export default async function UrunDuzenleSayfasi({
     rozet: data.rozet ?? "yok",
     stokta: data.stokta,
     aktif: data.aktif,
+    masa_aktif: data.masa_aktif ?? true,
     // "*" secimi ic içe iliskileri any yapiyor; siralama icin tip veriliyor
     cikarilabilirler: ((data.cikarilabilirler ?? []) as SecenekSatiri[])
       .sort((a, b) => (a.sira ?? 0) - (b.sira ?? 0))

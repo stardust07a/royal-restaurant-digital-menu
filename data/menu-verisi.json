@@ -612,15 +612,6 @@
       "aciklama_tr": "Kebap, şiş ve karışık ızgara çeşitleri",
       "aciklama_ar": "كباب وشيش ومشاوي مشكلة",
       "gorsel_url": "https://pscuxsmjdhpsbxafzmzf.supabase.co/storage/v1/object/public/menu-gorseller/urunler/karisik-menu-1788811272908.webp"
-    },
-    {
-      "slug": "tavuk",
-      "sira": 7,
-      "ad_tr": "Tavuk",
-      "ad_ar": "قسم الفروج",
-      "aciklama_tr": "Izgara ve çevirme tavuk çeşitleri",
-      "aciklama_ar": "دجاج مشوي وعلى الفحم",
-      "gorsel_url": "https://pscuxsmjdhpsbxafzmzf.supabase.co/storage/v1/object/public/menu-gorseller/urunler/kizarmis-tavuk-1788811316119.webp"
     }
   ],
   "urunler": [
@@ -630,13 +621,13 @@
       "sira": 1,
       "ad_tr": "Döner",
       "ad_ar": "شاورما",
-      "aciklama_tr": "Suriye usulü tavuk şavurma; lavaşta sarımsak sosu, turşu ve patates.",
-      "aciklama_ar": "شاورما دجاج سورية في خبز الصاج مع ثومية ومخلل خيار وبطاطا مقلية.",
+      "aciklama_tr": "Suriye usulü tavuk şavurma; lavaşta sarımsak sosu ve turşu.",
+      "aciklama_ar": "شاورما دجاج سورية في خبز الصاج مع ثومية ومخلل خيار.",
       "fiyat_masa": 150,
       "fiyat_paket": 150,
       "gramaj": "180 g",
       "stokta": false,
-      "cikarilabilir": "suriye_sarimsak_tursu_patates",
+      "cikarilabilir": "suriye_sarimsak_tursu",
       "ekstra": "durum_sandvic",
       "alerjenler": [
         "gluten"
@@ -652,13 +643,13 @@
       "sira": 2,
       "ad_tr": "Duble Döner",
       "ad_ar": "شاورما دبل",
-      "aciklama_tr": "Çift porsiyon Suriye usulü tavuk şavurma; lavaşta sarımsak sosu, turşu ve patates.",
-      "aciklama_ar": "شاورما دجاج سورية دبل في خبز الصاج مع ثومية ومخلل خيار وبطاطا مقلية.",
+      "aciklama_tr": "Çift porsiyon Suriye usulü tavuk şavurma; lavaşta sarımsak sosu ve turşu.",
+      "aciklama_ar": "شاورما دجاج سورية دبل في خبز الصاج مع ثومية ومخلل خيار.",
       "fiyat_masa": 180,
       "fiyat_paket": 180,
       "gramaj": "280 g",
       "stokta": true,
-      "cikarilabilir": "suriye_sarimsak_tursu_patates",
+      "cikarilabilir": "suriye_sarimsak_tursu",
       "ekstra": "durum_sandvic",
       "alerjenler": [
         "gluten"
@@ -1878,7 +1869,7 @@
     },
     {
       "slug": "yarim-mangal-tavuk-mendi-pilav",
-      "kategori": "tavuk",
+      "kategori": "ana-yemekler",
       "sira": 1,
       "ad_tr": "Yarım Mangal Tavuk + Mendi Pilav",
       "ad_ar": "نصف دجاج فحم مع أرز مندي",
@@ -1937,24 +1928,24 @@
       "slug": "bir-kilo-sis-tavuk",
       "kategori": "izgaralar",
       "sira": 3,
-      "ad_tr": "Bir Kilo Şiş Tavuk",
-      "ad_ar": "شيش طاووق وزن كيلو",
-      "aciklama_tr": "1 kg ızgara şiş tavuk.",
-      "aciklama_ar": "كيلو شيش طاووق مشوي.",
+      "ad_tr": "Tavuk Şiş ile Pilav",
+      "ad_ar": "شيش طاووق مع الأرز",
+      "aciklama_tr": "Izgara tavuk şiş ve pilav; yanında sarımsak sosu ve turşu.",
+      "aciklama_ar": "شيش طاووق مشوي مع الأرز، يقدم مع الثومية ومخلل الخيار.",
       "fiyat_masa": 550,
       "fiyat_paket": 550,
-      "gramaj": "1 kg",
+      "gramaj": null,
       "stokta": true,
       "cikarilabilir": "yok",
       "ekstra": "tavuk_izgara",
       "alerjenler": [],
       "rozet": "yok",
       "gorsel_url": "https://pscuxsmjdhpsbxafzmzf.supabase.co/storage/v1/object/public/menu-gorseller/urunler/sis-tavuk-pilav-1788811239792.webp",
-      "gramaj_ar": "1 كيلو"
+      "gramaj_ar": null
     },
     {
       "slug": "bir-kilo-izgara-kanat",
-      "kategori": "tavuk",
+      "kategori": "izgaralar",
       "sira": 2,
       "ad_tr": "Bir Kilo Izgara Kanat",
       "ad_ar": "كيلو جناح مشوي",
@@ -1973,7 +1964,7 @@
     },
     {
       "slug": "butun-mangal-tavuk",
-      "kategori": "tavuk",
+      "kategori": "ana-yemekler",
       "sira": 3,
       "ad_tr": "Bütün Mangal Tavuk",
       "ad_ar": "فروج على الفحم",
@@ -1992,7 +1983,7 @@
     },
     {
       "slug": "izgara-kanat-porsiyon",
-      "kategori": "tavuk",
+      "kategori": "izgaralar",
       "sira": 4,
       "ad_tr": "Izgara Kanat Porsiyon (250 g / 5 Adet)",
       "ad_ar": "أجنحة دجاج مشوي",
@@ -2011,7 +2002,7 @@
     },
     {
       "slug": "butun-broasted",
-      "kategori": "tavuk",
+      "kategori": "ana-yemekler",
       "sira": 5,
       "ad_tr": "Bütün Broasted (8 Parça)",
       "ad_ar": "بروستد كامل",
@@ -2117,13 +2108,13 @@
       "sira": 19,
       "ad_tr": "Parmak Döner",
       "ad_ar": "أصبع شاورما",
-      "aciklama_tr": "Küçük boy Suriye usulü tavuk şavurma; sarımsak sosu, turşu ve patates.",
-      "aciklama_ar": "أصبع شاورما دجاج سورية مع ثومية ومخلل خيار وبطاطا مقلية.",
+      "aciklama_tr": "Küçük boy Suriye usulü tavuk şavurma; sarımsak sosu ve turşu.",
+      "aciklama_ar": "أصبع شاورما دجاج سورية مع ثومية ومخلل خيار.",
       "fiyat_masa": 100,
       "fiyat_paket": 100,
       "gramaj": "1 adet",
       "stokta": true,
-      "cikarilabilir": "suriye_sarimsak_tursu_patates",
+      "cikarilabilir": "suriye_sarimsak_tursu",
       "ekstra": "durum_sandvic",
       "alerjenler": [
         "gluten"

@@ -74,6 +74,7 @@ export interface FormUrun {
   rozet: string;
   stokta: boolean;
   aktif: boolean;
+  masa_aktif: boolean;
   cikarilabilirler: FormSecenek[];
   ekstralar: FormEkstra[];
 }
@@ -93,7 +94,6 @@ export default function UrunFormu({
   const [masaFiyatGirdisi, setMasaFiyatGirdisi] = useState(String(baslangic.fiyat_masa));
   const [paketFiyatGirdisi, setPaketFiyatGirdisi] = useState(String(baslangic.fiyat_paket));
   const [dilSekmesi, setDilSekmesi] = useState<"tr" | "ar">("tr");
-  const [slugElleDegisti, setSlugElleDegisti] = useState(false);
   const [kaydediliyor, setKaydediliyor] = useState(false);
   const [hata, setHata] = useState<string | null>(null);
   const [gorselHatali, setGorselHatali] = useState(false);
@@ -127,7 +127,7 @@ export default function UrunFormu({
     setU((onceki) => ({
       ...onceki,
       ad_tr: deger,
-      slug: yeniKayit && !slugElleDegisti ? slugla(deger) : onceki.slug,
+      slug: yeniKayit ? slugla(deger) : onceki.slug,
     }));
   }
 
@@ -262,11 +262,12 @@ export default function UrunFormu({
 
     // Urun ve iki secenek listesi PostgreSQL icinde tek transaction olarak
     // yazilir. Herhangi bir alt satir hatasi ana urunu de geri alir.
-    const { error } = await db.rpc("admin_urun_kaydet", {
+    const { error } = await db.rpc("admin_urun_ve_masa_kaydet", {
       p_urun_id: u.id,
       p_urun: satir,
       p_cikarilabilirler: cikarilanlar,
       p_ekstralar: ekstralar,
+      p_masa_aktif: u.masa_aktif,
     });
     if (error) return kaydetmeHatasi(error);
 
@@ -604,40 +605,6 @@ export default function UrunFormu({
           })}
         </ul>
 
-        <div className="mt-4">
-          <label className="flex flex-col gap-1.5">
-            <span className="text-sm text-muted">{m("sira")}</span>
-            <input
-              type="number"
-              name="urun-sirasi"
-              autoComplete="off"
-              inputMode="numeric"
-              value={u.sira}
-              onChange={(e) => guncelle("sira", Number(e.target.value))}
-              className={metinKutusu}
-            />
-          </label>
-          <details className="mt-3 rounded-2xl border border-line bg-card px-4 py-3">
-            <summary className="cursor-pointer text-sm font-semibold">{m("slugGelismis")}</summary>
-            <p className="mt-2 text-xs text-muted">{m("slugOtomatikIpucu")}</p>
-            <label className="mt-3 flex flex-col gap-1.5">
-              <span className="text-sm text-muted">{m("slug")}</span>
-              <input
-                name="urun-slug"
-                value={u.slug}
-                onChange={(e) => {
-                  setSlugElleDegisti(true);
-                  guncelle("slug", e.target.value);
-                }}
-                dir="ltr"
-                className={metinKutusu}
-                autoComplete="off"
-                spellCheck={false}
-              />
-            </label>
-          </details>
-        </div>
-
         <div className="mt-4 flex flex-col gap-2">
           <Anahtar
             etiket={m("stokta")}
@@ -648,6 +615,11 @@ export default function UrunFormu({
             etiket={m("menudeYayinda")}
             acik={u.aktif}
             degistir={(v) => guncelle("aktif", v)}
+          />
+          <Anahtar
+            etiket={m("masaMenusundeGoster")}
+            acik={u.masa_aktif}
+            degistir={(v) => guncelle("masa_aktif", v)}
           />
         </div>
       </section>

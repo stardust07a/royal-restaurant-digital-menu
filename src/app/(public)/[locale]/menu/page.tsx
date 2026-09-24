@@ -3,7 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import MasaUstBar from "@/components/menu/MasaUstBar";
 import KategoriKutulari from "@/components/menu/KategoriKutulari";
 import SaltOkunurUyarisi from "@/components/menu/SaltOkunurUyarisi";
-import { kategorileriHazirla, type KategoriliMenu } from "@/lib/menu";
+import { kategorileriHazirla, masaMenusunuFiltrele, type KategoriliMenu } from "@/lib/menu";
 import { kamuMenuSonucuGetir } from "@/lib/kamu-menu";
 import { ayarlariGetir, restoranAdi } from "@/lib/ayarlar";
 import type { Dil } from "@/lib/tipler";
@@ -50,7 +50,7 @@ export default async function MenuSayfasi({
     const menuSonucu = await kamuMenuSonucuGetir();
     saltOkunur = menuSonucu.kaynak === "yerel";
     kategoriler = kategorileriHazirla(
-      menuSonucu.veri,
+      masaMenusunuFiltrele(menuSonucu.veri),
       t("menu.cokSatanlar"),
       t("menu.cokSatanlar"),
     );

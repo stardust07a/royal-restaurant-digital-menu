@@ -37,6 +37,7 @@ create table if not exists urunler (
   rozet       text not null default 'yok',
   stokta      boolean not null default true,
   aktif       boolean not null default true,
+  masa_aktif  boolean not null default true,
   created_at  timestamptz default now(),
   constraint rozet_gecerli check (
     rozet in ('yok','cok_satan','yeni','acili','sefin_onerisi')
@@ -91,6 +92,7 @@ for each row execute function public.urun_ana_kategorisini_esle();
 
 -- Sema daha once kurulmus projeler icin: eksik kolonu ekle.
 alter table urunler add column if not exists gramaj_ar text;
+alter table urunler add column if not exists masa_aktif boolean not null default true;
 
 -- Eski ON DELETE CASCADE yabanci anahtarini ayni adla RESTRICT olarak kur.
 -- pg_constraint uzerinden bulmak, farkli kurulumlarda varsayilan ad degisse
@@ -147,7 +149,76 @@ create table if not exists ekstralar (
   stokta  boolean not null default true
 );
 
+alter table ekstralar
+  add column if not exists kaynak_urun_id uuid references urunler(id) on delete set null;
+
 create index if not exists ekstralar_urun_idx on ekstralar(urun_id, sira);
+create index if not exists ekstralar_kaynak_urun_idx on ekstralar(kaynak_urun_id);
+
+-- Mevcut bir urunden secilen ekstra o urunun guncel paket fiyatini ve
+-- stok durumunu otomatik izler.
+create or replace function public.ekstra_kaynak_urununu_uygula()
+returns trigger
+language plpgsql
+set search_path = public, pg_temp
+as $$
+declare
+  v_kaynak public.urunler%rowtype;
+begin
+  if new.kaynak_urun_id is null then
+    select u.* into v_kaynak
+    from public.urunler as u
+    where u.id <> new.urun_id
+      and (
+        lower(btrim(u.ad_tr)) = lower(btrim(new.ad_tr))
+        or btrim(u.ad_ar) = btrim(new.ad_ar)
+      )
+    order by u.created_at, u.id
+    limit 1;
+    if found then new.kaynak_urun_id := v_kaynak.id; end if;
+  else
+    select u.* into v_kaynak
+    from public.urunler as u
+    where u.id = new.kaynak_urun_id and u.id <> new.urun_id;
+  end if;
+
+  if v_kaynak.id is not null then
+    new.ad_tr := v_kaynak.ad_tr;
+    new.ad_ar := v_kaynak.ad_ar;
+    new.fiyat := v_kaynak.fiyat_paket;
+    new.stokta := v_kaynak.stokta and v_kaynak.aktif;
+  end if;
+  return new;
+end;
+$$;
+
+drop trigger if exists ekstra_kaynak_urununu_uygula_tetikleyici on public.ekstralar;
+create trigger ekstra_kaynak_urununu_uygula_tetikleyici
+before insert or update of ad_tr, ad_ar, fiyat, stokta, kaynak_urun_id
+on public.ekstralar
+for each row execute function public.ekstra_kaynak_urununu_uygula();
+
+create or replace function public.urun_bagli_ekstralarini_guncelle()
+returns trigger
+language plpgsql
+set search_path = public, pg_temp
+as $$
+begin
+  update public.ekstralar
+  set ad_tr = new.ad_tr,
+      ad_ar = new.ad_ar,
+      fiyat = new.fiyat_paket,
+      stokta = new.stokta and new.aktif
+  where kaynak_urun_id = new.id;
+  return new;
+end;
+$$;
+
+drop trigger if exists urun_bagli_ekstralarini_guncelle_tetikleyici on public.urunler;
+create trigger urun_bagli_ekstralarini_guncelle_tetikleyici
+after update of ad_tr, ad_ar, fiyat_paket, stokta, aktif
+on public.urunler
+for each row execute function public.urun_bagli_ekstralarini_guncelle();
 
 -- ---------- SIPARISLER ----------
 create table if not exists siparisler (
@@ -1082,6 +1153,69 @@ revoke all on function public.admin_toplu_fiyat_guncelle(jsonb)
 revoke all on function public.admin_kategori_sirala(jsonb)
   from public, anon, authenticated, service_role;
 grant execute on function public.admin_urun_kaydet(uuid, jsonb, jsonb, jsonb)
+  to authenticated;
+
+create or replace function public.admin_urun_masa_durumunu_ayarla(
+  p_urun_slug text,
+  p_masa_aktif boolean
+)
+returns void
+language plpgsql
+security definer
+set search_path = public, pg_temp
+as $$
+begin
+  if coalesce(auth.role(), '') <> 'authenticated' or not public.is_admin() then
+    raise exception 'Admin yetkisi gerekli' using errcode = '42501';
+  end if;
+  if p_urun_slug is null or p_masa_aktif is null then
+    raise exception 'Gecersiz masa menu durumu' using errcode = '22023';
+  end if;
+
+  update public.urunler
+  set masa_aktif = p_masa_aktif
+  where slug = p_urun_slug;
+
+  if not found then
+    raise exception 'Urun bulunamadi' using errcode = '22023';
+  end if;
+end;
+$$;
+
+revoke all on function public.admin_urun_masa_durumunu_ayarla(text, boolean)
+  from public, anon, authenticated, service_role;
+grant execute on function public.admin_urun_masa_durumunu_ayarla(text, boolean)
+  to authenticated;
+
+create or replace function public.admin_urun_ve_masa_kaydet(
+  p_urun_id uuid,
+  p_urun jsonb,
+  p_cikarilabilirler jsonb,
+  p_ekstralar jsonb,
+  p_masa_aktif boolean
+)
+returns uuid
+language plpgsql
+security definer
+set search_path = public, pg_temp
+as $$
+declare
+  v_id uuid;
+begin
+  if p_masa_aktif is null then
+    raise exception 'Gecersiz masa menu durumu' using errcode = '22023';
+  end if;
+  v_id := public.admin_urun_kaydet(
+    p_urun_id, p_urun, p_cikarilabilirler, p_ekstralar
+  );
+  update public.urunler set masa_aktif = p_masa_aktif where id = v_id;
+  return v_id;
+end;
+$$;
+
+revoke all on function public.admin_urun_ve_masa_kaydet(uuid, jsonb, jsonb, jsonb, boolean)
+  from public, anon, authenticated, service_role;
+grant execute on function public.admin_urun_ve_masa_kaydet(uuid, jsonb, jsonb, jsonb, boolean)
   to authenticated;
 grant execute on function public.admin_toplu_fiyat_guncelle(jsonb)
   to authenticated;

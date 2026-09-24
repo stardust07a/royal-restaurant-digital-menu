@@ -46,6 +46,7 @@ interface YerelUrun {
   alerjenler?: string[];
   rozet?: string;
   stokta?: boolean;
+  masa_aktif?: boolean;
   cikarilabilir?: string;
   ekstra?: string;
 }
@@ -97,6 +98,15 @@ function kategoriKimligi(slug: string): string {
 }
 
 function temelUrun(u: YerelUrun): Urun {
+  const miktarKorunur =
+    /(bütün|butun|yarım|yarim|kilo|kg)/iu.test(u.ad_tr) ||
+    /(فروج|نصف|كيلو)/u.test(u.ad_ar) ||
+    ["kizarmis-tavuk-pilav", "mangal-tavuk-pilav"].includes(u.slug);
+  const masaIcinUygun =
+    sayi(u.fiyat_masa) > 0 &&
+    !/(^|\s)(1|bir)\s*(kg|kilo)(\s|$)/iu.test(`${u.ad_tr} ${u.gramaj ?? ""}`) &&
+    u.slug !== "butun-mangal-tavuk";
+
   return {
     id: `yerel-urun:${u.slug}`,
     kategori_id: kategoriKimligi(u.kategori),
@@ -109,13 +119,14 @@ function temelUrun(u: YerelUrun): Urun {
     gorsel_url: u.gorsel_url ?? null,
     fiyat_masa: sayi(u.fiyat_masa),
     fiyat_paket: sayi(u.fiyat_paket),
-    gramaj: u.gramaj ?? null,
-    gramaj_ar: u.gramaj_ar ?? null,
+    gramaj: miktarKorunur ? (u.gramaj ?? null) : null,
+    gramaj_ar: miktarKorunur ? (u.gramaj_ar ?? null) : null,
     kalori: u.kalori ?? null,
     alerjenler: u.alerjenler ?? [],
     rozet: rozet(u.rozet),
     stokta: u.stokta ?? true,
     aktif: true,
+    masa_aktif: u.masa_aktif ?? masaIcinUygun,
   };
 }
 

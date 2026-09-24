@@ -19,7 +19,9 @@ const migration2 = oku("supabase/migrations/202608180002_admin_integrity.sql");
 const migration3 = oku("supabase/migrations/202609110001_category_product_assignment.sql");
 const migration4 = oku("supabase/migrations/202609110002_approved_menu_additions.sql");
 const migration5 = oku("supabase/migrations/202609160001_multi_category_product_order.sql");
+const migration6 = oku("supabase/migrations/202609240002_remove_chicken_category.sql");
 const sema = oku("supabase/sema.sql");
+const menuVerisi = oku("data/menu-verisi.json");
 
 function fonksiyon(sql, ad) {
   const baslangic = sql.lastIndexOf(`create or replace function public.${ad}`);
@@ -45,6 +47,14 @@ test("migration dosyaları transaction sınırı içinde çalışır", () => {
     );
     assert.match(sql, /commit;\s*$/i, `${ad} transaction ile bitmiyor`);
   }
+});
+
+test("Tavuk kategorisi urunleri silmeden kaldirilir", () => {
+  assert.doesNotMatch(menuVerisi, /"slug"\s*:\s*"tavuk"/i);
+  assert.doesNotMatch(menuVerisi, /"kategori"\s*:\s*"tavuk"/i);
+  assert.match(migration6, /delete from public\.urun_kategorileri/i);
+  assert.match(migration6, /delete from public\.kategoriler[\s\S]*?slug = 'tavuk'/i);
+  assert.doesNotMatch(migration6, /delete from public\.urunler/i);
 });
 
 test("onaylı menü migration'ı kategorileri önce ve tekrar güvenli biçimde ekler", () => {

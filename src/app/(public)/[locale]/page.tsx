@@ -90,7 +90,6 @@ export default async function AnaSayfa({
   ] as string[];
 
   const kapakGorseli = fotograflar[0] ?? null;
-  const menuKapaklari = [fotograflar[1]];
   const galeri = fotograflar.slice(3, 9);
 
   const adres = dil === "ar" ? ayarlar.adres_ar : ayarlar.adres_tr;
@@ -316,7 +315,7 @@ export default async function AnaSayfa({
                 baslik: t("anasayfa.paketSiparis"),
                 metin: t("anasayfa.paketSiparisAciklama"),
                 eylem: t("anasayfa.paketMenusunuAc"),
-                gorsel: menuKapaklari[0],
+                gorsel: "/images/paket-siparis-kurye.png",
               },
             ].map((k) => (
               <li key={k.href} className="flex min-w-0">

@@ -4,7 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import MasaUstBar from "@/components/menu/MasaUstBar";
 import MasaMenusu from "@/components/menu/MasaMenusu";
 import SaltOkunurUyarisi from "@/components/menu/SaltOkunurUyarisi";
-import { kategorileriHazirla } from "@/lib/menu";
+import { kategorileriHazirla, masaMenusunuFiltrele } from "@/lib/menu";
 import { kamuMenuSonucuGetir, kamuMenuyuGetir } from "@/lib/kamu-menu";
 import { ayarlariGetir, restoranAdi } from "@/lib/ayarlar";
 import { ad, aciklama } from "@/lib/dil";
@@ -25,7 +25,7 @@ export async function generateMetadata({
     kamuMenuyuGetir(),
   ]);
   const kategoriler = kategorileriHazirla(
-    menu,
+    masaMenusunuFiltrele(menu),
     t("menu.cokSatanlar"),
     t("menu.cokSatanlar"),
   );
@@ -46,7 +46,7 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-  const kategoriler = kategorileriHazirla(await kamuMenuyuGetir());
+  const kategoriler = kategorileriHazirla(masaMenusunuFiltrele(await kamuMenuyuGetir()));
   return kategoriler.map((k) => ({ kategori: k.slug }));
 }
 
@@ -63,7 +63,7 @@ export default async function MenuKategoriSayfasi({
 
   const menuSonucu = await kamuMenuSonucuGetir();
   const kategoriler = kategorileriHazirla(
-    menuSonucu.veri,
+    masaMenusunuFiltrele(menuSonucu.veri),
     t("menu.cokSatanlar"),
     t("menu.cokSatanlar"),
   );

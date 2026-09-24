@@ -50,6 +50,8 @@ export interface Urun {
   rozet: Rozet;
   stokta: boolean;
   aktif: boolean;
+  /** Yalnizca masa QR menusunde gorunur; paket menusunu etkilemez. */
+  masa_aktif: boolean;
   cikarilabilirler?: Secenek[];
   ekstralar?: Ekstra[];
 }

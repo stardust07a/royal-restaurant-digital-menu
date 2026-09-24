@@ -143,6 +143,7 @@ const SOZLUK = {
   ],
   stokta: ["Stokta", "متوفر"],
   menudeYayinda: ["Menüde yayında", "منشور في القائمة"],
+  masaMenusundeGoster: ["Masa menüsünde göster", "إظهار في قائمة الطاولة"],
   cikarilabilirler: ["İçinden çıkar / olmasın", "أزل من المكونات"],
   ekstralar: ["Ekstralar", "الإضافات"],
   ucretsiz: ["ücretsiz", "مجاناً"],
