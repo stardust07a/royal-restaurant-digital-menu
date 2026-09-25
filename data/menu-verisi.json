@@ -573,8 +573,8 @@
       "sira": 2,
       "ad_tr": "Menüler",
       "ad_ar": "وجبات",
-      "aciklama_tr": null,
-      "aciklama_ar": null,
+      "aciklama_tr": "Patatesli doyurucu menüler",
+      "aciklama_ar": "وجبات مشبعة مع البطاطا",
       "gorsel_url": "https://images.pexels.com/photos/35255190/pexels-photo-35255190.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop"
     },
     {
@@ -600,8 +600,8 @@
       "sira": 5,
       "ad_tr": "İçecekler",
       "ad_ar": "مشروبات",
-      "aciklama_tr": "",
-      "aciklama_ar": "",
+      "aciklama_tr": "Soğuk içecek ve ayran çeşitleri",
+      "aciklama_ar": "مشروبات باردة ولبن عيران",
       "gorsel_url": null
     },
     {

@@ -136,8 +136,8 @@ export function cokSatanlarKategorisi(
     sira: -1,
     ad_tr: adTr,
     ad_ar: adAr,
-    aciklama_tr: null,
-    aciklama_ar: null,
+    aciklama_tr: "En çok tercih edilen ürünler",
+    aciklama_ar: "المنتجات الأكثر طلباً",
     // Kapak olarak ilk urunun fotografi
     gorsel_url: urunler.find((u) => u.gorsel_url)?.gorsel_url ?? null,
     aktif: true,

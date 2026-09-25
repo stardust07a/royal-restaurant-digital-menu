@@ -17,6 +17,13 @@ function secenekler(slug) {
     : menu.cikarilabilir_sablonlari[kayit.cikarilabilir];
 }
 
+test("yedek menudeki tum kategorilerin iki dilde kisa aciklamasi vardir", () => {
+  for (const kategori of menu.kategoriler) {
+    assert.ok(kategori.aciklama_tr?.trim(), `${kategori.slug}: Turkce aciklama eksik`);
+    assert.ok(kategori.aciklama_ar?.trim(), `${kategori.slug}: Arapca aciklama eksik`);
+  }
+});
+
 test("Suriye usulu tavuk savurma yalniz gercek sandvic malzemelerini gosterir", () => {
   assert.deepEqual(
     secenekler("doner").map((secenek) => [secenek.ad_tr, secenek.ad_ar]),
