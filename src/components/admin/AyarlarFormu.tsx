@@ -13,6 +13,7 @@ import { nextGorselUrlDogrula } from "@/lib/guvenli-url";
 import type { Ayarlar, CalismaSaatleri, GunAnahtari } from "@/lib/tipler";
 import { useAdminDil, type MetinAnahtari } from "@/lib/admin-dil";
 import { useKaydedilmemisDegisiklik } from "@/lib/kaydedilmemis-degisiklik";
+import SifreDegistirFormu from "@/components/admin/SifreDegistirFormu";
 
 const GUNLER: { kod: GunAnahtari; anahtar: MetinAnahtari }[] = [
   { kod: "pazartesi", anahtar: "pazartesi" },
@@ -749,6 +750,8 @@ export default function AyarlarFormu({ baslangic }: { baslangic: Ayarlar }) {
           {m("geceMesaisiIpucu")}
         </p>
       </section>
+
+      <SifreDegistirFormu />
 
       {hata && (
         <p

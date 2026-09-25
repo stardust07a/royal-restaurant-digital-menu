@@ -323,14 +323,14 @@ export default async function AnaSayfa({
                   href={k.href}
                   className="kart-derinlik kart-yuksel group flex min-w-0 w-full flex-col overflow-hidden rounded-3xl border border-white/80 bg-card"
                 >
-                  <div className="relative aspect-[5/3] w-full overflow-hidden bg-surface">
+                  <div className="relative aspect-square w-full overflow-hidden bg-surface">
                     {k.gorsel && (
                       <Image
                         src={k.gorsel}
                         alt=""
                         fill
                         sizes="(max-width: 640px) 100vw, 340px"
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="object-contain transition-transform duration-500 group-hover:scale-[1.02]"
                       />
                     )}
                     <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-ink/45 via-transparent to-transparent" />

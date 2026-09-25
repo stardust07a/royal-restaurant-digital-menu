@@ -197,6 +197,16 @@ const SOZLUK = {
   // --- ayarlar ---
   ayarlar: ["Ayarlar", "الإعدادات"],
   ayarlarKaydedildi: ["Ayarlar kaydedildi.", "تم حفظ الإعدادات."],
+  sifreDegistir: ["Şifre değiştir", "تغيير كلمة المرور"],
+  mevcutSifre: ["Mevcut şifre", "كلمة المرور الحالية"],
+  yeniSifre: ["Yeni şifre", "كلمة المرور الجديدة"],
+  yeniSifreTekrar: ["Yeni şifreyi tekrar yaz", "أعد كتابة كلمة المرور الجديدة"],
+  sifreEnAzOn: ["Yeni şifre en az 10 karakter olmalı.", "يجب أن تتكون كلمة المرور الجديدة من 10 أحرف على الأقل."],
+  sifrelerEslesmiyor: ["Yeni şifreler eşleşmiyor.", "كلمتا المرور الجديدتان غير متطابقتين."],
+  mevcutSifreHatali: ["Mevcut şifre hatalı.", "كلمة المرور الحالية غير صحيحة."],
+  sifreDegistirilemedi: ["Şifre değiştirilemedi. Lütfen tekrar deneyin.", "تعذّر تغيير كلمة المرور. يرجى المحاولة مرة أخرى."],
+  sifreDegistirildi: ["Şifreniz değiştirildi.", "تم تغيير كلمة المرور."],
+  sifreDegistiriliyor: ["Şifre değiştiriliyor…", "جارٍ تغيير كلمة المرور…"],
   sosyalUrlGecersiz: [
     "Sosyal medya bağlantısı https:// ile başlamalı ve ilgili platforma ait olmalı.",
     "يجب أن يبدأ رابط التواصل بـ https:// وأن ينتمي إلى المنصة الصحيحة.",
