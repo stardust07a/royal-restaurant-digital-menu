@@ -18,7 +18,7 @@ const ADET_SINIRI = 99;
 function BolumBasligi({ metin, ipucu }: { metin: string; ipucu?: string }) {
   return (
     <div className="mb-3 mt-8 flex items-center gap-3 border-b border-rule pb-2">
-      <h2 className="etiket text-ink">{metin}</h2>
+      <h2 className="text-sm font-extrabold tracking-[0.04em] text-ink">{metin}</h2>
       {ipucu && <span className="text-xs text-muted">{ipucu}</span>}
     </div>
   );
@@ -110,7 +110,7 @@ export default function UrunDetay({
 
   return (
     <>
-      <div className="mx-auto max-w-lg px-4 pb-40">
+      <div className="mx-auto max-w-3xl px-4 pb-40 lg:pb-10">
         {saltOkunur && (
           <SaltOkunurUyarisi
             whatsappNumarasi={whatsappNumarasi}
@@ -118,7 +118,7 @@ export default function UrunDetay({
           />
         )}
         {/* ---------- FOTOGRAF ---------- */}
-        <div className="relative mt-4 aspect-4/3 w-full overflow-hidden rounded-3xl bg-line/40">
+        <div className="relative mt-4 aspect-4/3 w-full overflow-hidden rounded-3xl bg-line/40 shadow-[0_18px_44px_rgba(16,43,40,.1)] sm:aspect-[16/9]">
           {urun.gorsel_url ? (
             <Image
               src={urun.gorsel_url}
@@ -145,7 +145,7 @@ export default function UrunDetay({
 
         {/* ---------- BASLIK ---------- */}
         <div className="mt-4 flex items-start gap-3">
-          <h1 className="min-w-0 flex-1 break-words text-2xl font-bold leading-snug">
+          <h1 className="min-w-0 flex-1 break-words text-2xl font-black leading-snug sm:text-3xl">
             {isim}
           </h1>
           <span className="fiyat shrink-0 text-2xl font-bold text-brand-light">
@@ -282,19 +282,19 @@ export default function UrunDetay({
       </div>
 
       {/* ---------- ADET + SEPETE EKLE ---------- */}
-      <div className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-bg/95 px-4 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] pt-3 backdrop-blur">
-        <div className="mx-auto flex max-w-lg items-center gap-3">
-          <div className="flex items-center gap-1 rounded-2xl border border-line bg-card p-1">
+      <div className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-bg/95 px-4 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] pt-3 backdrop-blur lg:static lg:border-0 lg:bg-transparent lg:pb-12 lg:pt-0 lg:backdrop-blur-none">
+        <div className="mx-auto flex max-w-3xl items-center gap-3 lg:rounded-3xl lg:border lg:border-line lg:bg-card lg:p-3 lg:shadow-[0_18px_44px_rgba(16,43,40,.1)]">
+          <div className="flex shrink-0 items-center gap-1 rounded-2xl border border-line bg-card p-1">
             <button
               type="button"
               onClick={() => setAdet((a) => Math.max(1, a - 1))}
               disabled={saltOkunur || !urun.stokta || adet <= 1}
               aria-label={t("siparis.azalt")}
-              className="flex h-11 w-11 items-center justify-center rounded-xl text-xl font-bold text-ink transition active:bg-line disabled:opacity-30"
+              className="flex h-11 w-11 items-center justify-center rounded-xl text-xl font-bold text-ink transition active:bg-line disabled:opacity-30 max-[340px]:w-9"
             >
               −
             </button>
-            <span className="fiyat w-8 text-center text-lg font-bold">
+            <span className="fiyat w-8 text-center text-lg font-bold max-[340px]:w-6">
               {adet}
             </span>
             <button
@@ -302,7 +302,7 @@ export default function UrunDetay({
               onClick={() => setAdet((a) => Math.min(ADET_SINIRI, a + 1))}
               disabled={saltOkunur || !urun.stokta || adet >= ADET_SINIRI}
               aria-label={t("siparis.artir")}
-              className="flex h-11 w-11 items-center justify-center rounded-xl text-xl font-bold text-ink transition active:bg-line disabled:opacity-30"
+              className="flex h-11 w-11 items-center justify-center rounded-xl text-xl font-bold text-ink transition active:bg-line disabled:opacity-30 max-[340px]:w-9"
             >
               +
             </button>
@@ -312,7 +312,7 @@ export default function UrunDetay({
             type="button"
             onClick={sepeteEkle}
             disabled={saltOkunur || !acik || !urun.stokta}
-            className="flex min-h-14 flex-1 items-center justify-center gap-2 bg-brand px-4 font-bold text-bg transition-[background-color,transform] duration-200 hover:bg-brand-dark active:scale-[0.99] disabled:bg-line disabled:text-muted"
+            className="flex min-h-14 min-w-0 flex-1 items-center justify-center gap-2 rounded-2xl bg-brand px-4 font-bold text-bg transition-[background-color,transform] duration-200 hover:bg-brand-dark active:scale-[0.99] disabled:bg-line disabled:text-muted max-[340px]:gap-1 max-[340px]:px-2 max-[340px]:text-sm"
           >
             {saltOkunur ? (
               t("menu.saltOkunurKisa")
@@ -321,7 +321,7 @@ export default function UrunDetay({
             ) : acik ? (
               <>
                 <span className="truncate">{t("siparis.sepeteEkle")}</span>
-                <span aria-hidden className="shrink-0">
+                <span aria-hidden className="shrink-0 max-[340px]:hidden">
                   —
                 </span>
                 {/* whitespace-nowrap: "150" ile "₺" alt alta dusuyordu */}

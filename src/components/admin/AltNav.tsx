@@ -42,7 +42,7 @@ export default function AltNav() {
 
   return (
     <nav className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-bg/95 pb-[env(safe-area-inset-bottom)] backdrop-blur">
-      <ul className="mx-auto flex max-w-lg">
+      <ul className="mx-auto flex max-w-5xl">
         {SEKMELER.map((s) => {
           // /admin/kategori... yollari Kategori sekmesine ait; Urunler sekmesi
           // yalnizca /admin ve /admin/urun* icin aktif olmali.

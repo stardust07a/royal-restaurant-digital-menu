@@ -32,12 +32,12 @@ export default async function MasaSepetSayfasi({
       <MasaUstBar baslik={adi} geriLinki="/menu" />
       <main id="ana-icerik" className="min-h-dvh">
 
-      <h1 className="mx-auto max-w-lg px-4 pt-5 text-xl font-bold">
+      <h1 className="mx-auto max-w-3xl px-4 pt-6 text-2xl font-black">
         {t("siparis.masaSiparisi")}
       </h1>
 
       {!acik && (
-        <div className="mx-auto mt-3 max-w-lg px-4">
+        <div className="mx-auto mt-3 max-w-3xl px-4">
           <p className="border border-danger/40 bg-danger/10 px-4 py-3 text-sm text-ink">
             {kapaliMesaji(ayarlar, locale) || t("siparis.suAnKapali")}
           </p>

@@ -49,7 +49,7 @@ export default function QrUretici({ masaImzalari }: { masaImzalari: string[] }) 
   }, [adres]);
 
   return (
-    <div className="mx-auto max-w-lg px-4 pb-28">
+    <div className="mx-auto max-w-3xl px-4 pb-28 sm:px-6">
       <p className="mt-4 text-sm text-muted">{m("qrMasaSecIpucu")}</p>
       <div className="mt-3 grid grid-cols-5 gap-2" role="group" aria-label={m("qrMasaSecIpucu")}>
         {masaImzalari.map((_, i) => (

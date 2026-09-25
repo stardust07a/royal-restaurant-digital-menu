@@ -119,7 +119,7 @@ export default function TopluFiyat({
     "min-h-12 w-full rounded-2xl border border-line bg-card px-4 text-base focus:border-brand";
 
   return (
-    <div className="mx-auto max-w-lg px-4 pb-[calc(11rem+env(safe-area-inset-bottom))]">
+    <div className="mx-auto max-w-3xl px-4 pb-[calc(11rem+env(safe-area-inset-bottom))] sm:px-6">
       <section className="mt-4 flex flex-col gap-3">
         <label className="flex flex-col gap-1.5">
           <span className="text-sm text-muted">{m("kategori")}</span>
@@ -281,7 +281,7 @@ export default function TopluFiyat({
           type="button"
           onClick={uygula}
           disabled={uyguluyor || degisenSayisi === 0}
-          className="mx-auto flex min-h-13 w-full max-w-lg items-center justify-center rounded-2xl bg-brand font-bold text-bg transition active:scale-[0.98] disabled:bg-line disabled:text-muted"
+          className="mx-auto flex min-h-13 w-full max-w-3xl items-center justify-center rounded-2xl bg-brand font-bold text-bg transition active:scale-[0.98] disabled:bg-line disabled:text-muted"
         >
           {uyguluyor ? m("uygulaniyor") : `${m("uygula")} (${degisenSayisi} ${m("urunSayisi")})`}
         </button>

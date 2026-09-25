@@ -68,7 +68,7 @@ export default async function SiparisSayfasi({
         logoUrl={ayarlar.logo_url}
       />
       <main id="ana-icerik" className="min-h-dvh">
-      <section className="mx-4 mt-4 border border-brand-dark bg-brand px-5 py-6 text-white">
+      <section className="mx-auto mt-4 w-[calc(100%-2rem)] max-w-7xl rounded-3xl border border-brand-dark bg-brand px-5 py-7 text-white shadow-[0_16px_40px_rgba(8,119,110,.14)] sm:px-8">
         <p className="etiket text-[#ffe0a0]">{t("anasayfa.ustBaslik")}</p>
         <h1 className="mt-2 text-3xl leading-tight font-black">{t("anasayfa.paketSiparis")}</h1>
         <p className="mt-2 max-w-md text-sm leading-relaxed text-white/78">
@@ -79,13 +79,13 @@ export default async function SiparisSayfasi({
       {saltOkunur && (
         <SaltOkunurUyarisi
           whatsappNumarasi={ayarlar.whatsapp_numarasi}
-          className="mx-auto mt-4 max-w-lg"
+          className="mx-auto mt-4 max-w-6xl"
         />
       )}
 
       {/* Kapaliyken musteri bosuna sepet doldurmasin diye en ustte uyari */}
       {!acik && (
-        <div className="mx-auto mt-4 max-w-lg px-4">
+        <div className="menu-kapsayici mt-4">
           <p className="border border-danger/40 bg-danger/10 px-4 py-3 text-sm text-ink">
             {kapaliNot || t("siparis.suAnKapali")}
           </p>
@@ -94,7 +94,7 @@ export default async function SiparisSayfasi({
 
       <section
         aria-label={t("siparis.paketKosullariBaslik")}
-        className="mx-auto mt-4 max-w-lg px-4"
+        className="menu-kapsayici mt-4"
       >
         <div className="border border-line bg-card px-4 py-3 text-sm">
           <p className="font-semibold text-ink">

@@ -38,10 +38,10 @@ export default function MasaMenusu({
       />
 
       {/* ---------- URUNLER ---------- */}
-      <div className="mx-auto max-w-lg px-4 pb-16">
+      <div className="menu-kapsayici pb-20">
         {metin && <p className="mt-4 break-words rounded-2xl bg-surface px-4 py-3 text-sm leading-relaxed text-muted">{metin}</p>}
 
-        <ul className="mt-4 grid grid-cols-1 gap-4 min-[380px]:grid-cols-2">
+        <ul className="kart-izgarasi mt-5">
           {(secili?.urunler ?? []).map((u) => (
             <UrunKarti key={u.id} urun={u} dil={dil} tur="masa" temelYol={temelYol} />
           ))}

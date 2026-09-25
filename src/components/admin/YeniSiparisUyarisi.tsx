@@ -97,7 +97,7 @@ export default function YeniSiparisUyarisi({
   }, [sesAcik, router]);
 
   return (
-    <div className="mx-auto max-w-lg px-4 pt-4">
+    <div className="mx-auto max-w-5xl px-4 pt-4 sm:px-6">
       <button
         type="button"
         onClick={() => {

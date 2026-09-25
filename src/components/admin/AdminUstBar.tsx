@@ -37,7 +37,8 @@ export default function AdminUstBar({
   const hedefDil = dil === "tr" ? "ar" : "tr";
 
   return (
-    <header className="sticky top-0 z-30 flex items-center gap-2 border-b border-line bg-bg/90 px-4 py-3 backdrop-blur">
+    <header className="sticky top-0 z-30 border-b border-line bg-bg/90 backdrop-blur">
+      <div className="mx-auto flex min-h-[68px] w-full max-w-5xl items-center gap-2 px-4 py-3">
       {geriLinki && (
         <Link
           href={geriLinki}
@@ -97,6 +98,7 @@ export default function AdminUstBar({
           <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9" />
         </svg>
       </button>
+      </div>
     </header>
   );
 }

@@ -32,8 +32,7 @@ export default function KategoriVeArama({
     const q = sorgu.trim().toLocaleLowerCase("tr");
     if (q.length < EN_AZ_HARF) return null;
 
-    return kategoriler
-      .flatMap((k) => k.urunler)
+    return [...new Map(kategoriler.flatMap((k) => k.urunler).map((u) => [u.id, u])).values()]
       .filter(
         (u) =>
           u.ad_tr.toLocaleLowerCase("tr").includes(q) ||
@@ -42,7 +41,7 @@ export default function KategoriVeArama({
   }, [sorgu, kategoriler]);
 
   return (
-    <div className="mx-auto max-w-lg px-4 pb-28">
+    <div className="menu-kapsayici pb-28">
       {/* ---------- ARAMA ---------- */}
       <div className="relative mt-5">
         <span
@@ -78,7 +77,7 @@ export default function KategoriVeArama({
       {/* ---------- SONUCLAR ---------- */}
       {sonuclar !== null ? (
         sonuclar.length > 0 ? (
-          <ul className="mt-5 grid grid-cols-1 gap-3 min-[380px]:grid-cols-2">
+          <ul className="kart-izgarasi mt-5">
             {sonuclar.map((u) => (
               <UrunKarti key={u.id} urun={u} dil={dil} />
             ))}
@@ -92,14 +91,14 @@ export default function KategoriVeArama({
         /* ---------- KATEGORI KUTULARI ----------
            Metin fotografin USTUNDE degil, altindaki beyaz kutuda duruyor:
            fotograf uzerindeki yazi hicbir gorselde kontrast garantisi vermiyor. */
-        <ul className="mt-5 grid grid-cols-1 gap-3 min-[380px]:grid-cols-2">
+        <ul className="kart-izgarasi mt-5">
           {kategoriler.map((k) => {
             const metin = kategoriAciklamasi(k, dil);
             return (
               <li key={k.id} className="flex min-w-0">
                 <Link
                   href={`/siparis/${k.slug}`}
-                  className="flex min-w-0 w-full flex-col overflow-hidden border border-line bg-card transition-colors duration-200 hover:border-brand active:bg-surface"
+                  className="menu-karti flex min-w-0 w-full flex-col active:bg-surface"
                 >
                   <div className="relative aspect-4/3 w-full overflow-hidden bg-surface">
                     {k.gorsel_url ? (
@@ -120,10 +119,10 @@ export default function KategoriVeArama({
                     )}
                   </div>
 
-                  <div className="flex flex-1 flex-col px-3 py-3">
-                    <p className="break-words text-base font-black leading-snug">{ad(k, dil)}</p>
+                  <div className="flex flex-1 flex-col px-3.5 py-3.5 min-[380px]:min-h-32 sm:min-h-36 sm:px-4 sm:py-4">
+                    <p className="line-clamp-2 break-words text-base font-black leading-snug sm:text-lg">{ad(k, dil)}</p>
                     {metin && (
-                      <p className="mt-0.5 line-clamp-2 break-words text-xs leading-snug text-muted">
+                      <p className="mt-1 line-clamp-2 break-words text-xs leading-relaxed text-muted sm:text-sm">
                         {metin}
                       </p>
                     )}

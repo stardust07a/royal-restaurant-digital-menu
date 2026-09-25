@@ -69,7 +69,7 @@ export default async function MenuSayfasi({
         logoUrl={ayarlar.logo_url}
       />
       <main id="ana-icerik" className="min-h-dvh pb-10">
-      <section className="mx-4 mt-4 border border-brand-dark bg-brand px-5 py-6 text-white">
+      <section className="mx-auto mt-4 w-[calc(100%-2rem)] max-w-7xl rounded-3xl border border-brand-dark bg-brand px-5 py-7 text-white shadow-[0_16px_40px_rgba(8,119,110,.14)] sm:px-8">
         <p className="etiket text-[#ffe0a0]">{t("anasayfa.ustBaslik")}</p>
         <h1 className="mt-2 text-3xl leading-tight font-black">{t("menu.baslik")}</h1>
         <p className="mt-2 max-w-md text-sm leading-relaxed text-white/78">
@@ -80,11 +80,11 @@ export default async function MenuSayfasi({
       {saltOkunur && (
         <SaltOkunurUyarisi
           whatsappNumarasi={ayarlar.whatsapp_numarasi}
-          className="mx-auto mt-4 max-w-lg"
+          className="mx-auto mt-4 max-w-6xl"
         />
       )}
 
-      <div className="mx-auto max-w-lg px-4 py-6">
+      <div className="menu-kapsayici py-6">
         {kategoriler.length > 0 ? (
           <KategoriKutulari
             kategoriler={kategoriler}

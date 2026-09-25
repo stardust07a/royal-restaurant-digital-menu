@@ -78,7 +78,7 @@ export default function SepetGovdesi({
   // "sepetiniz bos" yanip sonmesin.
   if (!baglandi) {
     return (
-      <div className="mx-auto max-w-lg px-4 py-5" aria-busy="true">
+      <div className="mx-auto max-w-3xl px-4 py-5" aria-busy="true">
         <span role="status" className="sr-only">{t("ortak.yukleniyor")}</span>
         {[0, 1].map((i) => (
           <div key={i} aria-hidden className="kart-derinlik mb-3 rounded-3xl border border-line/70 bg-card p-4">
@@ -96,11 +96,11 @@ export default function SepetGovdesi({
   // musteri bos sepet gorup siparisi gitmedi saniyordu.
   if (gecerliKalemler.length === 0 && !gonderiliyor) {
     return (
-      <div className="px-4 py-20 text-center">
+      <div className="flex min-h-[calc(100dvh-9rem)] flex-col items-center justify-center px-4 py-12 text-center">
         {saltOkunur && (
           <SaltOkunurUyarisi
             whatsappNumarasi={whatsappNumarasi}
-            className="mx-auto mb-6 max-w-lg text-start"
+            className="mx-auto mb-6 max-w-3xl text-start"
           />
         )}
         <p className="text-muted">{t("siparis.sepetBos")}</p>
@@ -205,7 +205,7 @@ export default function SepetGovdesi({
   }
 
   return (
-    <div className="mx-auto max-w-lg px-4 pb-40">
+    <div className="mx-auto max-w-3xl px-4 pb-40">
       {saltOkunur && (
         <SaltOkunurUyarisi
           whatsappNumarasi={whatsappNumarasi}
@@ -414,7 +414,7 @@ export default function SepetGovdesi({
           type="button"
           onClick={gonder}
           disabled={!gonderilebilir}
-          className="mx-auto flex min-h-15 w-full max-w-lg items-center justify-center gap-2 rounded-2xl bg-brand px-5 text-lg font-black text-white shadow-[0_12px_28px_rgba(8,119,110,.22)] transition-[background-color,transform] duration-200 hover:bg-brand-dark active:scale-[0.99] disabled:bg-line disabled:text-muted disabled:shadow-none"
+          className="mx-auto flex min-h-15 w-full max-w-3xl items-center justify-center gap-2 rounded-2xl bg-brand px-5 text-lg font-black text-white shadow-[0_12px_28px_rgba(8,119,110,.22)] transition-[background-color,transform] duration-200 hover:bg-brand-dark active:scale-[0.99] disabled:bg-line disabled:text-muted disabled:shadow-none"
         >
           {saltOkunur
             ? t("menu.saltOkunurKisa")

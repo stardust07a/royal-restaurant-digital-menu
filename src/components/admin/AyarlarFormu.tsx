@@ -362,7 +362,7 @@ export default function AyarlarFormu({ baslangic }: { baslangic: Ayarlar }) {
   }
 
   return (
-    <div className="mx-auto max-w-lg px-4 pb-[calc(11rem+env(safe-area-inset-bottom))]">
+    <div className="mx-auto max-w-3xl px-4 pb-[calc(11rem+env(safe-area-inset-bottom))] sm:px-6">
       {/* ---------- LOGO ---------- */}
       <section className="pt-4">
         <h2 className="text-xs font-bold uppercase tracking-wider text-accent">
@@ -528,7 +528,7 @@ export default function AyarlarFormu({ baslangic }: { baslangic: Ayarlar }) {
         <h2 className="text-xs font-bold uppercase tracking-wider text-accent">
           {m("siparisBaslik")}
         </h2>
-        <div className="mt-3 flex gap-3">
+        <div className="mt-3 flex flex-col gap-3 sm:flex-row">
           <label className="flex flex-1 flex-col gap-1.5">
             <span className="text-sm text-muted">{m("servisUcreti")}</span>
             <input
@@ -776,7 +776,7 @@ export default function AyarlarFormu({ baslangic }: { baslangic: Ayarlar }) {
           type="button"
           onClick={kaydet}
           disabled={kaydediliyor || herhangiBirYukleme}
-          className="mx-auto flex min-h-13 w-full max-w-lg items-center justify-center rounded-2xl bg-brand font-bold text-bg transition active:scale-[0.98] disabled:bg-line disabled:text-muted"
+          className="mx-auto flex min-h-13 w-full max-w-3xl items-center justify-center rounded-2xl bg-brand font-bold text-bg transition active:scale-[0.98] disabled:bg-line disabled:text-muted"
         >
           {kaydediliyor ? m("kaydediliyor") : m("kaydet")}
         </button>

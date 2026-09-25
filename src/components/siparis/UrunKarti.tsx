@@ -70,10 +70,10 @@ export default function UrunKarti({
         )}
       </div>
 
-      <div className="flex flex-1 flex-col px-3.5 py-3">
-        <h3 className="break-words font-black leading-snug">{isim}</h3>
+      <div className="flex flex-1 flex-col px-3.5 py-3 min-[380px]:min-h-36 sm:min-h-40 sm:px-4 sm:py-4">
+        <h3 className="line-clamp-2 break-words font-black leading-snug sm:text-lg">{isim}</h3>
         {metin && (
-          <p className="mt-0.5 line-clamp-2 break-words text-xs leading-snug text-muted">
+          <p className="mt-1 line-clamp-2 break-words text-xs leading-relaxed text-muted sm:text-sm">
             {metin}
           </p>
         )}
@@ -99,7 +99,7 @@ export default function UrunKarti({
     return (
       <li
         aria-disabled="true"
-        className="flex cursor-not-allowed flex-col overflow-hidden border border-line bg-surface/40"
+        className="menu-karti flex cursor-not-allowed flex-col bg-surface/40"
       >
         {govde}
       </li>
@@ -110,7 +110,7 @@ export default function UrunKarti({
     <li className="flex">
       <Link
         href={`${temelYol}/urun/${urun.slug}`}
-        className="group flex w-full flex-col overflow-hidden border border-line bg-card active:bg-surface"
+        className="menu-karti group flex w-full flex-col active:bg-surface"
       >
         {govde}
       </Link>

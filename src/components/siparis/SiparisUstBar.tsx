@@ -23,7 +23,8 @@ export default async function SiparisUstBar({
   const t = await getTranslations("ortak");
 
   return (
-    <header className="sticky top-0 z-30 flex min-h-[68px] items-center gap-2 border-b border-line/70 bg-bg/92 px-3 py-2.5 shadow-[0_8px_24px_rgba(16,43,40,.06)] backdrop-blur-xl">
+    <header className="sticky top-0 z-30 border-b border-line/70 bg-bg/92 shadow-[0_8px_24px_rgba(16,43,40,.06)] backdrop-blur-xl">
+      <div className="mx-auto flex min-h-[68px] w-full max-w-7xl items-center gap-2 px-3 py-2.5 sm:px-5">
       {geriLinki ? (
         <>
           <Link
@@ -68,6 +69,7 @@ export default async function SiparisUstBar({
 
       <DilDegistir />
       <SepetIkonu />
+      </div>
     </header>
   );
 }

@@ -68,7 +68,7 @@ export default function KategoriListesi({
   }
 
   return (
-    <div className="mx-auto max-w-lg px-4 pb-28">
+    <div className="mx-auto max-w-5xl px-4 pb-28 sm:px-6">
       <Link
         href="/admin/kategori/yeni"
         className="mt-4 flex min-h-13 items-center justify-center rounded-2xl bg-brand font-bold text-bg transition active:scale-[0.98]"

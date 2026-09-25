@@ -423,7 +423,7 @@ export default function KategoriFormu({
     "min-h-12 w-full rounded-2xl border border-line bg-card px-4 text-base focus:border-brand";
 
   return (
-    <div className="mx-auto max-w-lg px-4 pb-[calc(11rem+env(safe-area-inset-bottom))]">
+    <div className="mx-auto max-w-3xl px-4 pb-[calc(11rem+env(safe-area-inset-bottom))] sm:px-6">
       {kirpilacak && (
         <FotografKirpma
           kaynak={kirpilacak}
@@ -755,7 +755,7 @@ export default function KategoriFormu({
           type="button"
           onClick={kaydet}
           disabled={kaydediliyor || yukleniyor || urunListesiSiniraUlasti}
-          className="mx-auto flex min-h-13 w-full max-w-lg items-center justify-center rounded-2xl bg-brand font-bold text-bg transition active:scale-[0.98] disabled:bg-line disabled:text-muted"
+          className="mx-auto flex min-h-13 w-full max-w-3xl items-center justify-center rounded-2xl bg-brand font-bold text-bg transition active:scale-[0.98] disabled:bg-line disabled:text-muted"
         >
           {kaydediliyor ? m("kaydediliyor") : m("kaydet")}
         </button>

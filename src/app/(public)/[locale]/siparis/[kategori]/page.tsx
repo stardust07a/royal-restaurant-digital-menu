@@ -93,13 +93,13 @@ export default async function KategoriSayfasi({
       )}
       <KategoriSeridi kategoriler={kategoriler} aktifSlug={kategori} />
 
-      <div className="mx-auto max-w-lg px-4 pb-28">
-        <h1 className="pt-5 text-xl font-bold text-accent">
+      <div className="menu-kapsayici pb-28">
+        <h1 className="pt-6 text-2xl font-black text-ink sm:text-3xl">
           {ad(secili, dil)}
         </h1>
         {metin && <p className="mt-1 text-sm text-muted">{metin}</p>}
 
-        <ul className="mt-4 grid grid-cols-1 gap-3 min-[380px]:grid-cols-2">
+        <ul className="kart-izgarasi mt-5">
           {secili.urunler.map((u) => (
             <UrunKarti key={u.id} urun={u} dil={dil} />
           ))}

@@ -35,13 +35,13 @@ export default function KategoriSeridi({
   return (
     <nav
       aria-label={t("kategoriGezintisi")}
-      className="sticky top-[68px] z-20 border-b border-line bg-bg/90 backdrop-blur"
+      className="sticky top-[68px] z-20 border-b border-line bg-bg/95 shadow-[0_8px_22px_rgba(16,43,40,.05)] backdrop-blur"
     >
-      <ul className="kaydir-gizle flex items-center gap-2 overflow-x-auto px-4 py-2">
+      <ul className="kategori-seridi-ic kaydir-gizle flex snap-x snap-mandatory items-center gap-2 overflow-x-auto px-4 py-2 sm:flex-wrap sm:justify-center sm:overflow-visible sm:px-6">
         {kategoriler.map((k) => {
           const aktif = k.slug === aktifSlug;
           return (
-            <li key={k.id}>
+            <li key={k.id} className="shrink-0 snap-center">
               <Link
                 ref={aktif ? aktifCip : undefined}
                 href={`${temelYol}/${k.slug}`}

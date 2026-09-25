@@ -104,7 +104,7 @@ export default function UrunListesi({
   const tukenenSayisi = Object.values(stoklar).filter((v) => !v).length;
 
   return (
-    <div className="mx-auto max-w-lg px-4 pb-28">
+    <div className="mx-auto max-w-5xl px-4 pb-28 sm:px-6">
       <div className="flex items-center gap-3 pt-4">
         <input
           type="search"

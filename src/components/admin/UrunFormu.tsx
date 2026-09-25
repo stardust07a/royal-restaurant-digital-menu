@@ -305,7 +305,7 @@ export default function UrunFormu({
     "min-h-12 w-full rounded-2xl border border-line bg-card px-4 text-base focus:border-brand";
 
   return (
-    <div className="mx-auto max-w-lg px-4 pb-[calc(11rem+env(safe-area-inset-bottom))]">
+    <div className="mx-auto max-w-3xl px-4 pb-[calc(11rem+env(safe-area-inset-bottom))] sm:px-6">
       {kirpilacak && (
         <FotografKirpma
           kaynak={kirpilacak}
@@ -437,7 +437,7 @@ export default function UrunFormu({
         <h2 className="text-xs font-bold uppercase tracking-wider text-accent">
           {m("fiyatlar")}
         </h2>
-        <div className="mt-3 flex gap-3">
+        <div className="mt-3 flex flex-col gap-3 sm:flex-row">
           <label className="flex flex-1 flex-col gap-1.5">
             <span className="text-sm text-muted">{m("masaFiyati")}</span>
             <input
@@ -493,7 +493,7 @@ export default function UrunFormu({
           {m("detaylar")}
         </h2>
 
-        <div className="mt-3 flex gap-3">
+        <div className="mt-3 flex flex-col gap-3 sm:flex-row">
           <label className="flex flex-1 flex-col gap-1.5">
             <span className="text-sm text-muted">{m("gramajTr")}</span>
             <input
@@ -670,7 +670,7 @@ export default function UrunFormu({
           type="button"
           onClick={kaydet}
           disabled={kaydediliyor || yukleniyor}
-          className="mx-auto flex min-h-13 w-full max-w-lg items-center justify-center rounded-2xl bg-brand font-bold text-bg transition active:scale-[0.98] disabled:bg-line disabled:text-muted"
+          className="mx-auto flex min-h-13 w-full max-w-3xl items-center justify-center rounded-2xl bg-brand font-bold text-bg transition active:scale-[0.98] disabled:bg-line disabled:text-muted"
         >
           {kaydediliyor ? m("kaydediliyor") : m("kaydet")}
         </button>
@@ -791,7 +791,7 @@ function SatirDuzenleyici({
             key={s.id ?? `yeni-${i}`}
             className="rounded-2xl border border-line bg-card p-3"
           >
-            <div className="flex gap-2">
+            <div className="flex flex-col gap-2 sm:flex-row">
               <input
                 name={`${baslik}-${i}-ad-tr`}
                 aria-label={`${baslik} ${i + 1} ${m("turkce")}`}

@@ -102,7 +102,7 @@ export default function SiparisListesi({
   }
 
   return (
-    <div className="mx-auto max-w-lg px-4 pb-28">
+    <div className="mx-auto max-w-5xl px-4 pb-28 sm:px-6">
       {hata && (
         <p
           role="alert"

@@ -40,7 +40,7 @@ export default function SepeteGitCubugu({
     <div className="fixed inset-x-0 bottom-0 z-30 border-t border-line/70 bg-bg/92 px-4 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] pt-3 shadow-[0_-12px_32px_rgba(16,43,40,.08)] backdrop-blur-xl">
       <Link
         href={`${temelYol}/sepet`}
-        className="mx-auto grid min-h-15 max-w-lg grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-2 rounded-2xl bg-brand px-4 font-black text-white shadow-[0_12px_28px_rgba(8,119,110,.22)] transition-[background-color,transform] duration-200 hover:bg-brand-dark active:scale-[0.99]"
+        className="mx-auto grid min-h-15 max-w-3xl grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-2 rounded-2xl bg-brand px-4 font-black text-white shadow-[0_12px_28px_rgba(8,119,110,.22)] transition-[background-color,transform] duration-200 hover:bg-brand-dark active:scale-[0.99]"
       >
         <span
           aria-hidden

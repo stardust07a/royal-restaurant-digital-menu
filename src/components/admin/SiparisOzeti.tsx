@@ -27,7 +27,7 @@ export default function SiparisOzeti({
     dil === "ar" ? k.ad_ar?.trim() || k.ad_tr : k.ad_tr;
 
   return (
-    <div className="mx-auto max-w-lg px-4">
+    <div className="mx-auto max-w-5xl px-4 sm:px-6">
       <div className="mt-4 flex gap-3">
         <div className="flex-1 border border-line px-4 py-3">
           <p className="text-xs text-muted">{m("bugun")}</p>

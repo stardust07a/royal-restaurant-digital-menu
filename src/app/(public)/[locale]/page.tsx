@@ -82,7 +82,7 @@ export default async function AnaSayfa({
   // Öne çıkanlar: cok satan rozetli urunler
   const oneCikanlar: Urun[] = tumUrunler
     .filter((u) => u.rozet === "cok_satan" && u.stokta)
-    .slice(0, 10);
+    .slice(0, 6);
 
   // Menudeki tekrarsiz fotograflar — kapak, menu kartlari ve galeri buradan
   const fotograflar = [
@@ -302,13 +302,13 @@ export default async function AnaSayfa({
       </section>
 
       {/* ================= IKI MENU ================= */}
-      <section id="menuler" className="scroll-mt-4 bg-surface/70 px-5 py-18 sm:px-6">
-        <Belirme className="mx-auto max-w-3xl">
+      <section id="menuler" className="scroll-mt-4 bg-surface/70 px-5 py-14 sm:px-6 sm:py-16">
+        <Belirme className="mx-auto max-w-5xl">
           <p className="etiket text-accent">{t("anasayfa.menuler")}</p>
           <h2 className="mt-2 max-w-xl text-3xl leading-tight font-black sm:text-4xl">
             {t("anasayfa.menulerBaslik")}
           </h2>
-          <ul className="mt-8 grid gap-5">
+          <ul className="mx-auto mt-8 grid max-w-3xl gap-5">
             {[
               {
                 href: "/siparis" as const,
@@ -321,9 +321,9 @@ export default async function AnaSayfa({
               <li key={k.href} className="flex min-w-0">
                 <Link
                   href={k.href}
-                  className="kart-derinlik kart-yuksel group flex min-w-0 w-full flex-col overflow-hidden rounded-3xl border border-white/80 bg-card"
+                  className="kart-derinlik kart-yuksel group flex min-w-0 w-full flex-col overflow-hidden rounded-3xl border border-white/80 bg-card sm:grid sm:grid-cols-[minmax(0,1.2fr)_minmax(0,.8fr)]"
                 >
-                  <div className="relative aspect-square w-full overflow-hidden bg-surface">
+                  <div className="relative aspect-square w-full overflow-hidden bg-surface sm:aspect-auto sm:min-h-80">
                     {k.gorsel && (
                       <Image
                         src={k.gorsel}
@@ -365,8 +365,8 @@ export default async function AnaSayfa({
       </section>
 
       {/* ================= HAKKIMIZDA ================= */}
-      <section id="hakkimizda" className="relative scroll-mt-4 overflow-hidden bg-ink px-5 py-18 text-white sm:px-6">
-        <Belirme className="relative mx-auto max-w-3xl">
+      <section id="hakkimizda" className="relative scroll-mt-4 overflow-hidden bg-ink px-5 py-14 text-white sm:px-6 sm:py-16">
+        <Belirme className="relative mx-auto max-w-5xl">
           <p className="etiket text-[#d7aa48]">{t("anasayfa.hakkimizda")}</p>
           <h2 className="mt-4 max-w-2xl text-3xl leading-[1.15] font-black sm:text-4xl">
             {ayarMetni(
@@ -389,16 +389,16 @@ export default async function AnaSayfa({
 
       {/* ================= ÖNE ÇIKANLAR ================= */}
       {oneCikanlar.length > 0 && (
-        <section id="one-cikanlar" className="scroll-mt-4 py-18">
-          <div className="mx-auto max-w-3xl px-6">
+        <section id="one-cikanlar" className="scroll-mt-4 px-6 py-14 sm:py-16">
+          <div className="mx-auto max-w-6xl">
             <p className="etiket text-accent">{t("anasayfa.oneCikanlar")}</p>
             <h2 className="mt-2 text-3xl font-black">{t("anasayfa.oneCikanlarBaslik")}</h2>
           </div>
 
           {/* Yatay kaydirmali serit */}
-          <ul className="kaydir-gizle mt-6 flex snap-x snap-mandatory gap-3 overflow-x-auto px-6 pb-2">
+          <ul className="mx-auto mt-6 flex max-w-6xl snap-x snap-mandatory gap-4 overflow-x-auto pb-4 sm:grid sm:grid-cols-2 sm:overflow-visible md:grid-cols-3 xl:grid-cols-6">
             {oneCikanlar.map((u, i) => (
-              <li key={u.id} className="w-44 shrink-0 snap-start">
+              <li key={u.id} className="w-[calc(100vw-3rem)] max-w-sm shrink-0 snap-center sm:w-auto sm:max-w-none">
                 {/* Kademeli giris: her kart 60 ms sonra belirir */}
                 <Belirme gecikme={i * 60} className="h-full">
                 <Link
@@ -441,8 +441,8 @@ export default async function AnaSayfa({
 
       {/* ================= GALERİ ================= */}
       {galeri.length > 0 && (
-        <section id="galeri" className="scroll-mt-4 bg-surface/70 px-6 py-18">
-          <Belirme className="mx-auto max-w-3xl">
+        <section id="galeri" className="scroll-mt-4 bg-surface/70 px-6 py-14 sm:py-16">
+          <Belirme className="mx-auto max-w-5xl">
             <p className="etiket text-accent">{t("anasayfa.galeri")}</p>
             <h2 className="mt-2 text-3xl font-black">{t("anasayfa.galeriBaslik")}</h2>
             <Galeri gorseller={galeri} />
@@ -451,8 +451,8 @@ export default async function AnaSayfa({
       )}
 
       {/* ================= KONUM & SAATLER ================= */}
-      <section id="konum" className="scroll-mt-4 px-5 py-18 sm:px-6">
-        <div className="mx-auto max-w-3xl">
+      <section id="konum" className="scroll-mt-4 px-5 py-14 sm:px-6 sm:py-16">
+        <div className="mx-auto max-w-5xl">
           <p className="etiket text-accent">{t("anasayfa.konumSaatler")}</p>
           <h2 className="mt-2 text-3xl font-black">{t("anasayfa.konumBaslik")}</h2>
 
@@ -488,8 +488,8 @@ export default async function AnaSayfa({
       </section>
 
       {/* ================= İLETİŞİM ================= */}
-      <section id="iletisim" className="scroll-mt-4 bg-brand px-5 py-18 text-white sm:px-6">
-        <div className="mx-auto max-w-3xl">
+      <section id="iletisim" className="scroll-mt-4 bg-brand px-5 py-14 text-white sm:px-6 sm:py-16">
+        <div className="mx-auto max-w-5xl">
           <p className="etiket text-[#ffe0a0]">{t("anasayfa.iletisim")}</p>
           <h2 className="mt-2 text-3xl font-black">{t("anasayfa.iletisimBaslik")}</h2>
           <p className="mt-2 max-w-xl text-sm leading-relaxed text-white/75">
