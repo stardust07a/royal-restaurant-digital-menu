@@ -18,6 +18,9 @@ export const MUSTERI_HIZ_LIMITI_PAKET = 8;
 // gereksiz yere on dakika kilitliyordu.
 export const MUSTERI_HIZ_LIMITI_MASA = 30;
 
+/** Eski DB CHECK kuralı paket telefonunu boş kabul etmediği için teknik değer. */
+export const TELEFON_YOK = "0000000000";
+
 interface SiparisKayitGirdisi {
   siparisNo: string;
   tur: SiparisTuru;
@@ -44,7 +47,9 @@ export function siparisKayitSatiri(girdi: SiparisKayitGirdisi) {
   return {
     siparis_no: girdi.siparisNo,
     musteri_ad: masaSiparisi ? "" : girdi.musteriAd,
-    musteri_telefon: masaSiparisi ? "" : girdi.musteriTelefon,
+    musteri_telefon: masaSiparisi
+      ? ""
+      : girdi.musteriTelefon || TELEFON_YOK,
     dil: girdi.dil,
     kalemler: girdi.kalemler,
     ara_toplam: girdi.araToplam,

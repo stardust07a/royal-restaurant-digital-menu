@@ -20,6 +20,7 @@ import {
   MUSTERI_HIZ_LIMITI_MASA,
   MUSTERI_HIZ_LIMITI_PAKET,
   SIPARIS_RPC_LIMIT_EN_COK,
+  TELEFON_YOK,
   siparisKayitSatiri,
 } from "../src/lib/siparis-kayit-sozlesmesi.ts";
 import { uuidV4Uret } from "../src/lib/uuid.ts";
@@ -160,6 +161,36 @@ test("masa kayıt payloadı siparisler tablo sözleşmesine uyar", () => {
   assert.equal(satir.toplam, satir.ara_toplam + satir.servis_ucreti);
 });
 
+test("telefonsuz paket siparisi eski DB sozlesmesine guvenli teknik degerle uyar", () => {
+  const satir = siparisKayitSatiri({
+    siparisNo: "R-260926-123456",
+    tur: "paket",
+    dil: "tr",
+    masaNo: "",
+    musteriAd: "Paket Sipariş",
+    musteriTelefon: "",
+    kalemler: [{ urun_id: "00000000-0000-4000-8000-000000000001" }],
+    araToplam: 430,
+    servisUcreti: 0,
+    toplam: 430,
+    idempotencyAnahtari: "00000000-0000-4000-8000-000000000002",
+    istekHash: "a".repeat(64),
+    yanit: {
+      durum: "tamam",
+      siparisNo: "R-260926-123456",
+      kalemler: [],
+      araToplam: 430,
+      servisUcreti: 0,
+      toplam: 430,
+      whatsappNumarasi: "905434888828",
+    },
+  });
+
+  assert.equal(satir.musteri_telefon, TELEFON_YOK);
+  assert.equal(satir.servis_ucreti, 0);
+  assert.equal(satir.toplam, satir.ara_toplam);
+});
+
 test("masa ve paket sepetleri ters rotada gösterilip gönderilmez", () => {
   const govde = oku("src/components/siparis/SepetGovdesi.tsx");
   const paketIkonu = oku("src/components/siparis/SepetIkonu.tsx");
@@ -188,7 +219,7 @@ test("müşteri metinleri WhatsApp satır yapısı oluşturamaz", () => {
   assert.match(whatsapp, /siparisMetniNormalize\(k\.not\)/);
 });
 
-test("paket siparisinde ad istenmez, telefon korunur ve sepet sayilari ortalanir", () => {
+test("paket siparisinde teslimat ucreti eklenmez ve telefon istege baglidir", () => {
   const govde = oku("src/components/siparis/SepetGovdesi.tsx");
   const eylem = oku("src/lib/siparis-eylemleri.ts");
   const whatsapp = oku("src/lib/whatsapp.ts");
@@ -198,9 +229,16 @@ test("paket siparisinde ad istenmez, telefon korunur ve sepet sayilari ortalanir
 
   assert.doesNotMatch(govde, /name="musteri-ad"/);
   assert.match(govde, /name="musteri-telefon"/);
-  assert.match(govde, /: telefonGecerli\)/);
+  assert.match(govde, /const telefonBos = telefon\.trim\(\)\.length === 0/);
+  assert.match(govde, /const telefonGecerli = telefonBos \|\| telefonGecerliMi\(telefon\)/);
+  assert.match(govde, /const toplam = araToplam/);
+  assert.doesNotMatch(govde, /t\("siparis\.servisUcreti"\)/);
   assert.match(eylem, /ad = girdi\.dil === "ar" \? "طلب خارجي" : "Paket Sipariş"/);
+  assert.match(eylem, /if \(guvenliTelefon && !telefonGecerliMi\(guvenliTelefon\)\)/);
+  assert.match(eylem, /const servisUcreti = 0/);
   assert.doesNotMatch(whatsapp, /g\.musteriAd/);
+  assert.match(whatsapp, /g\.tur === "masa" \|\| g\.servisUcreti <= 0/);
+  assert.match(whatsapp, /g\.musteriTelefon\.trim\(\)/);
   assert.match(cubuk, /grid-cols-\[minmax\(0,1fr\)_auto_minmax\(0,1fr\)\]/);
   for (const ikon of [paketIkonu, masaIkonu]) {
     assert.match(ikon, /className="absolute -top-1 -end-1 grid/);

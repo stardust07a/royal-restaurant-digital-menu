@@ -99,7 +99,6 @@ export default async function SiparisSayfasi({
         <div className="border border-line bg-card px-4 py-3 text-sm">
           <p className="font-semibold text-ink">
             {t("siparis.paketKosullari", {
-              ucret: fiyatYaz(ayarlar.servis_ucreti),
               minimum: fiyatYaz(ayarlar.minimum_siparis),
             })}
           </p>

@@ -8,7 +8,7 @@ import { kamuMenuSonucuGetir } from "@/lib/kamu-menu";
 export const revalidate = 60;
 export const metadata: Metadata = { robots: { index: false, follow: false } };
 
-/** Sepet, musteri bilgisi (sadece ad + telefon) ve WhatsApp gonderimi. */
+/** Paket sepeti, istege bagli telefon ve WhatsApp gonderimi. */
 export default async function SepetSayfasi({
   params,
 }: {
@@ -45,7 +45,6 @@ export default async function SepetSayfasi({
 
       <SepetGovdesi
         restoranAdi={adi}
-        servisUcreti={ayarlar.servis_ucreti}
         minimumSiparis={ayarlar.minimum_siparis}
         acik={acik}
         saltOkunur={menuSonucu.kaynak === "yerel"}

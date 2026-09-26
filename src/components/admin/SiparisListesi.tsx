@@ -7,6 +7,7 @@ import { fiyatYaz } from "@/lib/sabitler";
 import { telefonGecerliMi, telefonNormalize } from "@/lib/telefon";
 import { IkonCikar, IkonEkle, IkonNot, IkonTelefon } from "@/components/Ikon";
 import { useAdminDil, type MetinAnahtari } from "@/lib/admin-dil";
+import { TELEFON_YOK } from "@/lib/siparis-kayit-sozlesmesi";
 
 const DURUMLAR: { kod: string; anahtar: MetinAnahtari; renk: string }[] = [
   { kod: "yeni", anahtar: "durumYeni", renk: "bg-brand text-bg" },
@@ -119,7 +120,8 @@ export default function SiparisListesi({
             DURUMLAR.find((d) => d.kod === durumlar[s.id]) ?? DURUMLAR[0];
           const paketSiparisi = s.siparis_turu !== "masa";
           const telefon = telefonNormalize(s.musteri_telefon);
-          const telefonGecerli = paketSiparisi && telefonGecerliMi(telefon);
+          const telefonGecerli =
+            paketSiparisi && telefon !== TELEFON_YOK && telefonGecerliMi(telefon);
 
           return (
             <li
@@ -219,7 +221,7 @@ export default function SiparisListesi({
                       <dt className="text-muted">{m("araToplam")}</dt>
                       <dd className="fiyat">{fiyatYaz(s.ara_toplam)}</dd>
                     </div>
-                    {paketSiparisi && (
+                    {paketSiparisi && s.servis_ucreti > 0 && (
                       <div className="flex justify-between">
                         <dt className="text-muted">{m("servis")}</dt>
                         <dd className="fiyat">{fiyatYaz(s.servis_ucreti)}</dd>

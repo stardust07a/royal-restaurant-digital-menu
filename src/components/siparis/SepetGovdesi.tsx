@@ -26,7 +26,6 @@ const WA_ANAHTARI = "royal_son_whatsapp";
 
 export default function SepetGovdesi({
   restoranAdi,
-  servisUcreti,
   minimumSiparis,
   acik,
   tur = "paket",
@@ -36,7 +35,6 @@ export default function SepetGovdesi({
   whatsappNumarasi,
 }: {
   restoranAdi: string;
-  servisUcreti: number;
   minimumSiparis: number;
   acik: boolean;
   /** Masa siparisinde teslimat ucreti ve minimum yok; ad/telefon yerine masa no */
@@ -115,12 +113,14 @@ export default function SepetGovdesi({
   }
 
   const araToplam = araToplamHesapla(gecerliKalemler);
-  const gecerliServis = masaSiparisi ? 0 : servisUcreti;
-  const toplam = kurus(araToplam + gecerliServis);
+  // Paket teslimat ucreti restoranda, adres goruldukten sonra belirlenir.
+  // Uygulamadaki siparis toplamına otomatik olarak eklenmez.
+  const toplam = araToplam;
   const eksik = masaSiparisi ? 0 : kurus(minimumSiparis - araToplam);
   const minimumAltinda = eksik > 0;
-  const telefonGecerli = telefonGecerliMi(telefon);
-  const telefonHatasiGoster = telefonDokunuldu && !telefonGecerli;
+  const telefonBos = telefon.trim().length === 0;
+  const telefonGecerli = telefonBos || telefonGecerliMi(telefon);
+  const telefonHatasiGoster = telefonDokunuldu && !telefonBos && !telefonGecerli;
   const gonderilebilir =
     acik &&
     !saltOkunur &&
@@ -330,12 +330,6 @@ export default function SepetGovdesi({
           <dt className="text-muted">{t("siparis.araToplam")}</dt>
           <dd className="fiyat">{fiyatYaz(araToplam)}</dd>
         </div>
-        {!masaSiparisi && (
-          <div className="mt-2 flex justify-between text-sm">
-            <dt className="text-muted">{t("siparis.servisUcreti")}</dt>
-            <dd className="fiyat">{fiyatYaz(gecerliServis)}</dd>
-          </div>
-        )}
         <div className="mt-3 flex justify-between border-t border-line pt-3 text-lg font-bold">
           <dt>{t("siparis.toplam")}</dt>
           <dd className="fiyat text-brand-light">{fiyatYaz(toplam)}</dd>
@@ -370,7 +364,7 @@ export default function SepetGovdesi({
       ) : (
       <section className="mt-6 flex flex-col gap-3">
         <label className="flex flex-col gap-1.5">
-          <span className="text-sm text-muted">{t("siparis.telefon")}</span>
+          <span className="text-sm text-muted">{t("siparis.telefonOpsiyonel")}</span>
           <input
             type="tel"
             name="musteri-telefon"

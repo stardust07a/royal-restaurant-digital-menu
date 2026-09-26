@@ -46,7 +46,6 @@ export default async function MasaSepetSayfasi({
 
       <SepetGovdesi
         restoranAdi={adi}
-        servisUcreti={0}
         minimumSiparis={0}
         acik={acik}
         tur="masa"

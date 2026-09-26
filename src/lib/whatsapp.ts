@@ -82,7 +82,7 @@ function toplamlar(g: MesajGirdisi): string[] {
   return [
     AYRAC,
     noktali(g.etiket("araToplam"), fiyatYaz(g.araToplam)),
-    ...(g.tur === "masa"
+    ...(g.tur === "masa" || g.servisUcreti <= 0
       ? []
       : [noktali(g.etiket("servisUcreti"), fiyatYaz(g.servisUcreti))]),
     noktali(g.etiket("toplam"), fiyatYaz(g.toplam)),
@@ -92,7 +92,9 @@ function toplamlar(g: MesajGirdisi): string[] {
     ...(g.tur === "masa"
       ? [`${g.etiket("masaNo")}: ${siparisMetniNormalize(g.masaNo ?? "")}`]
       : [
-          `${g.etiket("telefon")}: ${siparisMetniNormalize(g.musteriTelefon)}`,
+          ...(g.musteriTelefon.trim()
+            ? [`${g.etiket("telefon")}: ${siparisMetniNormalize(g.musteriTelefon)}`]
+            : []),
           "",
           g.etiket("adresBaslik"),
           g.etiket("adresIstek"),

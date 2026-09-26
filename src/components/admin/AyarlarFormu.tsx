@@ -528,24 +528,8 @@ export default function AyarlarFormu({ baslangic }: { baslangic: Ayarlar }) {
         <h2 className="text-xs font-bold uppercase tracking-wider text-accent">
           {m("siparisBaslik")}
         </h2>
-        <div className="mt-3 flex flex-col gap-3 sm:flex-row">
-          <label className="flex flex-1 flex-col gap-1.5">
-            <span className="text-sm text-muted">{m("servisUcreti")}</span>
-            <input
-              type="number"
-              name="teslimat-ucreti"
-              autoComplete="off"
-              inputMode="decimal"
-              min={0}
-              step="0.01"
-              value={a.servis_ucreti}
-              onChange={(e) =>
-                guncelle("servis_ucreti", Number(e.target.value))
-              }
-              className={kutu}
-            />
-          </label>
-          <label className="flex flex-1 flex-col gap-1.5">
+        <div className="mt-3">
+          <label className="flex flex-col gap-1.5">
             <span className="text-sm text-muted">{m("minimumSiparis")}</span>
             <input
               type="number"

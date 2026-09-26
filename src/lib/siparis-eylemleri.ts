@@ -261,8 +261,10 @@ export async function siparisOlustur(girdi: SiparisGirdisi): Promise<SiparisSonu
     // Musteriden ad istenmez; veritabaninda gercek kisi adi olmayan etiket tutulur.
     ad = girdi.dil === "ar" ? "طلب خارجي" : "Paket Sipariş";
     const guvenliTelefon = siparisMetniNormalize(girdi.musteriTelefon);
-    if (!telefonGecerliMi(guvenliTelefon)) return { durum: "hata", kod: "telefon_gecersiz" };
-    telefon = telefonNormalize(guvenliTelefon);
+    if (guvenliTelefon && !telefonGecerliMi(guvenliTelefon)) {
+      return { durum: "hata", kod: "telefon_gecersiz" };
+    }
+    telefon = guvenliTelefon ? telefonNormalize(guvenliTelefon) : "";
   }
 
   const istekHash = sha256(istekMetni);
@@ -390,15 +392,17 @@ export async function siparisOlustur(girdi: SiparisGirdisi): Promise<SiparisSonu
   if (araToplam < minimum) {
     return { durum: "hata", kod: "minimum_alti", deger: fiyatYaz(kurus(minimum - araToplam)) };
   }
-  const servisUcreti = masaSiparisi ? 0 : kurus(ayarlar.servis_ucreti);
-  const toplam = kurus(araToplam + servisUcreti);
+  // Paket teslimat ucreti adres goruldukten sonra restoran tarafindan eklenir.
+  // Kaydedilen ve WhatsApp'a giden uygulama toplamına otomatik ucret eklenmez.
+  const servisUcreti = 0;
+  const toplam = araToplam;
 
   // ---------- 6. Musteriye bagli atomik hiz siniri ----------
   // Ayar, urun, secenek, stok ve minimum kontrolleri tamamlanmadan hicbir
   // saldirgan-kontrollu musteri kovasi tuketilmez.
   const musteriAnahtari = masaSiparisi
     ? `masa:${masaNo.toLocaleLowerCase("tr")}`
-    : `telefon:${telefon}`;
+    : `telefon:${telefon || "yok"}`;
   const musteriLimiti = masaSiparisi
     ? MUSTERI_HIZ_LIMITI_MASA
     : MUSTERI_HIZ_LIMITI_PAKET;
